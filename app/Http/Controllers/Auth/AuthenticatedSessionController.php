@@ -132,7 +132,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         // Jika tidak ada redirect URL, arahkan ke halaman default
-        return redirect('https://teraskabeka.com');
+        return redirect('https://djajanan.com');
     }
 
 
@@ -155,7 +155,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('https://teraskabeka.com');
+        return redirect('https://djajanan.com');
 
         // return redirect('/');
     }

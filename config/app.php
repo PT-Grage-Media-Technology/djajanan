@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://teraskabeka.com'),
+    'url' => env('APP_URL', 'https://djajanan.com'),
 
     /*
     |--------------------------------------------------------------------------

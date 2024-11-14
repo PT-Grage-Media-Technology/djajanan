@@ -44,7 +44,7 @@
         </p>
     </span>
 
-    <script src="https://teraskabeka.com/livewire/livewire.js"></script>
+    <script src="https://djajanan.com/livewire/livewire.js"></script>
     @livewireScripts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 

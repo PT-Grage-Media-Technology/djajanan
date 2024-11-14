@@ -13,7 +13,7 @@
             @if (Auth::user()->hasRole('seller'))
                 <div class="store-header">
                     <div class="store-info">
-                        <!-- <img src="https://teraskabeka.com/store_image/{{ $toko->foto_profile_toko ?  $toko->foto_profile_toko : 'markets.png' }} "alt="logo toko" class="store-logo"> -->
+                        <!-- <img src="https://djajanan.com/store_image/{{ $toko->foto_profile_toko ?  $toko->foto_profile_toko : 'markets.png' }} "alt="logo toko" class="store-logo"> -->
                         <img src="{{ asset('store_image/' . ($toko->foto_profile_toko ? $toko->foto_profile_toko : 'markets.png')) }}"
                             alt="logo toko" class="store-logo">
                         <div class="store-text">
@@ -205,7 +205,7 @@
                                             </div>
                                         </div>
                                     </a>
-                                    <img alt="pack" src="https://teraskabeka.com/{{ $p->photo }}">
+                                    <img alt="pack" src="https://djajanan.com/{{ $p->photo }}">
                                     <strong>{{ $p->name }}</strong>
                                     <span class="category">Kategori: {{ $p->category->name }}</span>
                                     <span class="quantity">Jumlah: {{ $p->quantity }}</span>
