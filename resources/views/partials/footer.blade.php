@@ -40,7 +40,7 @@
                 <div>
                     <h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Djajanan</h2>
                     <ul class="text-gray-500 font-medium">
-                        <li class="mb-4 break-words truncate-text">
+                        <li class="mb-4 break-words max-w-[25ch]">
                             <a href="https://maps.app.goo.gl/jPYA3x3XgB3pXWSYA" class="hover:underline">
                                 {{ $company->company_name }} {{ $company->lokasi }}
                             </a>
@@ -76,7 +76,7 @@
                     <span class="sr-only">Instagram page</span>
                 </a>
                 <a href="https://grageweb.online" class="text-gray-500 hover:text-gray-700 ms-5">
-                    <i class='bx bxl-globe'></i>
+                    <i class='bx bx-globe'></i>
                     <span class="sr-only">Official Website</span>
                 </a>
             </div>
@@ -85,18 +85,3 @@
     </div>
     @endforeach
 </footer>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const listItem = document.querySelectorAll(".truncate-text");
-
-        listItem.forEach(item => {
-            const maxChars = 25; // Batas maksimal karakter
-            const text = item.textContent.trim();
-
-            if (text.length > maxChars) {
-                item.innerHTML = text.substring(0, maxChars) + '<br>' + text.substring(maxChars);
-            }
-        });
-    });
-</script>
