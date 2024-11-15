@@ -21,7 +21,7 @@
                                 Admin</a>
                         </li> --}}
                         <li class="mb-4">
-                            <a href="https://wa.me/6285182629897?text=Saya%20ingin%20bertanya%20tentang%20produk%20di%20website%20Teras KBK">Chat
+                            <a href="https://wa.me/6285182629897?text=Saya%20ingin%20bertanya%20tentang%20produk%20di%20website%20Djajanan">Chat
                                 Admin</a>
                         </li>
 
@@ -37,7 +37,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Teras KBK</h2>
+                    <h2 class="mb-6 text-sm font-semibold text-gray-400 uppercase">Djajanan</h2>
                     <ul class="text-gray-500 font-medium">
                         <li class="mb-4 break-words">
                             <a href="https://maps.app.goo.gl/jPYA3x3XgB3pXWSYA"

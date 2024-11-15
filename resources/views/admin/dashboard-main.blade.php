@@ -181,7 +181,7 @@
                              <div>
                                 <h6
                                     class="block font-sans text-base font-semibold leading-relaxed tracking-normal text-blue-gray-900 antialiased">
-                                    Grafik Pengunjung Web Teras KBK
+                                    Grafik Pengunjung Web Djajanan
                                 </h6>
                                 <p
                                     class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">

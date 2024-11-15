@@ -45,7 +45,7 @@
                         <a href="/tutorial"
                             class="text-sm text-purple-600 hover:text-purple-800 transition duration-300">Butuh
                             Bantuan?
-                            Lihat Cara Penggunaan Teras KBK</a>
+                            Lihat Cara Penggunaan Djajanan</a>
                     </div>
                 </div>
             </section>

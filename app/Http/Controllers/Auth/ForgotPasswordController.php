@@ -55,7 +55,7 @@ class ForgotPasswordController extends Controller
         $url = "https://wakbk.grageweb.online/send-message";
         $data = [
             'number' => $phone,
-            'message' => " *TerasKBK - Kode Verifikasi Anda* \n\nKode verifikasi untuk melanjutkan proses reset password di TerasKBK telah dikirimkan.\n\nKode OTP: * $otp * \nMasa Berlaku: 2 Menit \n\nSilakan masukkan kode ini dalam waktu 2 menit untuk menyelesaikan proses reset password.\nDemi keamanan akun Anda, mohon untuk tidak membagikan kode ini kepada siapa pun.\nTerasKBK tidak akan pernah meminta Anda untuk mengungkapkan kode verifikasi ini.\nTerima kasih telah menggunakan layanan TerasKBK!\n\n\n>_Mohon Jangan Membalas Pesan Otomatis Dari Kami._"
+            'message' => " *Djajanan - Kode Verifikasi Anda* \n\nKode verifikasi untuk melanjutkan proses reset password di Djajanan telah dikirimkan.\n\nKode OTP: * $otp * \nMasa Berlaku: 2 Menit \n\nSilakan masukkan kode ini dalam waktu 2 menit untuk menyelesaikan proses reset password.\nDemi keamanan akun Anda, mohon untuk tidak membagikan kode ini kepada siapa pun.\nDjajanan tidak akan pernah meminta Anda untuk mengungkapkan kode verifikasi ini.\nTerima kasih telah menggunakan layanan Djajanan!\n\n\n>_Mohon Jangan Membalas Pesan Otomatis Dari Kami._"
         ];
 
         $ch = curl_init($url);
