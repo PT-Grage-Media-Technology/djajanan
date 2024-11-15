@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('photo');
             $table->date('order_date');
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
-            $table->string('location')->default('Perumahan Keandra, Kec. Sumber, Kab. Cirebon, Jawa Barat, Indonesia');
+            $table->string('location')->default('Jl. Tentara Pelajar Blok Karang Tintang RT 002/002 Desa Babadan Kec. Gunung Jati Kab. Cirebon');
             $table->unsignedBigInteger('harga');
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('category_id');
