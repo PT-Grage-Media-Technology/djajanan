@@ -16,15 +16,15 @@
                         <li class="mb-4">
                             <a href="/contact-us" class="hover:underline">Hubungi Kami</a>
                         </li>
-                        <li class="mb-4">
+                        {{-- <li class="mb-4">
                             <a href="{{ auth()->check() ? '/live-chat/1' : '/log-reg' }}" class="hover:underline">Chat
                                 Admin</a>
-                        </li>
-                        {{-- <li class="mb-4">
+                        </li> --}}
+                        <li class="mb-4">
                             <a
                                 href="https://wa.me/6285182629897?text=Saya%20ingin%20bertanya%20tentang%20produk%20di%20website%20Djajanan">Chat
                                 Admin</a>
-                        </li> --}}
+                        </li>
 
                         <li class="mb-4">
                             <a href="/faq" class="hover:underline">Pertanyaan Umum</a>
