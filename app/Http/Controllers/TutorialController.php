@@ -49,7 +49,7 @@ class TutorialController extends Controller
         $videos = collect($videos)->map(function ($file) {
             return [
                 'filename' => $file->getFilename(),
-                'path' => public_path('vidio/' . $file->getFilename())
+                'path' => env('APP_URL') . '/vidio/' . $file->getFilename()
             ];
         });
 
