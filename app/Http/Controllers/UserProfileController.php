@@ -107,7 +107,7 @@ public function update(Request $request)
     public function destroy()
 { 
 $user = Auth::user();
-dd($user);
+// dd($user);
 
     // Check if the user has the 'seller' role
     if ($user->hasRole('seller')) {
@@ -119,9 +119,9 @@ dd($user);
         $user->store()->delete();
     }
 
-    // Logout and delete the user
-    Auth::logout();
-    $user->delete();
+    // // Logout and delete the user
+    // Auth::logout();
+    // $user->delete();
 
     return redirect('/')->with('success', 'Account deleted successfully.');
 }
