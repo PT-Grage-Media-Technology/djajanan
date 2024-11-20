@@ -70,13 +70,13 @@
                                 value="{{ old('checkout-name', $user->name ?? '') }}" required>
                         </div>
                     </div>
-                    <!-- Cluster Dropdown -->
+                    <!-- Adress Dropdown -->
                     <div class="form-control">
-                        <label for="cluster-select">Pilih Cluster</label>
+                        <label for="cluster-select">Pilih Tipe Pengiriman</label>
                         <div>
                             <span class="icon"><i class='bx bx-building'></i></span>
                             <select class="dropdown-alamat" name="cluster_id" id="cluster-select" required>
-                                <option value="" disabled selected>Pilih Cluster...</option>
+                                <option value="" disabled selected>Pilih Tipe Pengiriman...</option>
                                 @foreach ($clusters as $cluster)
                                     <option value="{{ $cluster->id }}">{{ $cluster->nama_cluster }}</option>
                                 @endforeach
