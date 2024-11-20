@@ -123,7 +123,7 @@ $user = Auth::user();
     // Auth::logout();
     // $user->delete();
 
-    return redirect('/')->with('success', 'Account deleted successfully.');
+    return redirect('/home')->with('success', 'Account deleted successfully.');
 }
 
 }
