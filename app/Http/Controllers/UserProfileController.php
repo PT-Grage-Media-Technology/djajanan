@@ -120,8 +120,8 @@ $user = Auth::user();
     }
 
     // // Logout and delete the user
-    // Auth::logout();
-    // $user->delete();
+    Auth::logout();
+    $user->delete();
 
     return redirect('/home')->with('success', 'Account deleted successfully.');
 }
