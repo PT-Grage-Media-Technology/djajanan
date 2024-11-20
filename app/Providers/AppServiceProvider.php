@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         // Pastikan parameter closure adalah instance dari Illuminate\View\View
-        View::composer(['layouts.main', 'admin.layouts.main-admin', 'home', 'layouts.navigation'], function (ViewInstance $view) {
+        View::composer(['layouts.main', 'admin.layouts.main-admin', 'home', 'layouts.navigation', 'contact-us'], function (ViewInstance $view) {
             $cms = Cms::all();
             $products = Product::where('is_vip', true)->with('toko','category')->get();
             $view->with(['cms' => $cms, 'products' => $products]);
