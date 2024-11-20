@@ -81,7 +81,7 @@ public function update(Request $request)
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(base_path('public_html/img'), $filename);
+            $file->move(public_path('img'), $filename);
             $user->img = 'img/' . $filename;
         } elseif (!$request->hasFile('img') && $user->img) {
             $user->img = $user->img;
@@ -105,8 +105,9 @@ public function update(Request $request)
 }
     
     public function destroy()
-{
-    $user = Auth::user();
+{ 
+$user = Auth::user();
+// dd($user);
 
    
     if ($user->hasRole('seller')) {
@@ -122,11 +123,11 @@ public function update(Request $request)
     
     
 
-    // Logout and delete the user
+    // // Logout and delete the user
     Auth::logout();
     $user->delete();
 
-    return redirect('/')->with('Berhasil', 'Akun anda berhasil dihapus.');
+    return redirect('/home')->with('success', 'Account deleted successfully.');
 }
 
 }
