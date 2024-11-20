@@ -14,7 +14,7 @@
 
     <!-- SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css">
-    <link rel="icon" type="image/x-icon" href="../img/logos.svg">
+    <link rel="icon" type="image/x-icon" href="../img/djajananlogo.svg">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
