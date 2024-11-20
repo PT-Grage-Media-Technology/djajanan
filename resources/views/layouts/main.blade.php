@@ -31,10 +31,11 @@
     <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/cart.css">
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/gragemediatechnology/keyFood/898403e73ffec5a26139d452a6d2ffa66d178334/public/css/nav.css">
-
-    <link rel="icon" type="image/x-icon" href="../img/djajananlogo.svg">
-    <title>Djajanan || {{ Route::currentRouteName() }} </title>
+        @foreach ($cms as $company)
+    <link rel="icon" type="image/x-icon" href="../img/{{ $company->logo }}">
+    <title>{{$company->company_name}} || {{ Route::currentRouteName() }} </title>
     {{-- ini diatas, disebelah dikasih title statis --}}
+    @endforeach
 
     <!-- SweetAlert CSS -->
 
