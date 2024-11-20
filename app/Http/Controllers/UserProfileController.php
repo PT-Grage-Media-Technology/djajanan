@@ -105,7 +105,7 @@ public function update(Request $request)
 }
     
     public function destroy()
-{
+{   dd('tes');
     $user = Auth::user();
 
     // Check if the user has the 'seller' role
