@@ -108,21 +108,25 @@ public function update(Request $request)
 {
     $user = Auth::user();
 
-    // Check if the user has the 'seller' role
+   
     if ($user->hasRole('seller')) {
-        // Reset roles to no roles or a default role
-        $user->syncRoles([]); // Atur ke kosong atau bisa assign role default jika ada
-
-        // Optionally, delete the user's related products and store (handled in the model)
+        // Hapus produk terkait berdasarkan creator_id
         $user->products()->delete();
+    
+        // Hapus toko terkait
         $user->store()->delete();
+    
+        // Reset role
+        $user->syncRoles([]);
     }
+    
+    
 
     // Logout and delete the user
     Auth::logout();
     $user->delete();
 
-    return redirect('/')->with('success', 'Account deleted successfully.');
+    return redirect('/')->with('Berhasil', 'Akun anda berhasil dihapus.');
 }
 
 }
