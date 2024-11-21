@@ -33,26 +33,26 @@ class CheckoutController extends Controller
 
 
 
-  public function storeOrder(Request $request)
-{
-    $products = json_decode($request->products, true);
-    $totalOrderPrice = $request->input('total_price');
-
-    // Validasi input produk dan total harga
-    if ($products === null || !is_numeric($totalOrderPrice)) {
-        Log::error('Data input tidak valid. Produk: ' . $request->input('products') . ', Total Harga: ' . $totalOrderPrice);
-        return redirect()->back()->withErrors(['checkout' => 'Data input tidak valid. Silakan coba lagi.']);
-    }
-
-   try {
-        $totalOrderPrice = 0; // Untuk menyimpan total harga dari semua produk dalam satu order
-        $buyerId = auth()->id(); // Ambil ID pengguna yang sedang login
+     public function storeOrder(Request $request)
+     {
+         $products = json_decode($request->products, true);
+         $totalOrderPrice = $request->input('total_price');
+     
+         // Validasi input produk dan total harga
+         if ($products === null || !is_numeric($totalOrderPrice)) {
+             Log::error('Data input tidak valid. Produk: ' . $request->input('products') . ', Total Harga: ' . $totalOrderPrice);
+             return redirect()->back()->withErrors(['checkout' => 'Data input tidak valid. Silakan coba lagi.']);
+         }
+     
+         try {
+             $totalOrderPrice = 0; // Untuk menyimpan total harga dari semua produk dalam satu order
+             $buyerId = auth()->id(); // Ambil ID pengguna yang sedang login
+     
 
         foreach ($products as $product) {
             $toko = Toko::where('id_toko', $product['store_id'])->with('user')->first();
 
-             // Tambahkan kondisi untuk mencegah jumlah produk menjadi nol
-             if ($product['quantity'] <= 1) {
+            if ($product['quantity'] <= 1) {
                 return redirect()->back()->withErrors(['checkout' => 'Jumlah produk tidak boleh menjadi nol.']);
             }
 
