@@ -51,9 +51,12 @@ class CartController extends Controller
         $cart = session()->get('cart');
 
         if (isset($cart[$productId])) {
-            if ($cart[$productId]['quantity'] == 1) {
-                unset($cart[$productId]);
-            } else {
+            // if ($cart[$productId]['quantity'] == 1) {
+            //     unset($cart[$productId]);
+            // } else {
+            //     $cart[$productId]['quantity'] -= 1;
+            // }
+            if ($cart[$productId]['quantity'] > 1) {
                 $cart[$productId]['quantity'] -= 1;
             }
         }
