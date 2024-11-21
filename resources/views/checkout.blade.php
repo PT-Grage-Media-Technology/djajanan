@@ -221,5 +221,5 @@
 @endsection
 
 @section('script')
-    <script defer src="https://rawcdn.githack.com/PT-Grage-Media-Technology/djajanan/b430f2c81aaf07b2ed9d5f7c0b667e7b74171f16/public/js/checkout.js"></script>
+    <script defer src="https://raw.githack.com/PT-Grage-Media-Technology/djajanan/main/public/js/checkout.js"></script>
 @endsection
