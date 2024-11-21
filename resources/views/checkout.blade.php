@@ -149,24 +149,6 @@
 
         });
 
-        // document.getElementById('checkout-form').addEventListener('submit', function(event) {
-        // const products = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // // Validasi jumlah produk
-        // if (products.length === 0) {
-        //     event.preventDefault(); // Mencegah form dikirim
-        //     alert('Keranjang belanja Anda kosong. Tambahkan minimal 1 produk sebelum checkout.');
-        //     return;
-        // }
-
-        // const totalPrice = document.getElementById('total-price').textContent.replace(/[^\d]/g, ''); // Menghilangkan simbol 'Rp' dan koma
-
-        // document.getElementById('products').value = JSON.stringify(products);
-        // document.getElementById('hidden-total-price').value = totalPrice;
-
-        // // Menghapus data dari LocalStorage setelah checkout
-        // // localStorage.removeItem('cart');
-        // });
 
 
         // Event listener for the cluster dropdown change
