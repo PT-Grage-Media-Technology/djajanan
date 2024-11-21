@@ -113,7 +113,7 @@ class CheckoutController extends Controller
                 ($alamatCluster ? $alamatCluster->alamat : 'Unknown Address') . ' ' .
                 ($nomorBlok ? $nomorBlok->nomor : 'Unknown Number');
 
-            
+            $order->harga = $totalOrderPrice;
             $order->product_id = $product['product_id'];
             $order->category_id = $product['category_id'];
             $order->toko_id = $product['store_id'];
@@ -127,12 +127,9 @@ class CheckoutController extends Controller
             $orderDetail->unit_price = $unitPrice; // Menghitung total harga untuk setiap produk
             $orderDetail->save();
 
-           
+            // Tambahkan harga produk ini ke total harga order
+            $totalOrderPrice += $unitPrice;
         }
-        $order->harga = $totalOrderPrice;
-        
-         // Tambahkan harga produk ini ke total harga order
-         $totalOrderPrice += $unitPrice;
 
         // Update harga di tabel orders untuk total harga dari seluruh produk
         $order->harga = $totalOrderPrice;
