@@ -52,7 +52,7 @@ class CheckoutController extends Controller
         foreach ($products as $product) {
             $toko = Toko::where('id_toko', $product['store_id'])->with('user')->first();
 
-            if ($product['quantity'] <= 1) {
+            if ($product['quantity'] < 1) {
                 return redirect()->back()->withErrors(['checkout' => 'Jumlah produk tidak boleh menjadi nol.']);
             }
 
@@ -135,14 +135,14 @@ class CheckoutController extends Controller
         $order->harga = $totalOrderPrice;
         $order->save();
 
-        DB::commit(); // Commit transaksi jika semua berhasil
-        return redirect('/history')->with('success', 'Order created successfully!');
-    } catch (\Exception $e) {
-        DB::rollBack(); // Rollback jika terjadi kesalahan
-        Log::error('Pembuatan order gagal: ' . $e->getMessage());
-        return redirect()->back()->withErrors(['order' => 'Pembuatan order gagal.']);
+            DB::commit(); // Commit transaksi jika semua berhasil
+            return redirect('/history')->with('success', 'Order created successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback jika terjadi kesalahan
+            Log::error('Pembuatan order gagal: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['order' => 'Pembuatan order gagal.']);
+        }
     }
-}
 
 
     public function showOrderHistory()
