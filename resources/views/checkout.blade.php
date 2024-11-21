@@ -70,13 +70,13 @@
                                 value="{{ old('checkout-name', $user->name ?? '') }}" required>
                         </div>
                     </div>
-                    <!-- Cluster Dropdown -->
+                    <!-- Adress Dropdown -->
                     <div class="form-control">
-                        <label for="cluster-select">Pilih Cluster</label>
+                        <label for="cluster-select">Pilih Tipe Pengiriman</label>
                         <div>
                             <span class="icon"><i class='bx bx-building'></i></span>
                             <select class="dropdown-alamat" name="cluster_id" id="cluster-select" required>
-                                <option value="" disabled selected>Pilih Cluster...</option>
+                                <option value="" disabled selected>Pilih Tipe Pengiriman...</option>
                                 @foreach ($clusters as $cluster)
                                     <option value="{{ $cluster->id }}">{{ $cluster->nama_cluster }}</option>
                                 @endforeach
@@ -136,18 +136,38 @@
     </section>
 
     <script>
+        // document.getElementById('checkout-form').addEventListener('submit', function(event) {
+        //     const products = JSON.parse(localStorage.getItem('cart')) || [];
+        //     const totalPrice = document.getElementById('total-price').textContent.replace(/[^\d]/g,
+        //         ''); // Menghilangkan simbol 'Rp' dan koma
+
+        //     document.getElementById('products').value = JSON.stringify(products);
+        //     document.getElementById('hidden-total-price').value = totalPrice;
+
+        //     // Menghapus data dari LocalStorage setelah checkout
+        //     // localStorage.removeItem('cart');
+
+        // });
+
         document.getElementById('checkout-form').addEventListener('submit', function(event) {
-            const products = JSON.parse(localStorage.getItem('cart')) || [];
-            const totalPrice = document.getElementById('total-price').textContent.replace(/[^\d]/g,
-                ''); // Menghilangkan simbol 'Rp' dan koma
+        const products = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Validasi jumlah produk
+        if (products.length === 0) {
+            event.preventDefault(); // Mencegah form dikirim
+            alert('Keranjang belanja Anda kosong. Tambahkan minimal 1 produk sebelum checkout.');
+            return;
+        }
 
-            document.getElementById('products').value = JSON.stringify(products);
-            document.getElementById('hidden-total-price').value = totalPrice;
+        const totalPrice = document.getElementById('total-price').textContent.replace(/[^\d]/g, ''); // Menghilangkan simbol 'Rp' dan koma
 
-            // Menghapus data dari LocalStorage setelah checkout
-            // localStorage.removeItem('cart');
+        document.getElementById('products').value = JSON.stringify(products);
+        document.getElementById('hidden-total-price').value = totalPrice;
 
+        // Menghapus data dari LocalStorage setelah checkout
+        // localStorage.removeItem('cart');
         });
+
 
         // Event listener for the cluster dropdown change
         document.getElementById('cluster-select').addEventListener('change', function() {
