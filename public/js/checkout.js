@@ -58,9 +58,9 @@ function updateCheckoutDetails() {
 function updateCart(productId, quantityChange) {
     const cart = getCartData();
     if (cart[productId]) {
-        cart[productId].quantity += quantityChange;
-        if (cart[productId].quantity <= 0) {
-            delete cart[productId];
+        if (cart[productId].quantity > 1) {
+            cart[productId].quantity += quantityChange;
+            // delete cart[productId];
         }
     }
     localStorage.setItem('cart', JSON.stringify(cart));
