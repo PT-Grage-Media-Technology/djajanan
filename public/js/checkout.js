@@ -58,7 +58,7 @@ function updateCheckoutDetails() {
 function updateCart(productId, quantityChange) {
     const cart = getCartData();
     if (cart[productId]) {
-        if (cart[productId].quantity >= 1) {
+        if (cart[productId].quantity > 1) {
             cart[productId].quantity += quantityChange;
         }
     }
