@@ -58,6 +58,8 @@ class CartController extends Controller
             // }
             if ($cart[$productId]['quantity'] > 1) {
                 $cart[$productId]['quantity'] -= 1;
+            } else{
+                $cart[$productId]['quantity'] = $cart[$productId]['quantity'];
             }
         }
         session()->put('cart', $cart);
