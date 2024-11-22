@@ -56,7 +56,7 @@
                         <span hidden>{{ $product->id }}</span>
                         <span hidden>{{ $product->store_id }}</span>
                         <span hidden>{{ $product->slug }}</span>
-                        <img alt="{{ $product->name }}" src="{{ $product->photo }}">
+                        <img alt="{{ $product->name }}" src="{{ $product->photo }}" loading="lazy">
                         <strong>{{ $product->name }}</strong>
                         <span class="quantity">Kategori:
                             {{ $product->category ? $product->category->name : 'Unknown' }}</span>
