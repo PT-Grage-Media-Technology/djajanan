@@ -21,7 +21,6 @@ class CheckoutController extends Controller
      */
     public function showCheckoutDetails()
     {
-        dd($products);
         $user = auth()->user();
         $clusters = Cluster::all();
         $loginType = $user->email ? 'email' : 'phone';
