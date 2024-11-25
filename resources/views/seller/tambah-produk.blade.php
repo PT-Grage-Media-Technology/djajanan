@@ -78,13 +78,31 @@
         </script>
 
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
         <script>
             function previewImage(event) {
                 const files = event.target.files;
                 const previewContainer = document.getElementById('image-preview');
                 previewContainer.innerHTML = '';
+
                 for (let i = 0; i < files.length; i++) {
                     const file = files[i];
+
+                    // Cek ukuran file dalam MB
+                    const fileSizeMB = file.size / 1024 / 1024;
+                    if (fileSizeMB > 10) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ukuran File Terlalu Besar',
+                            text: 'Ukuran file tidak boleh lebih dari 10MB!',
+                        });
+
+                        // Reset input file agar tidak menyimpan file besar
+                        event.target.value = '';
+                        return;
+                    }
+
                     const reader = new FileReader();
                     reader.onload = function(e) {
                         const imgElement = document.createElement('img');
