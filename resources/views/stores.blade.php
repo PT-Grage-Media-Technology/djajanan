@@ -24,7 +24,7 @@
                         placeholder="Cari Toko..." />
 
                     <button onclick="clearSearch()"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">X</button>
+                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Semua Toko</button>
                 </div>
             </form>
         </div>
@@ -38,7 +38,7 @@
                         <div class="container-s" id="visit">
                             <div class="user-s">
                                 <img class="user-icon-s"
-                                    src="https://djajanan.com/store_image/{{ $store->foto_profile_toko ?  $store->foto_profile_toko : 'markets.png' }}" />
+                                    src="https://djajanan.com/store_image/{{ $store->foto_profile_toko ?  $store->foto_profile_toko : 'markets.png' }}" loading="lazy"/>
                                 <div class="user-info-s">
                                     <div class="user-name-s">{{ $store->nama_toko }}</div>
                                     <div class="user-description-s">Alamat : {{ $store->alamat_toko }}</div>
@@ -134,7 +134,7 @@
                                             <div class="container-s" id="visit">
                                                 <div class="user-s">
                                                  <img class="user-icon-s"
-                                                    src="https://djajanan.com/store_image/${store.foto_profile_toko ? store.foto_profile_toko : 'markets.png'}" />
+                                                    src="https://djajanan.com/store_image/${store.foto_profile_toko ? store.foto_profile_toko : 'markets.png'}" loading="lazy"/>
 
                                                     <div class="user-info-s">
                                                         <div class="user-name-s">${store.nama_toko}</div>

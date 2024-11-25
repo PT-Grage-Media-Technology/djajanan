@@ -12,7 +12,7 @@
             @foreach ($storeDetails as $detail)
                 <div class="store-info">
                     <img src="{{ $detail->foto_profile_toko ? 'https://djajanan.com/store_image/' . $detail->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}"
-                        alt="logo toko" class="store-logo">
+                        alt="logo toko" class="store-logo" loading="lazy">
                     <div class="store-text">
                         <h1>{{ $detail->nama_toko }}</h1>
                         <h2>Alamat : {{ $detail->alamat_toko }}</h2>
@@ -83,7 +83,7 @@
                             <span hidden>{{ $product->id }}</span>
                             <span hidden>{{ $product->store_id }}</span>
                             <span hidden>{{ $product->slug }}</span>
-                            <img alt="{{ $product->name }}" src="https://djajanan.com/{{ $product->photo }}">
+                            <img alt="{{ $product->name }}" src="https://djajanan.com/{{ $product->photo }}" loading="lazy">
                             <strong>{{ $product->name }}</strong>
                             {{-- <strong>{{ $product->toko->nama_toko }}</strong> --}}
                             <span class="quantity">Kategori:
@@ -175,7 +175,7 @@
                             <span hidden>{{ $product->id }}</span>
                             <span hidden>{{ $product->store_id }}</span>
                             <span hidden>{{ $product->slug }}</span>
-                            <img alt="{{ $product->name }}" src="https://djajanan.com/{{ $product->photo }}">
+                            <img alt="{{ $product->name }}" src="https://djajanan.com/{{ $product->photo }}" loading="lazy">
                             <strong>{{ $product->name }}</strong>
                             {{-- <strong>{{ $product->toko->nama_toko }}</strong> --}}
                             <span class="quantity">Kategori:
@@ -249,7 +249,7 @@
                             <span hidden>{{ $product->id }}</span>
                             <span hidden>{{ $product->store_id }}</span>
                             <span hidden>{{ $product->slug }}</span>
-                            <img alt="{{ $product->name }}" src="https://djajanan.com/{{ $product->photo }}">
+                            <img alt="{{ $product->name }}" src="https://djajanan.com/{{ $product->photo }}" loading="lazy">
                             <strong>{{ $product->name }}</strong>
                             {{-- <strong>{{ $product->toko->nama_toko }}</strong> --}}
                             <span class="quantity">Kategori:

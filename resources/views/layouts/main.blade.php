@@ -32,7 +32,7 @@
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/gragemediatechnology/keyFood/898403e73ffec5a26139d452a6d2ffa66d178334/public/css/nav.css">
         @foreach ($cms as $company)
-    <link rel="icon" type="image/x-icon" href="../img/djajananlogo.svg">
+    <link rel="icon" type="image/x-icon" href="../img/djajananlogo.svg" loading="lazy">
     <title>{{$company->company_name}} || {{ Route::currentRouteName() }} </title>
     {{-- ini diatas, disebelah dikasih title statis --}}
     @endforeach
