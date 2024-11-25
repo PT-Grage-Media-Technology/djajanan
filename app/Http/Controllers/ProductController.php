@@ -55,7 +55,7 @@ class ProductController extends Controller
     {
         $validate = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'photo' => ['required', 'image', 'mimes:png,jpg,jpeg'],
+            'photo' => ['required', 'image', 'mimes:png,jpg,jpeg'], 'max:255',
             'slug' => ['required', 'string', 'max:65535'],
             'category_id' => ['required', 'integer'],
             'price' => ['required', 'integer', 'min:0'],
@@ -73,7 +73,7 @@ class ProductController extends Controller
         DB::beginTransaction();
         try {
             if ($request->hasFile('photo')) {
-                $photoPath = $request->file('photo')->move(base_path('public_html/products_photo'), $request->file('photo')->getClientOriginalName());
+                $photoPath = $request->file('photo')->move(base_path('public/products_photo'), $request->file('photo')->getClientOriginalName());
                 $validate['photo'] = 'products_photo/' . $request->file('photo')->getClientOriginalName();
             }
             $validate['slug'] = Str::slug($request->name);
@@ -143,7 +143,7 @@ class ProductController extends Controller
 
         $validate = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'photo' => ['sometimes', 'image', 'mimes:png,jpg,jpeg'],
+            'photo' => ['sometimes', 'image', 'mimes:png,jpg,jpeg', 'max:255'],
             'category_id' => ['required', 'integer'],
             'price' => ['required', 'integer', 'min:0'],
             'quantity' => ['required', 'integer', 'min:0'],
@@ -153,7 +153,7 @@ class ProductController extends Controller
         DB::beginTransaction();
         try {
             if ($request->hasFile('photo')) {
-                $photoPath = $request->file('photo')->move(base_path('public_html/products_photo'), $request->file('photo')->getClientOriginalName());
+                $photoPath = $request->file('photo')->move(base_path('public/products_photo'), $request->file('photo')->getClientOriginalName());
                 $validate['photo'] = 'products_photo/' . $request->file('photo')->getClientOriginalName();
             }
             $validate['slug'] = Str::slug($request->name);
