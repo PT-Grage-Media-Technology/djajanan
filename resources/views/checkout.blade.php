@@ -119,7 +119,7 @@
                     </div>
 
                     @php
-                        $toko = \App\Models\Toko::where('id_toko', <script> product.store_id </script>)->first();
+                        // $toko = \App\Models\Toko::where('id_toko', <script> product.store_id </script>)->first();
                     @endphp
                     <!-- Input untuk Ambil Di Tempat -->
                     <div class="form-control hidden" id="input-ambil-di-tempat">
