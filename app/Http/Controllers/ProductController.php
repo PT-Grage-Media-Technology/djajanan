@@ -95,10 +95,30 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
+    // public function showProductSlider(Request $request)
+    // {
+    //     // Mengambil data produk dengan pagination
+    //     $products = Product::inRandomOrder()->paginate(20);
+
+    //     // Jika permintaan AJAX, kembalikan data produk dalam format JSON
+    //     if ($request->ajax()) {
+    //         return response()->json($products);
+    //     }
+
+    //     // Jika bukan AJAX, kembalikan tampilan lengkap
+    //     return view('product-slider', compact('products'));
+    // }
+
     public function showProductSlider(Request $request)
     {
-        // Mengambil data produk dengan pagination
-        $products = Product::inRandomOrder()->paginate(20);
+        // Default jumlah item per halaman
+        $defaultItemsPerPage = 1;
+
+        // Ambil parameter `itemsPerPage` dari request atau gunakan default
+        $itemsPerPage = $request->input('itemsPerPage', $defaultItemsPerPage);
+
+        // Mengambil data produk dengan pagination dinamis
+        $products = Product::with('category', 'toko')->paginate($itemsPerPage);
 
         // Jika permintaan AJAX, kembalikan data produk dalam format JSON
         if ($request->ajax()) {
@@ -106,7 +126,7 @@ class ProductController extends Controller
         }
 
         // Jika bukan AJAX, kembalikan tampilan lengkap
-        return view('product-slider', compact('products'));
+        return view('product-slider', compact('products', 'itemsPerPage'));
     }
 
 
