@@ -176,8 +176,8 @@
                 // Tampilkan Swal jika file terlalu besar
                 Swal.fire({
                     icon: 'error',
-                    title: 'File too large!',
-                    text: 'The file size exceeds 10MB. Please upload a smaller file.',
+                    title: 'Ukuran File Terlalu Besar!',
+                    text: 'Ukuran File Tidak Boleh Melebihi 10MB.',
                     confirmButtonText: 'Okay'
                 });
 
