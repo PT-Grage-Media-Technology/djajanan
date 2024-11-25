@@ -124,15 +124,14 @@
                         <div>
                             <span class="icon"><i class='bx bx-store'></i></span>
                             <input type="text" name="alamat_cluster_id" id="toko-alamat"
-                                value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
-                                placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled>
+                                value="Silahkan Ambil Di "
+                                placeholder="Silahkan Ambil Di " disabled>
                         </div>
                     </div>
                     <!-- Nomor Dropdown -->
                     <div class="form-control" hidden>
                         <label for="nomor-select">Pilih Nomor</label>
                         <div>
-
                             <select name="nomor_id" id="nomor-select" required>
                                 <option value="" disabled selected>Pilih Nomor...</option>
                             </select>
