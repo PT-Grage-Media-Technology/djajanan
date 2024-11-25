@@ -88,21 +88,25 @@
                         <label for="alamat-select">Masukan Data Yang Dibutuhkan</label>
                         <div>
                             <span class="icon"><i class='bx bx-home'></i></span>
-                            <select class="dropdown-alamat" name="alamat_cluster_id" id="alamat-select" required>
+                            {{-- <select class="dropdown-alamat" name="alamat_cluster_id" id="alamat-select" required>
                                 <option value="" disabled selected>Masukan Data Yang Dibutuhkan...</option>
-                            </select>
+                            </select> --}}
+                            <input type="text" name="alamat_cluster_id" id="alamat-select"
+                            placeholder="Masukkan Alamat Anda..." required>
                         </div>
                     </div>
                     <!-- Nomor Dropdown -->
-                    <div class="form-control">
+                    {{-- <div class="form-control">
                         <label for="nomor-select">Pilih Nomor</label>
                         <div>
 
                             <select name="nomor_id" id="nomor-select" required>
                                 <option value="" disabled selected>Pilih Nomor...</option>
                             </select>
+                            <input type="tel" name="nomor_id" id="nomor-select"
+                            placeholder="Masukkan Alamat Anda..." required>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- Notes Input -->
                     <div class="form-control">
                         <label for="checkout-notes">Catatan</label>
