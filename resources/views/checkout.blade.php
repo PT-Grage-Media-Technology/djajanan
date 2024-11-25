@@ -156,71 +156,71 @@
 
 
         // Event listener for the cluster dropdown change
-        document.getElementById('cluster-select').addEventListener('change', function() {
-            const clusterId = this.value;
-            const alamatSelect = document.getElementById('alamat-select');
+        // document.getElementById('cluster-select').addEventListener('change', function() {
+        //     const clusterId = this.value;
+        //     const alamatSelect = document.getElementById('alamat-select');
 
-            // Clear the alamat dropdown
-            alamatSelect.innerHTML = '<option value="" disabled selected>Memuat alamat...</option>';
+        //     // Clear the alamat dropdown
+        //     alamatSelect.innerHTML = '<option value="" disabled selected>Memuat alamat...</option>';
 
-            fetch(`/get-alamat-by-cluster/${clusterId}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Gagal mengambil data alamat.');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    alamatSelect.innerHTML = '<option value="" disabled selected>Pilih Alamat...</option>';
-                    data.forEach(function(alamat) {
-                        const option = document.createElement('option');
-                        option.value = alamat.id;
-                        option.textContent = alamat.alamat;
-                        alamatSelect.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Terjadi kesalahan saat mengambil data alamat. Silakan coba lagi.');
-                });
-        });
+        //     fetch(`/get-alamat-by-cluster/${clusterId}`)
+        //         .then(response => {
+        //             if (!response.ok) {
+        //                 throw new Error('Gagal mengambil data alamat.');
+        //             }
+        //             return response.json();
+        //         })
+        //         .then(data => {
+        //             alamatSelect.innerHTML = '<option value="" disabled selected>Pilih Alamat...</option>';
+        //             data.forEach(function(alamat) {
+        //                 const option = document.createElement('option');
+        //                 option.value = alamat.id;
+        //                 option.textContent = alamat.alamat;
+        //                 alamatSelect.appendChild(option);
+        //             });
+        //         })
+        //         .catch(error => {
+        //             console.error('Error:', error);
+        //             alert('Terjadi kesalahan saat mengambil data alamat. Silakan coba lagi.');
+        //         });
+        // });
 
         // Event listener for the alamat dropdown change
-        document.getElementById('alamat-select').addEventListener('change', function() {
-            const blokId = this.value;
-            const nomorSelect = document.getElementById('nomor-select');
+        // document.getElementById('alamat-select').addEventListener('change', function() {
+        //     const blokId = this.value;
+        //     const nomorSelect = document.getElementById('nomor-select');
 
-            // Clear the nomor dropdown
-            nomorSelect.innerHTML = '<option value="" disabled selected>Memuat nomor...</option>';
-            nomorSelect.disabled = true;
+        //     // Clear the nomor dropdown
+        //     nomorSelect.innerHTML = '<option value="" disabled selected>Memuat nomor...</option>';
+        //     nomorSelect.disabled = true;
 
-            if (blokId) {
-                fetch(`/get-nomor-by-blok/${blokId}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Gagal mengambil data nomor blok.');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        nomorSelect.innerHTML = '<option value="" disabled selected>Pilih Nomor...</option>';
-                        data.forEach(function(nomor) {
-                            const option = document.createElement('option');
-                            option.value = nomor.id;
-                            option.textContent = nomor.nomor;
-                            nomorSelect.appendChild(option);
-                        });
-                        nomorSelect.disabled = false;
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Terjadi kesalahan saat mengambil data nomor blok. Silakan coba lagi.');
-                    });
-            } else {
-                nomorSelect.innerHTML = '<option value="" disabled selected>Pilih Nomor...</option>';
-                nomorSelect.disabled = true;
-            }
-        });
+        //     if (blokId) {
+        //         fetch(`/get-nomor-by-blok/${blokId}`)
+        //             .then(response => {
+        //                 if (!response.ok) {
+        //                     throw new Error('Gagal mengambil data nomor blok.');
+        //                 }
+        //                 return response.json();
+        //             })
+        //             .then(data => {
+        //                 nomorSelect.innerHTML = '<option value="" disabled selected>Pilih Nomor...</option>';
+        //                 data.forEach(function(nomor) {
+        //                     const option = document.createElement('option');
+        //                     option.value = nomor.id;
+        //                     option.textContent = nomor.nomor;
+        //                     nomorSelect.appendChild(option);
+        //                 });
+        //                 nomorSelect.disabled = false;
+        //             })
+        //             .catch(error => {
+        //                 console.error('Error:', error);
+        //                 alert('Terjadi kesalahan saat mengambil data nomor blok. Silakan coba lagi.');
+        //             });
+        //     } else {
+        //         nomorSelect.innerHTML = '<option value="" disabled selected>Pilih Nomor...</option>';
+        //         nomorSelect.disabled = true;
+        //     }
+        // });
     </script>
 @endsection
 
