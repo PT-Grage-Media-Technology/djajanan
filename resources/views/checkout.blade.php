@@ -261,16 +261,16 @@
 
             clusterSelect.addEventListener('change', (event) => {
                 // Reset semua input
-                inputDikirimPenjual.classList.add('hidden');
-                inputPakaiJasaKirim.classList.add('hidden');
+                inputDikirimPenjual.classList.add('hidden').add('disabled');
+                inputPakaiJasaKirim.classList.add('hidden').add('disabled');
                 inputAmbilDiTempat.classList.add('hidden');
 
                 const selectedValue = event.target.value;
 
                 if (selectedValue === '2') {
-                    inputDikirimPenjual.classList.remove('hidden');
+                    inputDikirimPenjual.classList.remove('hidden').remove('disabled');
                 } else if (selectedValue === '3') {
-                    inputPakaiJasaKirim.classList.remove('hidden');
+                    inputPakaiJasaKirim.classList.remove('hidden').remove('disabled');
                 } else if (selectedValue === '1') {
                     inputAmbilDiTempat.classList.remove('hidden');
                 }
