@@ -96,7 +96,7 @@
                         </div>
                     </div>
                     <!-- Nomor Dropdown -->
-                    {{-- <div class="form-control">
+                    <div class="form-control" hidden>
                         <label for="nomor-select">Pilih Nomor</label>
                         <div>
 
@@ -104,9 +104,9 @@
                                 <option value="" disabled selected>Pilih Nomor...</option>
                             </select>
                             <input type="tel" name="nomor_id" id="nomor-select"
-                            placeholder="Masukkan Alamat Anda..." required>
+                            placeholder="Masukkan Alamat Anda..." value=" " required>
                         </div>
-                    </div> --}}
+                    </div>
                     <!-- Notes Input -->
                     <div class="form-control">
                         <label for="checkout-notes">Catatan</label>
@@ -147,9 +147,6 @@
 
             document.getElementById('products').value = JSON.stringify(products);
             document.getElementById('hidden-total-price').value = totalPrice;
-
-            // Menghapus data dari LocalStorage setelah checkout
-            // localStorage.removeItem('cart');
 
         });
 
