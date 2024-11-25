@@ -175,6 +175,7 @@ $(document).ready(function() {
     $(document).on('click', '.cart-btn', function() {
         let productId = $(this).data('product-id');
         let storeId = $(this).data('store-id'); // Ambil store_id dari data atribut
+        let alamatToko = $(this).data('alamat-toko'); // Ambil store_id dari data atribut
         let categoryId = $(this).data('category-id'); // Ambil category_id dari data atribut
         let slug = $(this).data('slug'); // Ambil slug dari data atribut
 
@@ -187,6 +188,7 @@ $(document).ready(function() {
                 product_id: productId,
                 store_id: storeId, // Sertakan store_id
                 category_id: categoryId, // Sertakan category_id
+                alamat_toko: alamatToko, // Sertakan category_id
                 name: $(this).siblings('strong').text(),
                 price: parseFloat($(this).siblings('.price').text().replace('Rp ', '').replace(/\./g, '')),
                 photo: $(this).siblings('img').attr('src'),
