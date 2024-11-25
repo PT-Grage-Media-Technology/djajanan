@@ -273,7 +273,7 @@
                                 </div>
                                 <span class="price">Rp ${new Intl.NumberFormat('id-ID').format(product.price)}</span>
                                 ${isTokoOnline
-                                    ? `<a href="javascript:void(0)" data-product-id="${product.id}" data-alamat-toko="${$product->toko->alamat_toko}" data-store-id="${product.store_id}" data-category-id="${product.category_id}" data-slug="${product.slug}" class="cart-btn">
+                                    ? `<a href="javascript:void(0)" data-product-id="${product.id}" data-alamat-toko="${$product.toko.alamat_toko}" data-store-id="${product.store_id}" data-category-id="${product.category_id}" data-slug="${product.slug}" class="cart-btn">
                                         <i class="fas fa-shopping-bag"></i> Tambah Ke Keranjang
                                     </a>`
                                     : `<a href="javascript:void(0)" class="w-full h-[40px] bg-red-100 text-red-600 flex justify-center items-center mt-[20px] transition-all duration-300 ease-linear">
@@ -362,7 +362,7 @@
                                 </div>
                                 <span class="price">Rp ${new Intl.NumberFormat('id-ID').format(product.price)}</span>
                                 ${isTokoOnline
-                                    ? `<a href="javascript:void(0)" data-product-id="${product.id}" data-store-id="${product.store_id}" data-alamat-toko="${$product->toko->alamat_toko}" data-category-id="${product.category_id}" data-slug="${product.slug}" class="cart-btn">
+                                    ? `<a href="javascript:void(0)" data-product-id="${product.id}" data-store-id="${product.store_id}" data-alamat-toko="${$product.toko.alamat_toko}" data-category-id="${product.category_id}" data-slug="${product.slug}" class="cart-btn">
                                         <i class="fas fa-shopping-bag"></i> Tambah Ke Keranjang
                                     </a>`
                                     : `<a href="javascript:void(0)" class="w-full h-[40px] bg-red-100 text-red-600 flex justify-center items-center mt-[20px] transition-all duration-300 ease-linear">
