@@ -267,11 +267,11 @@
 
                 const selectedValue = event.target.value;
 
-                if (selectedValue === '1') {
+                if (selectedValue === '3') {
                     inputDikirimPenjual.classList.remove('hidden');
                 } else if (selectedValue === '2') {
                     inputPakaiJasaKirim.classList.remove('hidden');
-                } else if (selectedValue === '3') {
+                } else if (selectedValue === '1') {
                     inputAmbilDiTempat.classList.remove('hidden');
                 }
             });
