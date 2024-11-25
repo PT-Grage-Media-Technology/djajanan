@@ -5,10 +5,10 @@
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm p-10 sm:rounded-lg">
 
-                @if($errors->any())
+                @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach($errors->all() as $error)
+                            @foreach ($errors->all() as $error)
                                 <li class="py-5 bg-red-500 text-white font-bold">
                                     {{ $error }}
                                 </li>
@@ -17,47 +17,57 @@
                     </div>
                 @endif
 
-                <form method="POST" action="/seller/products/update/{{ $product -> id }}" enctype="multipart/form-data">
+                <form method="POST" action="/seller/products/update/{{ $product->id }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
                     <h1 class="text-indigo-950 text-3xl font-bold">Edit Produk</h1>
 
                     <div class="mt-4">
-                        <label for="photo" class="block font-medium text-sm text-gray-700">{{ __('Foto Sebelumnya') }}</label>
-                        <img src="{{ asset($product->photo) }}" class="h-[100px] w-auto" alt="{{ $product->name }}" loading="lazy">
-                        <input id="photo" class="block mt-1 w-full" type="file" name="photo">
+                        <label for="photo"
+                            class="block font-medium text-sm text-gray-700">{{ __('Foto Sebelumnya') }}</label>
+                        <img src="{{ asset($product->photo) }}" class="h-[100px] w-auto" alt="{{ $product->name }}"
+                            loading="lazy">
+                        <input id="photo" class="block mt-1 w-full" type="file" name="photo"
+                            onchange="validateFile(event)">
                         @error('photo')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-4">
-                        <label for="name" class="block font-medium text-sm text-gray-700">{{ __('Nama Produk') }}</label>
-                        <input value="{{ $product->name }}" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus>
+                        <label for="name"
+                            class="block font-medium text-sm text-gray-700">{{ __('Nama Produk') }}</label>
+                        <input value="{{ $product->name }}" id="name" class="block mt-1 w-full" type="text"
+                            name="name" required autofocus>
                         @error('name')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-4">
-                        <label for="price" class="block font-medium text-sm text-gray-700">{{ __('Harga Produk') }}</label>
-                        <input value="{{ $product->price }}" id="price" class="block mt-1 w-full" type="number" name="price" required>
+                        <label for="price"
+                            class="block font-medium text-sm text-gray-700">{{ __('Harga Produk') }}</label>
+                        <input value="{{ $product->price }}" id="price" class="block mt-1 w-full" type="number"
+                            name="price" required>
                         @error('price')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-4">
-                        <label for="quantity" class="block font-medium text-sm text-gray-700">{{ __('Jumlah Produk') }}</label>
-                        <input value="{{ $product->quantity }}" id="quantity" class="block mt-1 w-full" type="number" name="quantity" required>
+                        <label for="quantity"
+                            class="block font-medium text-sm text-gray-700">{{ __('Jumlah Produk') }}</label>
+                        <input value="{{ $product->quantity }}" id="quantity" class="block mt-1 w-full" type="number"
+                            name="quantity" required>
                         @error('quantity')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <div class="mt-4">
-                        <label for="category" class="block font-medium text-sm text-gray-700">{{ __('Kategori Produk') }}</label>
+                        <label for="category"
+                            class="block font-medium text-sm text-gray-700">{{ __('Kategori Produk') }}</label>
                         <select name="category_id" id="category" class="w-full py-3 pl-5 border">
                             <option value="{{ $product->category->id }}" selected>{{ $product->category->name }}</option>
                             @forelse($categories as $category)
@@ -103,6 +113,33 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+        function validateFile(event) {
+            const input = event.target;
+            const file = input.files[0];
+
+            // Jika tidak ada file, keluar dari fungsi
+            if (!file) return;
+
+            // Batas ukuran file 10MB
+            const maxSize = 10 * 1024 * 1024;
+
+            if (file.size > maxSize) {
+                // Tampilkan Swal jika file terlalu besar
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ukuran File Terlalu Besar!',
+                    text: 'Ukuran File Tidak Boleh Melebihi 10MB.',
+                    confirmButtonText: 'Okay'
+                });
+
+                // Reset input file
+                input.value = "";
+            }
+        }
+    </script>
 
     <script>
         // Tampilkan pesan error jika ada
