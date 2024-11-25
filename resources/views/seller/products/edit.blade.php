@@ -103,4 +103,30 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Tampilkan pesan error jika ada
+        @if ($errors->any())
+            Swal.fire({
+                title: 'Validasi Gagal',
+                html: `
+                <ul style="text-align: left;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            `,
+                icon: 'error',
+            });
+        @endif
+
+        // Tampilkan pesan sukses jika ada
+        @if (session('success'))
+            Swal.fire({
+                title: 'Berhasil!',
+                text: "{{ session('success') }}",
+                icon: 'success',
+            });
+        @endif
+    </script>
 @endsection
