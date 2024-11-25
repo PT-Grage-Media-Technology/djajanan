@@ -37,17 +37,17 @@ class CheckoutController extends Controller
      {
          $products = json_decode($request->products, true);
          $totalOrderPrice = $request->input('total_price');
-     
+
          // Validasi input produk dan total harga
          if ($products === null || !is_numeric($totalOrderPrice)) {
              Log::error('Data input tidak valid. Produk: ' . $request->input('products') . ', Total Harga: ' . $totalOrderPrice);
              return redirect()->back()->withErrors(['checkout' => 'Data input tidak valid. Silakan coba lagi.']);
          }
-     
+
          try {
              $totalOrderPrice = 0; // Untuk menyimpan total harga dari semua produk dalam satu order
              $buyerId = auth()->id(); // Ambil ID pengguna yang sedang login
-     
+
 
         foreach ($products as $product) {
             $toko = Toko::where('id_toko', $product['store_id'])->with('user')->first();
@@ -105,8 +105,8 @@ class CheckoutController extends Controller
 
             // Ambil cluster dan alamat cluster dari request
             $cluster = Cluster::find($request->input('cluster_id'));
-            $alamatCluster = AlamatCluster::find($request->input('alamat_cluster_id'));
-            $nomorBlok = NomorBlok::find($request->input('nomor_id'));
+            $alamatCluster = $request->input('alamat_cluster_id');
+            $nomorBlok = $request->input('nomor_id');
 
             // Gabungkan nama cluster, alamat cluster, dan nomor blok untuk disimpan di location
             $order->location = ($cluster ? $cluster->nama_cluster : 'Unknown Cluster') . ' - ' .
