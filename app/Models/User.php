@@ -60,7 +60,7 @@ class User extends Authenticatable
     // Relationship with Products
     public function products()
     {
-        return $this->hasMany(Product::class, 'id_seller', 'id');
+        return $this->hasMany(Product::class, 'creator_id', 'id');
     }
 
     // Event: Handle the deletion process

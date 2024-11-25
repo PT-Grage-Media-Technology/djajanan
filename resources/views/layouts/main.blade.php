@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description"
-        content="Djajanan - E-commerce terbaik di Keandra! Temukan berbagai produk berkualitas dengan harga terjangkau, penawaran spesial, dan layanan pengiriman cepat. Shop now!">
+        content="Djajanan - E-commerce untuk mempermudah jual beli! Temukan berbagai produk berkualitas dengan harga terjangkau, penawaran spesial, dan layanan pengiriman cepat. Shop now!">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -31,10 +31,11 @@
     <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/cart.css">
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/gragemediatechnology/keyFood/898403e73ffec5a26139d452a6d2ffa66d178334/public/css/nav.css">
-
-    <link rel="icon" type="image/x-icon" href="../img/logos.svg">
-    <title>Djajanan || {{ Route::currentRouteName() }} </title>
+        @foreach ($cms as $company)
+    <link rel="icon" type="image/x-icon" href="../img/djajananlogo.svg" loading="lazy">
+    <title>{{$company->company_name}} || {{ Route::currentRouteName() }} </title>
     {{-- ini diatas, disebelah dikasih title statis --}}
+    @endforeach
 
     <!-- SweetAlert CSS -->
 

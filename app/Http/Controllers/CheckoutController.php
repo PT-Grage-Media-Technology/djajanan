@@ -33,23 +33,28 @@ class CheckoutController extends Controller
 
 
 
-  public function storeOrder(Request $request)
-{
-    $products = json_decode($request->products, true);
-    $totalOrderPrice = $request->input('total_price');
-
-    // Validasi input produk dan total harga
-    if ($products === null || !is_numeric($totalOrderPrice)) {
-        Log::error('Invalid input data. Products: ' . $request->input('products') . ', Total Price: ' . $totalOrderPrice);
-        return redirect()->back()->withErrors(['checkout' => 'Invalid input data. Please try again.']);
-    }
-
-    try {
-        $totalOrderPrice = 0; // Untuk menyimpan total harga dari semua produk dalam satu order
-        $buyerId = auth()->id(); // Ambil ID pengguna yang sedang login
+     public function storeOrder(Request $request)
+     {
+         $products = json_decode($request->products, true);
+         $totalOrderPrice = $request->input('total_price');
+     
+         // Validasi input produk dan total harga
+         if ($products === null || !is_numeric($totalOrderPrice)) {
+             Log::error('Data input tidak valid. Produk: ' . $request->input('products') . ', Total Harga: ' . $totalOrderPrice);
+             return redirect()->back()->withErrors(['checkout' => 'Data input tidak valid. Silakan coba lagi.']);
+         }
+     
+         try {
+             $totalOrderPrice = 0; // Untuk menyimpan total harga dari semua produk dalam satu order
+             $buyerId = auth()->id(); // Ambil ID pengguna yang sedang login
+     
 
         foreach ($products as $product) {
             $toko = Toko::where('id_toko', $product['store_id'])->with('user')->first();
+
+            if ($product['quantity'] < 1) {
+                return redirect()->back()->withErrors(['checkout' => 'Jumlah produk tidak boleh menjadi nol.']);
+            }
 
             // Cek apakah toko sedang tutup
             if (!$toko->isOpen()) {
@@ -130,14 +135,14 @@ class CheckoutController extends Controller
         $order->harga = $totalOrderPrice;
         $order->save();
 
-        DB::commit(); // Commit transaksi jika semua berhasil
-        return redirect('/history')->with('success', 'Order created successfully!');
-    } catch (\Exception $e) {
-        DB::rollBack(); // Rollback jika terjadi kesalahan
-        Log::error('Order creation failed: ' . $e->getMessage());
-        return redirect()->back()->withErrors(['order' => 'Failed to create order.']);
+            DB::commit(); // Commit transaksi jika semua berhasil
+            return redirect('/history')->with('success', 'Order created successfully!');
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback jika terjadi kesalahan
+            Log::error('Pembuatan order gagal: ' . $e->getMessage());
+            return redirect()->back()->withErrors(['order' => 'Pembuatan order gagal.']);
+        }
     }
-}
 
 
     public function showOrderHistory()

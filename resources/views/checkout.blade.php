@@ -70,13 +70,13 @@
                                 value="{{ old('checkout-name', $user->name ?? '') }}" required>
                         </div>
                     </div>
-                    <!-- Cluster Dropdown -->
+                    <!-- Adress Dropdown -->
                     <div class="form-control">
-                        <label for="cluster-select">Pilih Cluster</label>
+                        <label for="cluster-select">Pilih Tipe Pengiriman</label>
                         <div>
                             <span class="icon"><i class='bx bx-building'></i></span>
                             <select class="dropdown-alamat" name="cluster_id" id="cluster-select" required>
-                                <option value="" disabled selected>Pilih Cluster...</option>
+                                <option value="" disabled selected>Pilih Tipe Pengiriman...</option>
                                 @foreach ($clusters as $cluster)
                                     <option value="{{ $cluster->id }}">{{ $cluster->nama_cluster }}</option>
                                 @endforeach
@@ -85,11 +85,11 @@
                     </div>
                     <!-- Alamat Dropdown -->
                     <div class="form-control">
-                        <label for="alamat-select">Pilih Alamat</label>
+                        <label for="alamat-select">Masukan Data Yang Dibutuhkan</label>
                         <div>
                             <span class="icon"><i class='bx bx-home'></i></span>
                             <select class="dropdown-alamat" name="alamat_cluster_id" id="alamat-select" required>
-                                <option value="" disabled selected>Pilih Alamat...</option>
+                                <option value="" disabled selected>Masukan Data Yang Dibutuhkan...</option>
                             </select>
                         </div>
                     </div>
@@ -148,6 +148,8 @@
             // localStorage.removeItem('cart');
 
         });
+
+
 
         // Event listener for the cluster dropdown change
         document.getElementById('cluster-select').addEventListener('change', function() {
@@ -219,5 +221,5 @@
 @endsection
 
 @section('script')
-    <script defer src="https://rawcdn.githack.com/gragemediatechnology/keyFood/74094528fe5f3ca44c147b06f4c1039768fa9022/public_html/js/checkout.js"></script>
+    <script defer src="https://raw.githack.com/PT-Grage-Media-Technology/djajanan/main/public/js/checkout.js"></script>
 @endsection

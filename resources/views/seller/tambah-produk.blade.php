@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="form-group mb-5">
-                <label for="upload-img" class="block mb-1 text-gray-400">Unggah Gambar</label>
-                <input type="file" id="upload-img" name="upload-img" accept="image/*" onchange="previewImage(event)" class="w-full p-2 border border-gray-700 rounded bg-gray-700 text-white">
+                <label for="upload-img" class="block mb-1 text-gray-400" loading="lazy">Unggah Gambar</label>
+                <input type="file" id="upload-img" name="upload-img" accept="image/*" onchange="previewImage(event)" class="w-full p-2 border border-gray-700 rounded bg-gray-700 text-white" loading="lazy">
                 <p class="text-sm text-gray-900">Unggah gambar dengan format jpg, png, jpeg, dengan max size 200KB.</p>
             </div>
             <div class="image-preview flex flex-wrap gap-2 mt-2 mb-5 justify-center" id="image-preview"></div>

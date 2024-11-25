@@ -81,7 +81,7 @@ public function update(Request $request)
         if ($request->hasFile('img')) {
             $file = $request->file('img');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(base_path('public_html/img'), $filename);
+            $file->move(public_path('img'), $filename);
             $user->img = 'img/' . $filename;
         } elseif (!$request->hasFile('img') && $user->img) {
             $user->img = $user->img;
@@ -105,24 +105,29 @@ public function update(Request $request)
 }
     
     public function destroy()
-{
-    $user = Auth::user();
+{ 
+$user = Auth::user();
+// dd($user);
 
-    // Check if the user has the 'seller' role
+   
     if ($user->hasRole('seller')) {
-        // Reset roles to no roles or a default role
-        $user->syncRoles([]); // Atur ke kosong atau bisa assign role default jika ada
-
-        // Optionally, delete the user's related products and store (handled in the model)
+        // Hapus produk terkait berdasarkan creator_id
         $user->products()->delete();
+    
+        // Hapus toko terkait
         $user->store()->delete();
+    
+        // Reset role
+        $user->syncRoles([]);
     }
+    
+    
 
-    // Logout and delete the user
+    // // Logout and delete the user
     Auth::logout();
     $user->delete();
 
-    return redirect('/')->with('success', 'Account deleted successfully.');
+    return redirect('/home')->with('Berhasil', 'Akun anda berhasil di hapus.');
 }
 
 }

@@ -31,7 +31,7 @@
                             <div class="flex items-center justify-center flex-col">
                                 @if(Auth::user()->img)
                                     <img src="https://djajanan.com/{{ Auth::user()->img }}" alt="Current profile picture"
-                                        style="max-width: 100px; margin-bottom: 10px;">
+                                        style="max-width: 100px; margin-bottom: 10px;" loading="lazy">
                                 @endif
 
                                 <!-- Input untuk upload image -->
@@ -40,7 +40,7 @@
                                 <!-- Drag and drop area -->
                                 <div id="drop-zone"
                                     class="w-full h-48 bg-gray-100 border-2 border-dashed border-gray-300 flex flex-col items-center justify-center relative cursor-pointer transition-all hover:bg-gray-200"
-                                    data-img="">
+                                    data-img="" loading="lazy">
                                     <i class='bx bxs-cloud-upload icon text-6xl mb-2'></i>
                                     <h3 class="font-bold text-lg">Seret & letakan Gambar Disini</h3>
                                     <p class="text-sm text-gray-500">Gambar harus berukuran dibawah <span>2MB</span></p>
