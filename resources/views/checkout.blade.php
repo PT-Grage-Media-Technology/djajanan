@@ -118,14 +118,17 @@
                         </div>
                     </div>
 
+                    @php
+                        $toko = \App\Models\Toko::where('id_toko', <script> product.store_id </script>)->first();
+                    @endphp
                     <!-- Input untuk Ambil Di Tempat -->
                     <div class="form-control hidden" id="input-ambil-di-tempat">
                         <label for="toko-alamat">Lokasi Toko</label>
                         <div>
                             <span class="icon"><i class='bx bx-store'></i></span>
                             <input type="text" name="alamat_cluster_id" id="toko-alamat"
-                                value="Silahkan Ambil Di "
-                                placeholder="Silahkan Ambil Di " disabled>
+                                value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
+                                placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled>
                         </div>
                     </div>
                     <!-- Nomor Dropdown -->
