@@ -173,7 +173,7 @@
             const maxSize = 10 * 1024 * 1024;
 
             if (file.size > maxSize) {
-                // Tampilkan Swal
+                // Tampilkan Swal jika file terlalu besar
                 Swal.fire({
                     icon: 'error',
                     title: 'File too large!',
@@ -181,10 +181,10 @@
                     confirmButtonText: 'Okay'
                 });
 
-                // Hapus file dari input
+                // Reset input file
                 input.value = "";
             } else {
-                // Jika ukuran file sesuai, tampilkan preview
+                // Panggil fungsi previewImage jika ukuran valid
                 previewImage(event);
             }
         }
@@ -195,8 +195,15 @@
             reader.onload = function() {
                 const dataURL = reader.result;
                 const imagePreview = document.getElementById('image-preview');
+                const defaultIcon = document.getElementById('default-icon');
+                const uploadText = document.getElementById('upload-text');
+                const fileTypes = document.getElementById('file-types');
+
                 imagePreview.src = dataURL;
                 imagePreview.classList.remove('hidden');
+                if (defaultIcon) defaultIcon.classList.add('hidden');
+                if (uploadText) uploadText.classList.add('hidden');
+                if (fileTypes) fileTypes.classList.add('hidden');
             };
             reader.readAsDataURL(input.files[0]);
         }
