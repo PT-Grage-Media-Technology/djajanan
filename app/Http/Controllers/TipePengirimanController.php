@@ -36,7 +36,7 @@ class TipePengirimanController extends Controller
             'nama_cluster' => $request->name,
         ]);
 
-        return redirect()->route('admin.pengiriman.index')->with('success', 'Category created successfully.');
+        return redirect()->route('admin.ngiriman.index')->with('success', 'Category created successfully.');
     }
 
 
