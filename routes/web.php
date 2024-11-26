@@ -209,15 +209,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::post('/vip-product', [ProductController::class, 'vipProduct']);
 
-    Route::get('/pengiriman', [TipePengirimanController::class, 'index'])->name('pengiriman.index')->middleware('permission:pengiriman');
+    Route::get('/pengiriman', [TipePengirimanController::class, 'index'])->name('pengiriman.index');
 
-    Route::get('/pengiriman/edit/{id}', [TipePengirimanController::class, 'edit'])->name('pengiriman.edit')->middleware('permission:pengiriman');
+    Route::get('/pengiriman/edit/{id}', [TipePengirimanController::class, 'edit'])->name('pengiriman.edit');
 
-    Route::post('/pengiriman/update/{id}', [TipePengirimanController::class, 'update'])->name('pengiriman.update')->middleware('permission:pengiriman');
+    Route::post('/pengiriman/update/{id}', [TipePengirimanController::class, 'update'])->name('pengiriman.update');
 
-    Route::post('/pengiriman/store', [TipePengirimanController::class, 'store'])->name('pengiriman.store')->middleware('permission:pengiriman');
+    Route::post('/pengiriman/store', [TipePengirimanController::class, 'store'])->name('pengiriman.store');
 
-    Route::get('/pengiriman/create', [TipePengirimanController::class, 'create'])->name('pengiriman.create')->middleware('permission:pengiriman');
+    Route::get('/pengiriman/create', [TipePengirimanController::class, 'create'])->name('pengiriman.create');
 
 });
 
