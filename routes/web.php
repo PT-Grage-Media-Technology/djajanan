@@ -25,7 +25,7 @@ use App\Http\Controllers\BackupController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\CmsController;
-
+use App\Http\Controllers\TipePengiriman;
 
 Route::post('/clear-chats', [ChatController::class, 'clearChats'])->name('clear.chats');
 
@@ -207,6 +207,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     Route::post('/vip-product', [ProductController::class, 'vipProduct']);
+
+    Route::get('/pengiriman', [TipePengiriman::class, 'index'])->name('pengiriman.index');
+    Route::get('/pengiriman/edit/{id}', [TipePengiriman::class, 'edit'])->name('pengiriman.edit');
+    Route::post('/pengiriman/update/{id}', [TipePengiriman::class, 'update'])->name('pengiriman.update');
 });
 
 // Biarkan ini di luar prefix admin
