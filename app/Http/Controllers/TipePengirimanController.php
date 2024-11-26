@@ -12,7 +12,7 @@ class TipePengirimanController extends Controller
     public function index()
     {
         $notlp = AlamatCluster::all();
-        return view("admin.tipe_pengiriman.index", compact("pengiriman"));
+        return view("admin.tipe_pengiriman.index");
     }
 
     public function edit($id)
