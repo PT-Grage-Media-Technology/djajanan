@@ -106,7 +106,7 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                            @foreach ($categories as $category)
+                            {{-- @foreach ($categories as $category) --}}
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3 text-sm"></td>
                                     <td class="px-4 py-3 text-sm"></td>
@@ -140,7 +140,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                            @endforeach
+                            {{-- @endforeach --}}
                         </tbody>
                     </table>
                 </div>
