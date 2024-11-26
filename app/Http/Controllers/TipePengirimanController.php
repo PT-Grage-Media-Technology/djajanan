@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
 
-class TipePengiriman extends Controller
+class TipePengirimanController extends Controller
 {
     public function index()
     {
