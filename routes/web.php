@@ -215,7 +215,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::post('/pengiriman/update/{pengirimans}', [TipePengirimanController::class, 'update'])->name('pengiriman.update');
 
-    Route::delete('/pengiriman/destroy/{pengirimans}', [TipePengirimanController::class, 'destroy'])->name('pengiriman.destroy')->middleware('permission:pengiriman');
+    Route::delete('/pengiriman/destroy/{pengirimans}', [TipePengirimanController::class, 'destroy'])->name('pengiriman.destroy');
 
 
     Route::post('/pengiriman/store', [TipePengirimanController::class, 'store'])->name('pengiriman.store');
