@@ -279,7 +279,7 @@
                 } else if (selectedValue === '3') {
                     inputPakaiJasaKirim.classList.remove('hidden');
                 } else if (selectedValue === '1') {
-                    populateAllAlamatToko('https://djajanan.com', '16');
+                    populateAllAlamatToko('cart');
                     inputAmbilDiTempat.classList.remove('hidden');
                 }
             });
@@ -293,14 +293,17 @@
             const data = JSON.parse(localStorage.getItem(key));
 
             if (data) {
-                // Mengambil semua nilai `alamat_toko` dari objek
-                const allAlamatToko = Object.values(data)
-                    .map((item) => item.alamat_toko) // Mengambil alamat_toko
-                    .filter((alamat) => alamat) // Menghapus nilai undefined/null
-                    .join(', '); // Menggabungkan semua alamat dengan koma
+                // Mengambil semua kombinasi `name` (nama produk) dan `alamat_toko`
+                const allNamaProdukAlamatToko = Object.values(data)
+                    .map((item) => {
+                        const namaProduk = item.name || 'Produk Tidak Diketahui';
+                        const alamatToko = item.alamat_toko || 'Alamat Tidak Diketahui';
+                        return `${namaProduk} di ${alamatToko}`; // Format: nama_produk di alamat_toko
+                    })
+                    .join(', '); // Menggabungkan semua item dengan koma
 
-                // Memasukkan alamat toko ke input field
-                document.getElementById('toko-alamat').value = `Silahkan Ambil Di ${allAlamatToko}`;
+                // Memasukkan hasil ke input field
+                document.getElementById('toko-alamat').value = `Silahkan Ambil ${allNamaProdukAlamatToko}`;
             } else {
                 console.error('Data tidak ditemukan di Local Storage!');
             }
