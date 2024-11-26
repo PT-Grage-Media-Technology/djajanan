@@ -15,10 +15,15 @@ class TipePengirimanController extends Controller
         return view("admin.tipe_pengiriman.index");
     }
 
+    public function create()
+    {
+        return view('admin.tipe_pengiriman.create');
+    }
+
     public function edit($id)
     {
         $data = AlamatCluster::find($id);
-        return view("admin.AlamatCluster.edit", compact("data"));
+        return view("admin.tipe_pengiriman.edit", compact("data"));
     }
 
 

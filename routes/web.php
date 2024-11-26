@@ -212,6 +212,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/pengiriman', [TipePengirimanController::class, 'index'])->name('pengiriman.index');
     Route::get('/pengiriman/edit/{id}', [TipePengirimanController::class, 'edit'])->name('pengiriman.edit');
     Route::post('/pengiriman/update/{id}', [TipePengirimanController::class, 'update'])->name('pengiriman.update');
+    Route::post('/pengiriman/store', [TipePengirimanController::class, 'store'])->name('pengiriman.store');
+    Route::get('/pengiriman/create', [TipePengirimanController::class, 'create'])->name('pengiriman.create');
 });
 
 // Biarkan ini di luar prefix admin
