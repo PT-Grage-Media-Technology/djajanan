@@ -125,6 +125,19 @@
                     </a>
                 </li>
             </ul>
+            <ul class="list-none">
+                <li class="relative px-6 py-3">
+                    @if (Request::is('admin/tipe_pengiriman'))
+                        <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                            aria-hidden="true"></span>
+                    @endif
+                    <a class="{{ Request::is('admin/tipe_pengiriman') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
+                        href="/admin/tipe_pengiriman">
+                        <i class='bx bx-question-mark bx-sm'></i>
+                        <span class="ml-4">Tipe Pengiriman</span>
+                    </a>
+                </li>
+            </ul>
             {{-- <div class="px-6 my-6">
                 <a href="/admin.users.create"
                     class="flex items-center justify-between w-full px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
@@ -238,7 +251,7 @@
                             aria-hidden="true"></span>
                     @endif
                     <a class="{{ Request::is('admin/history') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
-                        href="/admin/history"> 
+                        href="/admin/history">
                         <i class='bx bx-history bx-sm'></i>
                         <span class="ml-4">Histories</span>
                     </a>
@@ -269,7 +282,21 @@
                         </a>
                     </li>
                 </ul>
+                <ul class="list-none">
+                    <li class="relative px-6 py-3">
+                        @if (Request::is('admin/tipe_pengiriman'))
+                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
+                                aria-hidden="true"></span>
+                        @endif
+                        <a class="{{ Request::is('admin/tipe_pengiriman') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
+                            href="/admin/tipe_pengiriman">
+                            <i class='bx bx-memory-card bx-sm'></i>
+                            <span class="ml-4">Backups</span>
+                        </a>
+                    </li>
+                </ul>
             </ul>
+
             <div class="px-6 my-6">
                 <button
                     class="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-lg active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
