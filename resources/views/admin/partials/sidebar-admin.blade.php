@@ -127,12 +127,12 @@
             </ul>
             <ul class="list-none">
                 <li class="relative px-6 py-3">
-                    @if (Request::is('admin/tipe_pengiriman'))
+                    @if (Request::is('admin/pengiriman'))
                         <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                             aria-hidden="true"></span>
                     @endif
-                    <a class="{{ Request::is('admin/tipe_pengiriman') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
-                        href="/admin/tipe_pengiriman">
+                    <a class="{{ Request::is('admin/pengiriman') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
+                        href="/admin/pengiriman">
                         <i class='bx bx-question-mark bx-sm'></i>
                         <span class="ml-4">Tipe Pengiriman</span>
                     </a>
