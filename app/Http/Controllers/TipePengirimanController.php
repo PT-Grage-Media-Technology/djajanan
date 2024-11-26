@@ -38,7 +38,7 @@ class TipePengirimanController extends Controller
             'nama_cluster' => $request->name,
         ]);
 
-        return redirect()->view('admin.tipe_pengiriman.index')->with('success', 'Category created successfully.');
+        return redirect()->view('admin.tipe_pengiriman.index')->with('success', 'Tipe Pengiriman created successfully.');
     }
 
 
