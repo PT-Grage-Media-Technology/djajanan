@@ -279,6 +279,7 @@
                 } else if (selectedValue === '3') {
                     inputPakaiJasaKirim.classList.remove('hidden');
                 } else if (selectedValue === '1') {
+                    populateAlamatTokoFromLocalStorage('https://djajanan.com', '16');
                     inputAmbilDiTempat.classList.remove('hidden');
                 }
             });
