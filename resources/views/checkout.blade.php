@@ -279,6 +279,7 @@
                 } else if (selectedValue === '3') {
                     inputPakaiJasaKirim.classList.remove('hidden');
                 } else if (selectedValue === '1') {
+                    populateAlamatTokoFromLocalStorage('https://djajanan.com', '16');
                     inputAmbilDiTempat.classList.remove('hidden');
                 }
             });
@@ -289,7 +290,8 @@
         // Fungsi untuk mengambil data dari Local Storage
         function populateAlamatTokoFromLocalStorage(key, index) {
             // Mendapatkan item dari Local Storage
-            const data = JSON.parse(localStorage.getItem(key));
+            const data = JSON.parse(localStorage.getItem('cart'));
+            console.log(data);
 
             if (data && data[index]) {
                 const alamatToko = data[index].alamat_toko || 'Alamat tidak ditemukan';
