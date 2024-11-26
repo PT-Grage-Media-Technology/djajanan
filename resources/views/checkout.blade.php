@@ -113,8 +113,12 @@
                         <label for="jasa-kirim-input">Masukkan Nomor Telepon</label>
                         <div>
                             <span class="icon"><i class='bx bx-phone'></i></span>
-                            <input type="tel" name="alamat_cluster_id" id="jasa-kirim-input"
-                                placeholder="Masukkan Nomor Telepon..." required>
+                            <select class="dropdown-alamat" name="alamat_cluster_id" id="jasa-kirim-input" required>
+                                <option value="" disabled selected>Pilih Tipe Pengiriman...</option>
+                                @foreach ($clusters as $cluster)
+                                    <option value="{{ $cluster->id }}">{{ $cluster->nama_cluster }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
