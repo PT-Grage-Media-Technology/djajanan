@@ -27,6 +27,13 @@ class TipePengirimanController extends Controller
         return view('admin.tipe_pengiriman.create');
     }
 
+    public function destroy(Cluster $pengiriman)
+    {
+
+        $pengiriman->delete();
+        return redirect()->route('admin.pengiriman.index')->with('success', 'pengipengiriman deleted successfully.');
+    }
+
     public function store(Request $request)
     {
         $request->validate([
