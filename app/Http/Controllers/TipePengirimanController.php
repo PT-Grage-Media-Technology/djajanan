@@ -17,7 +17,6 @@ class TipePengirimanController extends Controller
             return view('admin.tipe_pengiriman.index', compact('pengiriman'));
         }
        
-        return abort(403);
 
     }
 
