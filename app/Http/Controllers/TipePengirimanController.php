@@ -13,9 +13,11 @@ class TipePengirimanController extends Controller
     public function index()
     {
         $pengiriman = Cluster::all();
-        if (auth()->user()->can('pengiriman')) {
+        // if (auth()->user()->can('pengiriman')) {
+        //     return view('admin.tipe_pengiriman.index', compact('pengiriman'));
+        // }
             return view('admin.tipe_pengiriman.index', compact('pengiriman'));
-        }
+        
        
 
     }
