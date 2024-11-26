@@ -287,25 +287,27 @@
     </script>
 
     <script>
-        // Fungsi untuk mengambil data dari Local Storage
-        function populateAlamatTokoFromLocalStorage(key, index) {
+        // Fungsi untuk mengambil semua alamat_toko dari Local Storage
+        function populateAllAlamatToko(key) {
             // Mendapatkan item dari Local Storage
-            const data = JSON.parse(localStorage.getItem('cart'));
-            console.log(data);
+            const data = JSON.parse(localStorage.getItem(key));
 
-            if (data && data[index]) {
-                const alamatToko = data[index].alamat_toko || 'Alamat tidak ditemukan';
+            if (data) {
+                // Mengambil semua nilai `alamat_toko` dari objek
+                const allAlamatToko = Object.values(data)
+                    .map((item) => item.alamat_toko) // Mengambil alamat_toko
+                    .filter((alamat) => alamat) // Menghapus nilai undefined/null
+                    .join(', '); // Menggabungkan semua alamat dengan koma
 
                 // Memasukkan alamat toko ke input field
-                document.getElementById('toko-alamat').value = `Silahkan Ambil Di ${alamatToko}`;
+                document.getElementById('toko-alamat').value = `Silahkan Ambil Di ${allAlamatToko}`;
             } else {
-                console.error('Data tidak ditemukan atau index tidak valid!');
+                console.error('Data tidak ditemukan di Local Storage!');
             }
         }
 
         // Memanggil fungsi dengan key Local Storage
-        // Gunakan "index" sesuai data yang ingin Anda ambil (contoh: 16, 39, atau 40)
-        populateAlamatTokoFromLocalStorage('https://djajanan.com', '16');
+        populateAllAlamatToko('cart'); // Pastikan key sesuai dengan nama di Local Storage
     </script>
 
 @endsection
