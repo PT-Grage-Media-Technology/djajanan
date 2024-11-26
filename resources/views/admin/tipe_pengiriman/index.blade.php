@@ -47,8 +47,8 @@
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                             @foreach ($pengiriman as $pengirimans)
                                 <tr class="text-gray-700 dark:text-gray-400">
-                                    <td class="px-4 py-3 text-sm"></td>
-                                    <td class="px-4 py-3 text-sm"></td>
+                                    <td class="px-4 py-3 text-sm">{{ $pengirimans->id}}</td>
+                                    <td class="px-4 py-3 text-sm">{{ $pengirimans->nama_cluster}}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="/admin/pengiriman/edit/"
