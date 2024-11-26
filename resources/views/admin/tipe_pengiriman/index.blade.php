@@ -27,7 +27,7 @@
             <!-- Add Category Button -->
             <div class="mb-4 flex justify-start">
                 <a href="/admin/categories/create"
-                    class="px-4 py-2 bg-green-500 text-white rounded-lg dark:bg-gray-700 dark:text-white">
+                    class="px-4 py-2 bg-green-100 text-white rounded-lg dark:bg-gray-700 dark:text-white">
                     Add Tipe Pengiriman
                 </a>
             </div>
@@ -88,7 +88,7 @@
 
             <div class="mb-4 flex justify-start">
                 <a href="/admin/categories/create"
-                    class="px-4 py-2 bg-green-500 text-white rounded-lg dark:bg-gray-700 dark:text-white">
+                    class="px-4 py-2 bg-green-100 text-white rounded-lg dark:bg-gray-700 dark:text-white">
                     Add Jasa Pengiriman
                 </a>
             </div>
