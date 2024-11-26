@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AlamatCluster;
+use App\Models\Cluster;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
@@ -11,14 +12,34 @@ class TipePengirimanController extends Controller
 {
     public function index()
     {
-        $notlp = AlamatCluster::all();
-        return view("admin.tipe_pengiriman.index");
+        $pengiriman = Cluster::all();
+        if (auth()->user()->can('pengiriman')) {
+            return view('admin.tipe_pengiriman.index', compact('pengiriman'));
+        }
+       
+        return abort(403);
+
     }
 
     public function create()
     {
         return view('admin.tipe_pengiriman.create');
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+
+        Cluster::create([
+            'nama_cluster' => $request->name,
+        ]);
+
+        return redirect()->route('admin.pengiriman.index')->with('success', 'Category created successfully.');
+    }
+
 
     public function edit($id)
     {
