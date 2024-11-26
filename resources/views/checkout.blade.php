@@ -126,30 +126,13 @@
                         <label for="toko-alamat">Lokasi Toko</label>
                         <div>
                             <span class="icon"><i class='bx bx-store'></i></span>
-                            <label for="product_id">Product ID:</label>
-                            <input type="text" id="product_id" readonly><br>
+                            {{-- <input type="text" name="alamat_cluster_id" id="toko-alamat"
+                                value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
+                                placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled> --}}
 
-                            <label for="store_id">Store ID:</label>
-                            <input type="text" id="store_id" readonly><br>
-
-                            <label for="category_id">Category ID:</label>
-                            <input type="text" id="category_id" readonly><br>
-
-                            <label for="alamat_toko">Alamat Toko:</label>
-                            <input type="text" id="alamat_toko" readonly><br>
-
-                            <label for="name">Product Name:</label>
-                            <input type="text" id="name" readonly><br>
-
-                            <label for="price">Price:</label>
-                            <input type="text" id="price" readonly><br>
-
-                            <label for="quantity">Quantity:</label>
-                            <input type="text" id="quantity" readonly><br>
-
-                            <label for="photo">Photo URL:</label>
-                            <input type="text" id="photo" readonly><br>
-                            
+                                <input type="text" name="alamat_cluster_id" id="toko-alamat"
+                                value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
+                                placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled>
                         </div>
                     </div>
                     <!-- Nomor Dropdown -->
@@ -304,22 +287,15 @@
 
     <script>
         // Fungsi untuk mengambil data dari Local Storage
-        function populateInputsFromLocalStorage(key, index) {
+        function populateAlamatTokoFromLocalStorage(key, index) {
             // Mendapatkan item dari Local Storage
             const data = JSON.parse(localStorage.getItem(key));
 
             if (data && data[index]) {
-                const product = data[index];
+                const alamatToko = data[index].alamat_toko || 'Alamat tidak ditemukan';
 
-                // Memasukkan data ke dalam input field
-                document.getElementById('product_id').value = product.product_id || '';
-                document.getElementById('store_id').value = product.store_id || '';
-                document.getElementById('category_id').value = product.category_id || '';
-                document.getElementById('alamat_toko').value = product.alamat_toko || '';
-                document.getElementById('name').value = product.name || '';
-                document.getElementById('price').value = product.price || '';
-                document.getElementById('quantity').value = product.quantity || '';
-                document.getElementById('photo').value = product.photo || '';
+                // Memasukkan alamat toko ke input field
+                document.getElementById('toko-alamat').value = `Silahkan Ambil Di ${alamatToko}`;
             } else {
                 console.error('Data tidak ditemukan atau index tidak valid!');
             }
@@ -327,7 +303,7 @@
 
         // Memanggil fungsi dengan key Local Storage
         // Gunakan "index" sesuai data yang ingin Anda ambil (contoh: 16, 39, atau 40)
-        populateInputsFromLocalStorage('https://djajanan.com', '16');
+        populateAlamatTokoFromLocalStorage('https://djajanan.com', '16');
     </script>
 
 @endsection
