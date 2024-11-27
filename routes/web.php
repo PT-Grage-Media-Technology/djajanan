@@ -209,13 +209,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
     Route::post('/vip-product', [ProductController::class, 'vipProduct']);
 
-    
+
 
     Route::get('/pengiriman', [TipePengirimanController::class, 'index'])->name('pengiriman.index');
 
     Route::get('/pengiriman/edit/{pengirimans}', [TipePengirimanController::class, 'edit'])->name('pengiriman.edit');
 
-    Route::post('/pengiriman/update/{pengirimans}', [TipePengirimanController::class, 'update'])->name('pengiriman.update');
+    Route::put('/pengiriman/update/{pengirimans}', [TipePengirimanController::class, 'update'])->name('pengiriman.update');
 
     Route::delete('/pengiriman/destroy/{pengirimans}', [TipePengirimanController::class, 'destroy'])->name('pengiriman.destroy');
 
