@@ -29,10 +29,12 @@ class TipePengirimanController extends Controller
 
     public function destroy(Cluster $pengiriman)
     {
-
-        $pengiriman->delete();
-        return redirect()->route('admin.pengiriman.index')->with('success', 'pengipengiriman deleted successfully.');
+        if ($pengiriman->delete()) {
+            return redirect()->route('admin.pengiriman.index')->with('success', 'Data deleted successfully.');
+        }
+        return redirect()->route('admin.pengiriman.index')->with('error', 'Failed to delete data.');
     }
+
 
     public function store(Request $request)
     {
@@ -54,18 +56,20 @@ class TipePengirimanController extends Controller
         return view('admin.tipe_pengiriman.edit', compact('pengiriman'));
     }
 
-    public function update(Request $request)
+
+    public function update(Request $request, Cluster $pengirimans)
     {
         $request->validate([
-            'nama_cluster' => 'required',
+            'nama_cluster' => 'required|string|max:255',
         ]);
 
-
-        $request->update([
-            'name' => $request->nama_cluster,
+        // Update data
+        $pengirimans->update([
+            'nama_cluster' => $request->nama_cluster,
         ]);
 
-        return redirect()->route('admin.pengiriman.index')->with('success', 'Pengiriman updated successfully.');
+        return redirect()->route('admin.pengiriman.index')->with('success', 'Data updated successfully.');
     }
+
 
 }
