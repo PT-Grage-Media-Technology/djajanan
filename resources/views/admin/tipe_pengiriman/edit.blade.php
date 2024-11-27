@@ -18,13 +18,13 @@
             </div>
             @endif
 
-            <form method="POST" action="/admin/tipe_pengiriman/update/{{ $pengiriman->id }}" enctype="multipart/form-data">
+            <form method="POST" action="/admin/tipe_pengiriman/update/{{ $pengirimans->id }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-4">
                     <label for="name" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">Name</label>
-                    <input type="text" id="name" name="name" value="{{ old('name', $pengiriman->nama_cluster) }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline" required>
+                    <input type="text" id="name" name="name" value="{{ old('name', $pengirimans->nama_cluster) }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-300 leading-tight focus:outline-none focus:shadow-outline" required>
                 </div>
 
                 {{-- <div class="mb-4">
