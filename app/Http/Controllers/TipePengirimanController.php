@@ -13,10 +13,7 @@ class TipePengirimanController extends Controller
     public function index()
     {
         $pengiriman = Cluster::all();
-        // if (auth()->user()->can('pengiriman')) {
-        //     return view('admin.tipe_pengiriman.index', compact('pengiriman'));
-        // }
-            return view('admin.tipe_pengiriman.index', compact('pengiriman'));
+         return view('admin.tipe_pengiriman.index', compact('pengiriman'));
         
        
 
@@ -27,9 +24,9 @@ class TipePengirimanController extends Controller
         return view('admin.tipe_pengiriman.create');
     }
 
-    public function destroy(Cluster $pengiriman)
+    public function destroy(Cluster $pengirimans)
     {
-        if ($pengiriman->delete()) {
+        if ($pengirimans->delete()) {
             return redirect()->route('admin.pengiriman.index')->with('success', 'Data deleted successfully.');
         }
         return redirect()->route('admin.pengiriman.index')->with('error', 'Failed to delete data.');
@@ -51,9 +48,9 @@ class TipePengirimanController extends Controller
     }
 
 
-    public function edit(Request $request, Cluster $pengiriman)
+    public function edit(Cluster $pengirimans)
     {
-        return view('admin.tipe_pengiriman.edit', compact('pengiriman'));
+        return view('admin.tipe_pengiriman.edit', compact('pengirimans'));
     }
 
 
@@ -63,7 +60,7 @@ class TipePengirimanController extends Controller
             'nama_cluster' => 'required|string|max:255',
         ]);
 
-        // Update data
+       
         $pengirimans->update([
             'nama_cluster' => $request->nama_cluster,
         ]);
