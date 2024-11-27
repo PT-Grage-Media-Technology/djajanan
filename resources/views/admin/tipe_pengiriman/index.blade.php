@@ -108,8 +108,8 @@
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                             @foreach ($nohp as $phone)
                                 <tr class="text-gray-700 dark:text-gray-400">
-                                    <td class="px-4 py-3 text-sm"></td>
-                                    <td class="px-4 py-3 text-sm"></td>
+                                    <td class="px-4 py-3 text-sm">{{ $phone->id}}</td>
+                                    <td class="px-4 py-3 text-sm">{{ $phone->alamat}}</td>
                                     <td class="px-4 py-3">
                                         <div class="flex items-center space-x-4 text-sm">
                                             <a href="/admin/categories/edit2/{{ $phone->id }}"
