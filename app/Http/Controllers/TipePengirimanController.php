@@ -6,19 +6,21 @@ use App\Models\AlamatCluster;
 use App\Models\Cluster;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\File;
+
 
 class TipePengirimanController extends Controller
 {
     public function index()
     {
         $pengiriman = Cluster::all();
-         return view('admin.tipe_pengiriman.index', compact('pengiriman'));
+        $nohp = AlamatCluster::all();
+         return view('admin.tipe_pengiriman.index', compact('pengiriman','nohp'));
         
        
 
     }
 
+    //1
     public function create()
     {
         return view('admin.tipe_pengiriman.create');
@@ -63,6 +65,56 @@ class TipePengirimanController extends Controller
        
         $pengirimans->update([
             'nama_cluster' => $request->nama_cluster,
+        ]);
+
+        return redirect()->route('admin.pengiriman.index')->with('success', 'Data updated successfully.');
+    }
+
+    //2
+    public function create2()
+    {
+        return view('admin.jasa_pengiriman.create');
+    }
+
+    public function destroy2(AlamatCluster $phonenumber)
+    {
+        if ($phonenumber->delete()) {
+            return redirect()->route('admin.pengiriman.index')->with('success', 'Data deleted successfully.');
+        }
+        return redirect()->route('admin.pengiriman.index')->with('error', 'Failed to delete data.');
+    }
+
+
+    public function store2(Request $request)
+    {
+        $request->validate([
+            'alamat' => 'required',
+        ]);
+
+
+        AlamatCluster::create([
+            'alamat' => $request->alamat,
+        ]);
+
+        return redirect()->route('admin.pengiriman.index')->with('success', 'Nomor Jasa Pengiriman created successfully.');
+    }
+
+
+    public function edit2(AlamatCluster $phonenumber)
+    {
+        return view('admin.jasa_pengiriman.edit', compact('phonenumber'));
+    }
+
+ 
+    public function update2(Request $request, AlamatCluster $phonenumber)
+    {
+        $request->validate([
+            'alamat' => 'required|string|max:255',
+        ]);
+
+       
+        $phonenumber->update([
+            'alamat' => $request->alamat,
         ]);
 
         return redirect()->route('admin.pengiriman.index')->with('success', 'Data updated successfully.');
