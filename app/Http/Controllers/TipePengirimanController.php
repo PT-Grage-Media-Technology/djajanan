@@ -67,6 +67,4 @@ class TipePengirimanController extends Controller
 
         return redirect()->route('admin.pengiriman.index')->with('success', 'Data updated successfully.');
     }
-
-
 }
