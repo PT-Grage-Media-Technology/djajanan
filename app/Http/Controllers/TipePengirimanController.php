@@ -90,14 +90,15 @@ class TipePengirimanController extends Controller
         $request->validate([
             'alamat' => 'required',
         ]);
-
-
+    
         AlamatCluster::create([
             'alamat' => $request->alamat,
+            'cluster_id' => 3, // Default value
         ]);
-
+    
         return redirect()->route('admin.pengiriman.index')->with('success', 'Nomor Jasa Pengiriman created successfully.');
     }
+    
 
 
     public function edit2(AlamatCluster $phonenumber)
@@ -111,12 +112,13 @@ class TipePengirimanController extends Controller
         $request->validate([
             'alamat' => 'required|string|max:255',
         ]);
-
-       
+    
         $phonenumber->update([
             'alamat' => $request->alamat,
+            'cluster_id' => $request->input('cluster_id', 3), // Default value 
         ]);
-
+    
         return redirect()->route('admin.pengiriman.index')->with('success', 'Data updated successfully.');
     }
+    
 }
