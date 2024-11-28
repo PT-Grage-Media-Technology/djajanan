@@ -107,8 +107,8 @@ class CheckoutController extends Controller
 
             // Ambil cluster dan alamat cluster dari request
             $cluster = Cluster::find($request->input('cluster_id'));
-            $alamatCluster = $request->input('alamat_cluster_id');
-            $nomorBlok = $request->input('nomor_id');
+            $alamatCluster = AlamatCluster::find($request->input('alamat_cluster_id'));
+            $nomorBlok = $request->input('nomor_id'); // null
 
             // Gabungkan nama cluster, alamat cluster, dan nomor blok untuk disimpan di location
             $order->location = ($cluster ? $cluster->nama_cluster : 'Unknown Cluster') . ' - ' .
