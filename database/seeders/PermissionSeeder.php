@@ -89,6 +89,10 @@ class PermissionSeeder extends Seeder
             ['name' => 'edit-toko',],
             ['name' => 'edit-toko']
         );
+        $permission14 = Permission::updateOrCreate(
+            ['name' => 'pengiriman',],
+            ['name' => 'pengiriman']
+        );
 
         //new   
         $adminRole->givePermissionTo($permission);
@@ -103,6 +107,7 @@ class PermissionSeeder extends Seeder
         $adminRole->givePermissionTo($permission10);
         $adminRole->givePermissionTo($permission11);
         $adminRole->givePermissionTo($permission12);
+        $adminRole->givePermissionTo($permission14);
         $sellerRole->givePermissionTo($permission13);
 
    

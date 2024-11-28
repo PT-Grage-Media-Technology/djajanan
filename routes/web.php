@@ -25,7 +25,8 @@ use App\Http\Controllers\BackupController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\CmsController;
-
+use App\Http\Controllers\TipePengiriman;
+use App\Http\Controllers\TipePengirimanController;
 
 Route::post('/clear-chats', [ChatController::class, 'clearChats'])->name('clear.chats');
 
@@ -207,6 +208,33 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 
     Route::post('/vip-product', [ProductController::class, 'vipProduct']);
+
+
+
+    Route::get('/pengiriman', [TipePengirimanController::class, 'index'])->name('pengiriman.index');
+
+    //PENGIRIMAN 1
+    Route::get('/pengiriman/edit/{pengirimans}', [TipePengirimanController::class, 'edit'])->name('pengiriman.edit');
+
+    Route::put('/pengiriman/update/{pengirimans}', [TipePengirimanController::class, 'update'])->name('pengiriman.update');
+
+    Route::delete('/pengiriman/destroy/{pengirimans}', [TipePengirimanController::class, 'destroy'])->name('pengiriman.destroy');
+
+    Route::post('/pengiriman/store', [TipePengirimanController::class, 'store'])->name('pengiriman.store');
+
+    Route::get('/pengiriman/create', [TipePengirimanController::class, 'create'])->name('pengiriman.create');
+
+    //PENGIRIMAN 2
+    Route::get('/pengiriman/edit2/{phonenumber}', [TipePengirimanController::class, 'edit2'])->name('pengiriman.edit');
+
+    Route::put('/pengiriman/update2/{phonenumber}', [TipePengirimanController::class, 'update2'])->name('pengiriman.update');
+
+    Route::delete('/pengiriman/destroy2/{phonenumber}', [TipePengirimanController::class, 'destroy2'])->name('pengiriman.destroy');
+
+    Route::post('/pengiriman/store2', [TipePengirimanController::class, 'store2'])->name('pengiriman.store');
+
+    Route::get('/pengiriman/create2', [TipePengirimanController::class, 'create2'])->name('pengiriman.create');
+
 });
 
 // Biarkan ini di luar prefix admin
