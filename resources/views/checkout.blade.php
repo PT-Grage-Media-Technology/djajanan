@@ -135,7 +135,6 @@
                                 placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled> --}}
 
                                 <input type="text" name="alamat_cluster" id="toko-alamat"
-                                value="Silahkan Ambil Di"
                                 placeholder="Silahkan Ambil Di" disabled>
                         </div>
                     </div>
