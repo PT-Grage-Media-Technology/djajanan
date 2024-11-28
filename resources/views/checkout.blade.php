@@ -134,9 +134,8 @@
                                 value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
                                 placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled> --}}
 
-                                <input type="text" id="toko-alamat"
-                                placeholder="Silahkan Ambil Di" disabled>
-                                <input type="text" name="alamat_cluster" id="toko-alamat"
+                                <input type="text" id="toko-alamat" disabled>
+                                <input type="text" name="alamat_cluster" id="toko-alamatInput"
                                 placeholder="Silahkan Ambil Di" hidden>
                         </div>
                     </div>
@@ -309,6 +308,7 @@
 
                 // Memasukkan hasil ke input field
                 document.getElementById('toko-alamat').value = `Silahkan Ambil ${allNamaProdukAlamatToko}`;
+                document.getElementById('toko-alamatInput').value = `Silahkan Ambil ${allNamaProdukAlamatToko}`;
             } else {
                 console.error('Data tidak ditemukan di Local Storage!');
             }
