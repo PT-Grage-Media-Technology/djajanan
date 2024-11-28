@@ -108,12 +108,22 @@ class CheckoutController extends Controller
             // Ambil cluster dan alamat cluster dari request
             // dd($request);
             $cluster = Cluster::find($request->input('cluster_id'));
-            $alamatCluster = $request->input('alamat_cluster') ?? AlamatCluster::find($request->input('alamat_cluster_id'));
+
+            if($request->input('alamat_cluster_default')){
+                $alamatCluster = $request->input('alamat_cluster_default');
+            } elseif($request->input('alamat_cluster')){
+                $alamatCluster = $request->input('alamat_cluster');
+            } elseif($request->input('alamat_cluster_id')) {
+                $alamatCluster = AlamatCluster::find($request->input('alamat_cluster_id'));
+            } else {
+                $alamatCluster = 'Unknown Cluster';
+            }
+
             $nomorBlok = $request->input('nomor_id'); // null
 
             // Gabungkan nama cluster, alamat cluster, dan nomor blok untuk disimpan di location
             $order->location = ($cluster ? $cluster->nama_cluster : 'Unknown Cluster') . ' - ' .
-                ($request->input('alamat_cluster') ?? $alamatCluster->alamat) . ' ' .
+                ($alamatCluster) . ' ' .
                 ($nomorBlok ? $nomorBlok->nomor : ' ');
 
             $order->harga = $totalOrderPrice;
