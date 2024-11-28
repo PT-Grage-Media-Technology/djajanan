@@ -134,8 +134,10 @@
                                 value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
                                 placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled> --}}
 
-                                <input type="text" name="alamat_cluster" id="toko-alamat"
+                                <input type="text" id="toko-alamat"
                                 placeholder="Silahkan Ambil Di" disabled>
+                                <input type="text" name="alamat_cluster" id="toko-alamat"
+                                placeholder="Silahkan Ambil Di" hidden>
                         </div>
                     </div>
                     <!-- Nomor Dropdown -->
