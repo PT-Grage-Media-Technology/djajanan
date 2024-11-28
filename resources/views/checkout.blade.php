@@ -115,8 +115,8 @@
                             <span class="icon"><i class='bx bx-phone'></i></span>
                             <select class="dropdown-alamat" name="alamat_cluster_id" id="jasa-kirim-input" required>
                                 <option value="" disabled selected>Pilih Tipe Pengiriman...</option>
-                                @foreach ($clusters as $cluster)
-                                    <option value="{{ $cluster->id }}">{{ $cluster->nama_cluster }}</option>
+                                @foreach ($nomors as $nomor)
+                                    <option value="{{ $nomor->id }}">{{ $nomor->alamat }}</option>
                                 @endforeach
                             </select>
                         </div>

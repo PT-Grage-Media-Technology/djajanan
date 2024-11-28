@@ -23,6 +23,7 @@ class CheckoutController extends Controller
     {
         $user = auth()->user();
         $clusters = Cluster::all();
+        $nomors = AlamatCluster::all();
         $loginType = $user->email ? 'email' : 'phone';
         return view('checkout', compact('user', 'clusters', 'loginType'));
     }
