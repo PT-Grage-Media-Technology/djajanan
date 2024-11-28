@@ -36,7 +36,7 @@ class CheckoutController extends Controller
 
      public function storeOrder(Request $request)
      {
-        dd($request);
+        // dd($request);
          $products = json_decode($request->products, true);
          $totalOrderPrice = $request->input('total_price');
 
@@ -107,8 +107,8 @@ class CheckoutController extends Controller
 
             // Ambil cluster dan alamat cluster dari request
             $cluster = Cluster::find($request->input('cluster_id'));
-            $alamatCluster = $request->input('alamat_cluster_id');
-            $nomorBlok = $request->input('nomor_id');
+            $alamatCluster = AlamatCluster::find($request->input('alamat_cluster_id'));
+            $nomorBlok = $request->input('nomor_id'); // null
 
             // Gabungkan nama cluster, alamat cluster, dan nomor blok untuk disimpan di location
             $order->location = ($cluster ? $cluster->nama_cluster : 'Unknown Cluster') . ' - ' .
