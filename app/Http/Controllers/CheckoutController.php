@@ -106,14 +106,14 @@ class CheckoutController extends Controller
             $order->id_user = auth()->id();
 
             // Ambil cluster dan alamat cluster dari request
-            dd($request);
+            // dd($request);
             $cluster = Cluster::find($request->input('cluster_id'));
             $alamatCluster = $request->input('alamat_cluster') ?? AlamatCluster::find($request->input('alamat_cluster_id'));
             $nomorBlok = $request->input('nomor_id'); // null
 
             // Gabungkan nama cluster, alamat cluster, dan nomor blok untuk disimpan di location
             $order->location = ($cluster ? $cluster->nama_cluster : 'Unknown Cluster') . ' - ' .
-                ($alamatCluster ? $alamatCluster->alamat : 'Unknown Address') . ' ' .
+                ($request->input('alamat_cluster') ?? $alamatCluster->alamat) . ' ' .
                 ($nomorBlok ? $nomorBlok->nomor : ' ');
 
             $order->harga = $totalOrderPrice;
