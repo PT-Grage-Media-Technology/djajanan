@@ -109,10 +109,10 @@ class CheckoutController extends Controller
             dd($request);
             $cluster = Cluster::find($request->input('cluster_id'));
 
-            if($request->input('alamat_cluster_default')){
-                $alamatCluster = $request->input('alamat_cluster_default');
-            } elseif($request->input('alamat_cluster')){
+            if($request->input('alamat_cluster')){
                 $alamatCluster = $request->input('alamat_cluster');
+            } elseif($request->input('alamat_cluster_default')){
+                $alamatCluster = $request->input('alamat_cluster_default');
             } elseif($request->input('alamat_cluster_id')) {
                 $alamatCluster = AlamatCluster::find($request->input('alamat_cluster_id'));
             } else {
