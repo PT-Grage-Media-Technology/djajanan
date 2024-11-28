@@ -106,7 +106,7 @@ class CheckoutController extends Controller
             $order->id_user = auth()->id();
 
             // Ambil cluster dan alamat cluster dari request
-            dd($request);
+            // dd($request);
             $cluster = Cluster::find($request->input('cluster_id'));
 
             if($request->input('alamat_cluster')){
