@@ -36,6 +36,7 @@ class CheckoutController extends Controller
 
      public function storeOrder(Request $request)
      {
+        dd($request);
          $products = json_decode($request->products, true);
          $totalOrderPrice = $request->input('total_price');
 
