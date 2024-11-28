@@ -103,7 +103,7 @@
                         <label for="alamat-select">Masukkan Data Yang Dibutuhkan</label>
                         <div>
                             <span class="icon"><i class='bx bx-home'></i></span>
-                            <input type="text" name="alamat_cluster_id" id="alamat-select"
+                            <input type="text" name="alamat_cluster" id="alamat-select"
                                 placeholder="Masukkan Alamat Anda...">
                         </div>
                     </div>
