@@ -143,7 +143,7 @@
                     <div class="form-control" hidden>
                         <label for="nomor-select">Pilih Nomor</label>
                         <div>
-                            <select name="nomor_id" id="nomor-select" required>
+                            <select name="nomor_id" id="nomor-select">
                                 <option value="" disabled selected>Pilih Nomor...</option>
                             </select>
                             <input type="text" name="nomor_id" id="nomor-select" placeholder="Masukkan Alamat Anda..."
