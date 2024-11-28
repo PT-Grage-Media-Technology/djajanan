@@ -141,7 +141,7 @@ class CheckoutController extends Controller
         } catch (\Exception $e) {
             DB::rollBack(); // Rollback jika terjadi kesalahan
             Log::error('Pembuatan order gagal: ' . $e->getMessage());
-            return redirect()->back()->withErrors(['order' => 'Pembuatan order gagal.']);
+            return redirect()->back()->withErrors(['order' => 'Pembuatan order gagal ' . $e->getMessage()]);
         }
     }
 
