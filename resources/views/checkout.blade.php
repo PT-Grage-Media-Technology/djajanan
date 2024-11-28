@@ -104,7 +104,7 @@
                         <div>
                             <span class="icon"><i class='bx bx-home'></i></span>
                             <input type="text" name="alamat_cluster_id" id="alamat-select"
-                                placeholder="Masukkan Alamat Anda..." required>
+                                placeholder="Masukkan Alamat Anda...">
                         </div>
                     </div>
 
