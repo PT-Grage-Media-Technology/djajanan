@@ -133,7 +133,7 @@
                     @endif
                     <a class="{{ Request::is('admin/pengiriman') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
                         href="/admin/pengiriman">
-                        <i class='bx bx-question-mark bx-sm'></i>
+                        <i class='bx bx-package bx-sm'></i>
                         <span class="ml-4">Tipe Pengiriman</span>
                     </a>
                 </li>
@@ -290,8 +290,8 @@
                         @endif
                         <a class="{{ Request::is('admin/tipe_pengiriman') ? 'inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100' : 'inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200' }}"
                             href="/admin/tipe_pengiriman">
-                            <i class='bx bx-memory-card bx-sm'></i>
-                            <span class="ml-4">Backups</span>
+                            <i class='bx bx-package bx-sm'></i>
+                            <span class="ml-4">Tipe Pengiriman</span>
                         </a>
                     </li>
                 </ul>
