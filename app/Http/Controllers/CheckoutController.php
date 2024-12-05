@@ -41,8 +41,11 @@ class CheckoutController extends Controller
          $totalOrderPrice = $request->input('total_price');
          $metodeId = $request->input('id');
          $metode = Cluster::where('id', $metodeId)->first();
-         $pengirimanId = $request->input('alamat_cluster_id');
-         $pengiriman = AlamatCluster::where('alamat_cluster_id', $pengirimanId)->first();
+
+         if($metodeId == 3){
+             $pengirimanId = $request->input('alamat_cluster_id');
+             $pengiriman = AlamatCluster::where('alamat_cluster_id', $pengirimanId)->first();
+         }
 
 
          // Validasi input produk dan total harga
