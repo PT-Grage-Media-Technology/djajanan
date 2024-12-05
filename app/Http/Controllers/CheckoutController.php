@@ -122,7 +122,7 @@ class CheckoutController extends Controller
                     \n\nMohon segera proses pesanan ini dan informasikan kepada pembeli mengenai status pengiriman. Terima kasih atas kerjasama Anda.
                     \n\nHormat kami,\nTim Djajanan",
                 ]);
-            }else{
+            }elseif($metodeId == 3){
                 Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
                     'number' => $request['checkout-phone'],
                     'message' => "Yth. Pelanggan Djajanan,
