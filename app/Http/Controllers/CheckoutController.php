@@ -78,7 +78,7 @@ class CheckoutController extends Controller
                 return redirect('/seller/seller-edit')->withErrors(['checkout' => 'Anda tidak dapat membeli produk Anda sendiri.']);
             }
 
-            if($metode['id'] == 1){
+            if($metodeId == 1){
                 Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
                     'number' => $request['checkout-phone'],
                     'message' => "Yth. Pelanggan Djajanan,
@@ -100,7 +100,7 @@ class CheckoutController extends Controller
                     \n\nMohon segera proses pesanan ini dan informasikan kepada pembeli mengenai pembelian beli di tempat Anda. Terima kasih atas kerjasama Anda.
                     \n\nHormat kami,\nTim Djajanan",
                 ]);
-            }elseif($metode['id'] == 2){
+            }elseif($metodeId == 2){
                 Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
                     'number' => $request['checkout-phone'],
                     'message' => "Yth. Pelanggan Djajanan,
