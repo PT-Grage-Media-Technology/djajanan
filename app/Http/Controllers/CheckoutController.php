@@ -39,7 +39,7 @@ class CheckoutController extends Controller
         // dd($request);
          $products = json_decode($request->products, true);
          $totalOrderPrice = $request->input('total_price');
-         $metodeId = $request->input('id');
+         $metodeId = $request->input('cluster_id');
          $metode = Cluster::where('id', $metodeId)->first();
 
          if($metodeId == 3){
