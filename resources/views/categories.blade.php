@@ -46,13 +46,13 @@
             </div>
             <div id="product-list" class="product-container">
 
+                <div class="loading" style="display: none;">
+
+                    {{-- <p>Loading more posts...</p> --}}
+
+                </div>
             </div>
 
-            <div class="loading" style="display: none;">
-
-                {{-- <p>Loading more posts...</p> --}}
-
-            </div>
 
             <script>
                 function showTokoTutupAlert(namaToko) {
