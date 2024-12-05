@@ -262,27 +262,6 @@
                                 productHtml); // Tambahkan produk ke daftar
                             });
 
-                            // // Event listener untuk tombol "Tambah ke Keranjang"
-                            // $(document).on('click', '.cart-btn', function(e) {
-                            //     e.preventDefault();
-                            //     if ($(this).is('[disabled]')) return; // Cek jika tombol dalam kondisi disable
-
-                            //     const productId = $(this).data('product-id');
-                            //     const storeId = $(this).data('store-id');
-                            //     const categoryId = $(this).data('category-id');
-                            //     const slug = $(this).data('slug');
-
-                            //     // Debugging: Tampilkan data produk yang akan ditambahkan ke keranjang
-                            //     console.log('Produk Ditambahkan ke Keranjang:', {
-                            //         productId,
-                            //         storeId,
-                            //         categoryId,
-                            //         slug
-                            //     });
-
-                            //     // Lakukan operasi untuk menambahkan ke keranjang
-                            //     // Contoh: $.post('/cart/add', { productId, storeId, categoryId, slug });
-                            // });
                         } else {
                             $('#product-list').append('<p class="text-gray-500">Produk Tidak Ada</p>');
                         }
@@ -313,7 +292,7 @@
                 loadingIndicator.style.display = 'block'; // Tampilkan indikator loading
             }
 
-            fetch(`/product-slider?page=${page + 1}&itemsPerPage=${isMobile() ? 1 : 3}`, {
+            fetch(`/categories?page=${page + 1}&itemsPerPage=${isMobile() ? 1 : 3}`, {
                     method: 'GET',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest', // Tandai sebagai permintaan AJAX
@@ -420,7 +399,7 @@
             const itemsPerPage = isMobile() ? 1 : 3;
 
             // Muat halaman pertama dengan jumlah produk sesuai perangkat
-            fetch(`/product-slider?page=${page}&itemsPerPage=${itemsPerPage}`, {
+            fetch(`/categories?page=${page}&itemsPerPage=${itemsPerPage}`, {
                     method: 'GET',
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest',
