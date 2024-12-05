@@ -85,7 +85,7 @@ class CheckoutController extends Controller
                     \n\nIni adalah konfirmasi pesanan Anda. Anda telah membeli:
                     \n\n* *" . $product['name'] . " sebanyak " . $product['quantity'] . " buah, dari toko " . $toko['nama_toko'] . "*.
                     \n\nTotal pembayaran: Rp " . number_format($product['quantity'] * $product['price']) . ".
-                    \nSilahkan hubungi penjual: " . $toko['user']['phone'] .  " Untuk mengambil barang di tempat di Alamat: " . $request['alamat_cluster_default'] . " .
+                    \nSilahkan hubungi penjual: " . $toko['user']['phone'] .  " \n Dan " . $request['alamat_cluster_default'] . " .
                     \n\nTerima kasih atas kepercayaan Anda. Tim Djajanan akan segera memproses pesanan Anda.
                     \n\nHormat kami,\nTim Djajanan",
                 ]);
