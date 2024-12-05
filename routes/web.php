@@ -46,16 +46,7 @@ Route::get('/home', [UserController::class, 'home'])->name('home');
 
 });
 
-
-
-
-
-
-
-
 Route::get('/tutorial', [TutorialController::class, 'index'])->name('tutorial.index');
-
-
 
 // Custom login and registration form route
 Route::get('/log-reg', function () {
@@ -101,12 +92,9 @@ Route::get('/profile-user', function () {
     return view('/profile-user');
 });
 
-
-
 Route::get('/term-condition', function () {
     return view('term-condition');
 });
-
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
     ->middleware('guest')
@@ -283,7 +271,7 @@ Route::get('/cart/remove/{productId}', [CartController::class, 'remove'])->name(
 
 Route::get('/data', [CartController::class, 'data']);
 
-Route::get('/categories', [ProductController::class, 'showProducts'])->name('products.list');
+// Route::get('/categories', [ProductController::class, 'showProducts'])->name('products.list');
 
 Route::get('/categories/search', [ProductController::class, 'search'])->name('categories.search');
 

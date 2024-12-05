@@ -268,16 +268,7 @@ class ProductController extends Controller
         return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
-    public function showProducts()
-    {
-        // Ambil produk dengan paginasi (atau sesuai kebutuhan)
-        $products = Product::paginate(20);
-
-        // Kirim data produk ke view
-        return view('categories', compact('products'));
-    }
-
-
+  
 
     public function search(Request $request)
     {
