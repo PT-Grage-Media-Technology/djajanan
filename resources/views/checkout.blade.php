@@ -85,19 +85,6 @@
                         </div>
                     </div>
 
-                    <!-- Alamat Dropdown -->
-                    {{-- <div class="form-control">
-                        <label for="alamat-select">Masukan Data Yang Dibutuhkan</label>
-                        <div>
-                            <span class="icon"><i class='bx bx-home'></i></span>
-                            <select class="dropdown-alamat" name="alamat_cluster_id" id="alamat-select" required>
-                                <option value="" disabled selected>Masukan Data Yang Dibutuhkan...</option>
-                            </select>
-                            <input type="text" name="alamat_cluster_id" id="alamat-select"
-                            placeholder="Masukkan Alamat Anda..." required>
-                        </div>
-                    </div> --}}
-
                     <!-- Input untuk Di Kirim Penjual -->
                     <div class="form-control hidden" id="input-dikirim-penjual">
                         <label for="alamat-select">Masukkan Data Yang Dibutuhkan</label>
@@ -122,17 +109,12 @@
                         </div>
                     </div>
 
-                    @php
-                        // $toko = \App\Models\Toko::where('id_toko', <script> product.store_id </script>)->first();
-                    @endphp
+
                     <!-- Input untuk Ambil Di Tempat -->
                     <div class="form-control hidden" id="input-ambil-di-tempat">
                         <label for="toko-alamat">Lokasi Toko</label>
                         <div>
                             <span class="icon"><i class='bx bx-store'></i></span>
-                            {{-- <input type="text" name="alamat_cluster_id" id="toko-alamat"
-                                value="Silahkan Ambil Di {{ $toko->alamat_toko }}"
-                                placeholder="Silahkan Ambil Di {{ $toko->alamat_toko }}" disabled> --}}
 
                                 <input type="text" id="toko-alamat" disabled>
                                 <input type="text" name="alamat_cluster_default" id="toko-alamatInput" value=""

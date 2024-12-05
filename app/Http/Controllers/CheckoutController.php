@@ -39,6 +39,11 @@ class CheckoutController extends Controller
         // dd($request);
          $products = json_decode($request->products, true);
          $totalOrderPrice = $request->input('total_price');
+         $metodeId = $request->input('cluster_id');
+         $metode = Cluster::where('cluster_id', $metodeId)->first();
+         $pengirimanId = $request->input('alamat_cluster_id');
+         $pengiriman = AlamatCluster::where('alamat_cluster_id', $pengirimanId)->first();
+
 
          // Validasi input produk dan total harga
          if ($products === null || !is_numeric($totalOrderPrice)) {
@@ -70,16 +75,75 @@ class CheckoutController extends Controller
                 return redirect('/seller/seller-edit')->withErrors(['checkout' => 'Anda tidak dapat membeli produk Anda sendiri.']);
             }
 
-            // Kirim pesan ke pembeli dan penjual menggunakan API
-            Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
-                'number' => $request['checkout-phone'],
-                'message' => "Yth. Pelanggan Djajanan,\n\nIni adalah konfirmasi pesanan Anda. Anda telah membeli:\n\n* *" . $product['name'] . " sebanyak " . $product['quantity'] . " buah, dari toko " . $toko['nama_toko'] . "*.\n\nTotal pembayaran: Rp " . number_format($product['quantity'] * $product['price']) . ".\nSilahkan hubungi penjual: " . $toko['user']['phone'] .  ".\n\nTerima kasih atas kepercayaan Anda. Tim Djajanan akan segera memproses pesanan Anda.\n\nHormat kami,\nTim Djajanan",
-            ]);
+            if($metode['id'] == 1){
+                Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
+                    'number' => $request['checkout-phone'],
+                    'message' => "Yth. Pelanggan Djajanan,
+                    \n\nIni adalah konfirmasi pesanan Anda. Anda telah membeli:
+                    \n\n* *" . $product['name'] . " sebanyak " . $product['quantity'] . " buah, dari toko " . $toko['nama_toko'] . "*.
+                    \n\nTotal pembayaran: Rp " . number_format($product['quantity'] * $product['price']) . ".
+                    \nSilahkan hubungi penjual: " . $toko['user']['phone'] .  " Untuk mengambil barang di tempat di Alamat: " . $request['alamat_cluster_default'] . " .
+                    \n\nTerima kasih atas kepercayaan Anda. Tim Djajanan akan segera memproses pesanan Anda.
+                    \n\nHormat kami,\nTim Djajanan",
+                ]);
 
-            Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
-                'number' => $toko['user']['phone'],
-                'message' => "Yth. Penjual Djajanan,\n\nKami informasikan bahwa produk Anda, *" . $product['name'] . "* (x" . $product['quantity'] . "), telah dipesan oleh *" . $request['checkout-name'] . "*. \n\nDetail pesanan:\n* *Jumlah:* " . $product['quantity'] . " buah/pcs\n* *Total harga:* Rp " . $product['quantity'] * $product['price'] . "\n* *Alamat pengiriman:* " . $request['checkout-address'] . "\n* *Nomor telepon pembeli:* " . $request['checkout-phone'] . "\n\nMohon segera proses pesanan ini dan informasikan kepada pembeli mengenai status pengiriman. Terima kasih atas kerjasama Anda.\n\nHormat kami,\nTim Djajanan",
-            ]);
+                Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
+                    'number' => $toko['user']['phone'],
+                    'message' => "Yth. Penjual Djajanan,
+                    \n\nKami informasikan bahwa produk Anda, *" . $product['name'] . "* (x" . $product['quantity'] . "), telah dipesan oleh *" . $request['checkout-name'] . "*.
+                    \n\nDetail pesanan:\n* *Jumlah:* " . $product['quantity'] . " buah/pcs
+                    \n* *Total harga:* Rp " . $product['quantity'] * $product['price'] . "\n* *Alamat pengiriman:* " . $request['checkout-address'] . "
+                    \n* *Nomor telepon pembeli:* " . $request['checkout-phone'] . "
+                    \n\nMohon segera proses pesanan ini dan informasikan kepada pembeli mengenai pembelian beli di tempat Anda. Terima kasih atas kerjasama Anda.
+                    \n\nHormat kami,\nTim Djajanan",
+                ]);
+            }elseif($metode['id'] == 2){
+                Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
+                    'number' => $request['checkout-phone'],
+                    'message' => "Yth. Pelanggan Djajanan,
+                    \n\nIni adalah konfirmasi pesanan Anda. Anda telah membeli:
+                    \n\n* *" . $product['name'] . " sebanyak " . $product['quantity'] . " buah, dari toko " . $toko['nama_toko'] . "*.
+                    \n\nTotal pembayaran: Rp " . number_format($product['quantity'] * $product['price']) . ".
+                    \nSilahkan hubungi penjual: " . $toko['user']['phone'] .  ".
+                    \n\nTerima kasih atas kepercayaan Anda. Tim Djajanan akan segera memproses pesanan Anda.
+                    \n\nHormat kami,\nTim Djajanan",
+                ]);
+
+                Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
+                    'number' => $toko['user']['phone'],
+                    'message' => "Yth. Penjual Djajanan,
+                    \n\nKami informasikan bahwa produk Anda, *" . $product['name'] . "* (x" . $product['quantity'] . "), telah dipesan oleh *" . $request['checkout-name'] . "*.
+                    \n\nDetail pesanan:\n* *Jumlah:* " . $product['quantity'] . " buah/pcs
+                    \n* *Total harga:* Rp " . $product['quantity'] * $product['price'] . "\n* *Alamat pengiriman:* " . $request['checkout-address'] . "
+                    \n* *Nomor telepon pembeli:* " . $request['checkout-phone'] . "
+                    \n\nMohon segera proses pesanan ini dan informasikan kepada pembeli mengenai status pengiriman. Terima kasih atas kerjasama Anda.
+                    \n\nHormat kami,\nTim Djajanan",
+                ]);
+            }else{
+                Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
+                    'number' => $request['checkout-phone'],
+                    'message' => "Yth. Pelanggan Djajanan,
+                    \n\nIni adalah konfirmasi pesanan Anda. Anda telah membeli:
+                    \n\n* *" . $product['name'] . " sebanyak " . $product['quantity'] . " buah, dari toko " . $toko['nama_toko'] . "*.
+                    \n\nTotal pembayaran: Rp " . number_format($product['quantity'] * $product['price']) . ".
+                    \nSilahkan hubungi penjual: " . $toko['user']['phone'] .  " Pesanan Anda akan dikirim oleh: " . $pengiriman['alamat'] . " ke Alamat: " . $request['alamat_cluster_default'] . " .
+                    \n\nTerima kasih atas kepercayaan Anda. Tim Djajanan akan segera memproses pesanan Anda.
+                    \n\nHormat kami,\nTim Djajanan",
+                ]);
+
+                Http::withoutVerifying()->post('https://wakbk.grageweb.online/send-message', [
+                    'number' => $toko['user']['phone'],
+                    'message' => "Yth. Penjual Djajanan,
+                    \n\nKami informasikan bahwa produk Anda, *" . $product['name'] . "* (x" . $product['quantity'] . "), telah dipesan oleh *" . $request['checkout-name'] . "*.
+                    \n\nDetail pesanan:\n* *Jumlah:* " . $product['quantity'] . " buah/pcs
+                    \n* *Total harga:* Rp " . $product['quantity'] * $product['price'] . "\n* *Alamat pengiriman:* " . $request['checkout-address'] . "
+                    \n* *Nomor telepon pembeli:* " . $request['checkout-phone'] . "
+                    \n\nMohon segera proses pesanan ini dan konfirmasikan kepada jasa kirim: " . $pengiriman['alamat'] . " mengenai transaksi ini. Terima kasih atas kerjasama Anda.
+                    \n\nHormat kami,\nTim Djajanan",
+                ]);
+            }
+            // Kirim pesan ke pembeli dan penjual menggunakan API
+
 
             // Validasi data produk
             if (!isset($product['price'], $product['quantity'], $product['photo'], $product['product_id'], $product['category_id'], $product['store_id'])) {
