@@ -143,6 +143,12 @@
                 @endforeach
             </div>
 
+            <div class="loading" style="display: none;">
+
+                <p>Loading more posts...</p>
+
+            </div>
+            
             <script>
                 function showTokoTutupAlert(namaToko) {
                     Swal.fire({
@@ -154,9 +160,7 @@
             </script>
 
             @include('partials.cart')
-            <div class="pagination">
-                {{ $products->links() }}
-            </div>
+
         </section>
     @endsection
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
