@@ -39,8 +39,8 @@ class CheckoutController extends Controller
         // dd($request);
          $products = json_decode($request->products, true);
          $totalOrderPrice = $request->input('total_price');
-         $metodeId = $request->input('cluster_id');
-         $metode = Cluster::where('cluster_id', $metodeId)->first();
+         $metodeId = $request->input('id');
+         $metode = Cluster::where('id', $metodeId)->first();
          $pengirimanId = $request->input('alamat_cluster_id');
          $pengiriman = AlamatCluster::where('alamat_cluster_id', $pengirimanId)->first();
 
