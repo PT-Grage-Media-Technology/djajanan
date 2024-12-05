@@ -44,7 +44,7 @@ class CheckoutController extends Controller
 
          if($metodeId == 3){
              $pengirimanId = $request->input('alamat_cluster_id');
-             $pengiriman = AlamatCluster::where('alamat_cluster_id', $pengirimanId)->first();
+             $pengiriman = AlamatCluster::where('id', $pengirimanId)->first();
          }
 
 
