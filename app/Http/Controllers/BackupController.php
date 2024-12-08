@@ -80,7 +80,7 @@ class BackupController extends Controller
 
         // Perintah Artisan untuk menjalankan backup
         // $command = "php $artisanPath backup:run 2>&1"; //OLD
-        $command = "php backup:run 1"; //NEW
+        $command = "php backup:run 2>&1"; //NEW
 
 
         // Jalankan perintah
