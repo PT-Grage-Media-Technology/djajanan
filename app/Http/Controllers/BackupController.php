@@ -76,11 +76,11 @@ class BackupController extends Controller
 
 
         // Path ke file artisan
-        // $artisanPath = $projectRoot . DIRECTORY_SEPARATOR . 'artisan'; //uncomand untuk backup directory
+        // $artisanPath = $projectRoot . DIRECTORY_SEPARATOR . 'artisan'; 
+        $artisanPath = DIRECTORY_SEPARATOR . 'artisan'; 
 
         // Perintah Artisan untuk menjalankan backup
-        // $command = "php $artisanPath backup:run 2>&1"; //OLD
-        $command = "php backup:run 2>&1"; //NEW
+        $command = "php $artisanPath backup:run 2>&1"; 
 
 
         // Jalankan perintah
@@ -88,7 +88,7 @@ class BackupController extends Controller
 
         // Log output
         // Log::info('root direktorti: ' . $projectRoot); //uncomand untuk backup directory
-        // Log::info('artisan direktorti: ' . $artisanPath); //uncomand untuk backup directory
+        Log::info('artisan direktorti: ' . $artisanPath); 
         Log::info('Output dari shell_exec: ' . $output);
          // Mengembalikan respons JSON dengan status dan output
          return response()->json([
