@@ -80,7 +80,7 @@ class BackupController extends Controller
         $artisanPath = DIRECTORY_SEPARATOR . 'artisan'; 
 
         // Perintah Artisan untuk menjalankan backup
-        $command = "php $artisanPath backup:run 2"; 
+        $command = "php $artisanPath backup:run 1"; 
 
 
         // Jalankan perintah
