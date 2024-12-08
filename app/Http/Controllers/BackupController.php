@@ -72,23 +72,20 @@ class BackupController extends Controller
     public function manualBackup()
     {
         // Mendapatkan path ke direktori root proyek Laravel
-        // $projectRoot = dirname(__DIR__, 3);  // Asumsi skrip ini berada di dalam subdirektori, uncomand untuk backup directory
-
+        $projectRoot = dirname(__DIR__, 3);  // Asumsi skrip ini berada di dalam subdirektori
 
         // Path ke file artisan
-        // $artisanPath = $projectRoot . DIRECTORY_SEPARATOR . 'artisan'; 
-        $artisanPath = DIRECTORY_SEPARATOR . 'artisan'; 
+        $artisanPath = $projectRoot . DIRECTORY_SEPARATOR . 'artisan';
 
         // Perintah Artisan untuk menjalankan backup
-        $command = "php $artisanPath backup:run 1"; 
-
+        $command = "php $artisanPath backup:run 2>&1";
 
         // Jalankan perintah
         $output = shell_exec($command);
 
         // Log output
-        // Log::info('root direktorti: ' . $projectRoot); //uncomand untuk backup directory
-        Log::info('artisan direktorti: ' . $artisanPath); 
+        Log::info('root direktorti: ' . $projectRoot);
+        Log::info('artisan direktorti: ' . $artisanPath);
         Log::info('Output dari shell_exec: ' . $output);
          // Mengembalikan respons JSON dengan status dan output
          return response()->json([
