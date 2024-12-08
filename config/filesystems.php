@@ -13,7 +13,7 @@ return [
     |
     */
 
-    // 'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DISK', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -30,11 +30,11 @@ return [
 
     'disks' => [
 
-        // 'local' => [
-        //     'driver' => 'local',
-        //     'root' => storage_path('app/Laravel'),
-        //     'throw' => false,
-        // ],
+        'local' => [
+            'driver' => 'local',
+            'root' => storage_path('app/Laravel'),
+            'throw' => false,
+        ],
 
         'backup' => [
             'driver' => 'local',
