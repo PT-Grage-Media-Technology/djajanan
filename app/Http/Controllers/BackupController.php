@@ -71,52 +71,27 @@ class BackupController extends Controller
 
     public function manualBackup()
     {
-         // Tentukan lokasi file backup
-         $backupFilePath = storage_path('app/public/backup/backup.sql');
+        // Mendapatkan path ke direktori root proyek Laravel
+        $projectRoot = dirname(__DIR__, 3);  // Asumsi skrip ini berada di dalam subdirektori
 
-         // Buat perintah mysqldump
-         $process = new Process([
-             'mysqldump',
-             '--host=' . env('DB_HOST'),
-             '--user=' . env('DB_USERNAME'),
-             '--password=' . env('DB_PASSWORD'),
-             env('DB_DATABASE'),
-             '--result-file=' . $backupFilePath // Define where to save the backup file
-         ]);
- 
-         // Jalankan perintah
-         $process->setTimeout(3600); // set timeout jika backup besar
-         $process->run();
- 
-         // Periksa apakah perintah berhasil
-         if (!$process->isSuccessful()) {
-             throw new ProcessFailedException($process);
-         }
- 
-         // Kembalikan file backup sebagai download
-         return response()->download($backupFilePath);
-         
-        // // Mendapatkan path ke direktori root proyek Laravel
-        // $projectRoot = dirname(__DIR__, 3);  // Asumsi skrip ini berada di dalam subdirektori
+        // Path ke file artisan
+        $artisanPath = $projectRoot . DIRECTORY_SEPARATOR . 'artisan';
 
-        // // Path ke file artisan
-        // $artisanPath = $projectRoot . DIRECTORY_SEPARATOR . 'artisan';
+        // Perintah Artisan untuk menjalankan backup
+        $command = "php $artisanPath backup:run 2>&1";
 
-        // // Perintah Artisan untuk menjalankan backup
-        // $command = "php $artisanPath backup:run 2>&1";
+        // Jalankan perintah
+        $output = shell_exec($command);
 
-        // // Jalankan perintah
-        // $output = shell_exec($command);
-
-        // // Log output
-        // Log::info('root direktorti: ' . $projectRoot);
-        // Log::info('artisan direktorti: ' . $artisanPath);
-        // Log::info('Output dari shell_exec: ' . $output);
-        //  // Mengembalikan respons JSON dengan status dan output
-        //  return response()->json([
-        //     'status' => 'success',
-        //     'message' => 'Backup telah selesai dan dapat diunduh.',
-        // ]);
+        // Log output
+        Log::info('root direktorti: ' . $projectRoot);
+        Log::info('artisan direktorti: ' . $artisanPath);
+        Log::info('Output dari shell_exec: ' . $output);
+         // Mengembalikan respons JSON dengan status dan output
+         return response()->json([
+            'status' => 'success',
+            'message' => 'Backup telah selesai dan dapat diunduh.',
+        ]);
     }
 
     public function getLatestBackupFile()
