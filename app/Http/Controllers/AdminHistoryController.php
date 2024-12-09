@@ -10,7 +10,7 @@ class AdminHistoryController extends Controller
 {
     public function index()
     {
-        $histories = AdminHistory::with('admin')->latest();
+        $histories = AdminHistory::with('admin')->latest()->paginate(1000);
 
         $histories = User::all(); // Mengambil semua user tanpa soft delete
 

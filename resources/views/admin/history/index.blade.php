@@ -65,8 +65,8 @@
             </div>
         </div>
     </main>
-
+{{-- 
     <div class="mt-4">
         {{ $histories->links('pagination::tailwind') }}
-    </div>
+    </div> --}}
 @endsection
