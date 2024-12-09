@@ -153,7 +153,7 @@
                                                     ini.</p>
                                             @endif
                                         @else
-                                            <p class="text-red-500 mx-5">Tidak bisa memberikan rating, produk telah dihapus oleh
+                                            <p class="text-red-500 max-md:mx-5">Tidak bisa memberikan rating, produk telah dihapus oleh
                                                 penjual.</p>
                                         @endif
 
