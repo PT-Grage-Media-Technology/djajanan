@@ -95,7 +95,7 @@ class CheckoutController extends Controller
                     'message' => "Yth. Penjual Djajanan,
                     \n\nKami informasikan bahwa produk Anda, *" . $product['name'] . "* (x" . $product['quantity'] . "), telah dipesan oleh *" . $request['checkout-name'] . "*.
                     \n\nDetail pesanan:\n* *Jumlah:* " . $product['quantity'] . " buah/pcs
-                    \n* *Total harga:* Rp " . $product['quantity'] * $product['price'] . "\n* *Alamat pengiriman:* " . $request['checkout-address'] . "
+                    \n* *Total harga:* Rp " . $product['quantity'] * $product['price'] . "\n* *Mohon Tunggu Sampai Pembeli Mengunjungi Toko Anda.*
                     \n* *Nomor telepon pembeli:* " . $request['checkout-phone'] . "
                     \n\nMohon segera proses pesanan ini dan informasikan kepada pembeli mengenai pembelian beli di tempat Anda. Terima kasih atas kerjasama Anda.
                     \n\nHormat kami,\nTim Djajanan",
