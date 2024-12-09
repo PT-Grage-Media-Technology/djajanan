@@ -34,8 +34,7 @@
                                 <th class="px-4 py-3">Email</th>
                                 <th class="px-4 py-3">Action</th>
                                 <th class="px-4 py-3">Model</th>
-                                <th class="px-4 py-3">Action</th>
-                                <th class="px-4 py-3">Changes</th>
+                                <th class="px-4 py-3">Role</th>
                                 <th class="px-4 py-3">Date</th>
                             </tr>
                         </thead>
@@ -44,13 +43,20 @@
                                 <tr class="text-gray-700 dark:text-gray-400">
                                     <td class="px-4 py-3 text-sm"> {{ $history->admin->name }}</td>
                                     <td class="px-4 py-3 text-sm"> {{ $history->admin->email }}</td>
-                                    <td class="px-4 py-3 text-sm"> {{ $history->action }}</td>
+                                    <td class="px-4 py-3 text-sm"> {{ $history->action }}</td>  
                                     <td class="px-4 py-3 text-sm"> {{ $history->affected_model }}</td>
-                                    <td class="px-4 py-3 text-sm"> {{ $history->admin->email }}</td>
-                                    <td class="px-4 py-3 text-sm"> {{ $history->changes }} </td>
+                                    <td class="px-4 py-3 text-sm">
+                                        @if ($history->roles->isEmpty())
+                                            buyer
+                                        @else
+                                            @foreach ($history->roles as $role)
+                                                {{ $role->name }}@if (!$loop->last)
+                                                    ,
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    </td>
                                     <td class="px-4 py-3 text-sm"> {{ $history->created_at->format('Y-m-d H:i:s') }} </td>
-
-
                                 </tr>
                             @endforeach
                         </tbody>
