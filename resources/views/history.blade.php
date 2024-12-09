@@ -121,29 +121,6 @@
                                 <div class="flex justify-center my-4">
                                     <div class="flex justify-end gap-4">
 
-                                        {{-- @if ($orderDetail->rating === null)
-                                            <form action="/rate-product/{{ $orderDetail->product_id }}" method="POST"
-                                                id="ratingForm">
-                                                @csrf
-                                                <input type="hidden" name="rating" id="ratingInput">
-                                                <div class="flex">
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="text-yellow-500 w-5 h-auto fill-current cursor-pointer"
-                                                            data-rating="{{ $i }}"
-                                                            onclick="submitRating({{ $i }})"
-                                                            viewBox="0 0 16 16">
-                                                            <path
-                                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                        </svg>
-                                                    @endfor
-                                                </div>
-                                            </form>
-                                        @else
-                                            <p>Anda sudah memberikan rating {{ $orderDetail->rating }} untuk pembelian ini.
-                                            </p>
-                                        @endif --}}
-
                                         @if ($orderDetail->products && !$orderDetail->products->trashed())
                                         @if ($orderDetail->rating === null)
                                             <form action="/rate-product/{{ $orderDetail->product_id }}" method="POST" id="ratingForm">
@@ -151,14 +128,6 @@
                                                 <input type="hidden" name="rating" id="ratingInput">
                                                 <div class="flex">
                                                     @for ($i = 1; $i <= 5; $i++)
-                                                        {{-- <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="text-yellow-500 w-5 h-auto fill-current cursor-pointer"
-                                                            data-rating="{{ $i }}"
-                                                            onclick="submitRating({{ $i }})"
-                                                            viewBox="0 0 16 16">
-                                                            <path
-                                                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                                                        </svg> --}}
 
                                                         <svg
                                                             xmlns="http://www.w3.org/2000/svg"
@@ -231,35 +200,6 @@
             </section>
         @endif
     </section>
-
-    {{-- <script>
-        function submitRating(rating) {
-            // Set the rating value to the hidden input field
-            document.getElementById('ratingInput').value = rating;
-            // Submit the form
-            document.getElementById('ratingForm').submit();
-        }
-
-
-        function showDeleteConfirmation(event) {
-            event.preventDefault(); // Mencegah form langsung submit
-
-            Swal.fire({
-                title: 'Apakah kamu yakin?',
-                text: "Kamu tidak akan bisa mengembalikan order ini!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, hapus!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Jika user mengkonfirmasi, submit form
-                    document.getElementById('delete-order-form').submit();
-                }
-            });
-        }
-    </script> --}}
 
     <script>
         function submitRating(rating, productName) {
