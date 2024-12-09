@@ -46,14 +46,12 @@
                                     <td class="px-4 py-3 text-sm"> {{ $history->action }}</td>  
                                     <td class="px-4 py-3 text-sm"> {{ $history->affected_model }}</td>
                                     <td class="px-4 py-3 text-sm">
-                                        @if ($history->roles->isEmpty())
-                                            buyer
+                                        @if ($history->admin->hasRole('seller'))
+                                            seller
+                                        @elseif ($history->admin->hasRole('admin'))
+                                            admin
                                         @else
-                                            @foreach ($history->roles as $role)
-                                                {{ $role->name }}@if (!$loop->last)
-                                                    ,
-                                                @endif
-                                            @endforeach
+                                            buyer
                                         @endif
                                     </td>
                                     <td class="px-4 py-3 text-sm"> {{ $history->created_at->format('Y-m-d H:i:s') }} </td>
