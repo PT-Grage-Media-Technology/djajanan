@@ -41,8 +41,8 @@
                         <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                             @foreach ($histories as $history)
                                 <tr class="text-gray-700 dark:text-gray-400">
-                                    {{-- <td class="px-4 py-3 text-sm"> {{ $history->admin->name }}</td>
-                                    <td class="px-4 py-3 text-sm"> {{ $history->admin->email }}</td> --}}
+                                    <td class="px-4 py-3 text-sm"> {{ $history->admin->name }}</td>
+                                    <td class="px-4 py-3 text-sm"> {{ $history->admin->email }}</td>
                                     <td class="px-4 py-3 text-sm"> {{ $history->action }}</td>  
                                     <td class="px-4 py-3 text-sm"> {{ $history->affected_model }}</td>
                                     <td class="px-4 py-3 text-sm">
