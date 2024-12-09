@@ -12,12 +12,12 @@ class AdminHistoryController extends Controller
     {
         $histories = AdminHistory::with('admin')->latest()->paginate(1000);
 
-        $histories = User::all(); // Mengambil semua user tanpa soft delete
+        // $histories = User::all(); 
 
-        $histories = User::with('roles')->get();
-        return view('admin.history.index', compact('histories'));
+        // $histories = User::with('roles')->get();
+        // return view('admin.history.index', compact('histories'));
 
-        $histories = User::all();
+        // $histories = User::all();
         return view('admin.history.index', compact('histories'));
     }
 }
