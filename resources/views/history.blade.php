@@ -123,6 +123,11 @@
 
                                         @if ($orderDetail->products && !$orderDetail->products->trashed())
                                         @if ($orderDetail->rating === null)
+                                            @if ($orderDetail->products->name)
+                                            <p>
+                                                Produk telah dihapus oleh penjual.
+                                            </p>
+                                            @else
                                             <form action="/rate-product/{{ $orderDetail->product_id }}" method="POST" id="ratingForm">
                                                 @csrf
                                                 <input type="hidden" name="rating" id="ratingInput">
@@ -133,7 +138,7 @@
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             class="text-yellow-500 w-5 h-auto fill-current cursor-pointer"
                                                             data-rating="{{ $i }}"
-                                                            onclick="submitRating({{ $i }}, '{{ $orderDetail->products->name ?? 'Produk Telah Dihapus Oleh Penjual' }}')"
+                                                            onclick="submitRating({{ $i }})"
                                                             viewBox="0 0 16 16"
                                                         >
                                                             <path
@@ -144,6 +149,8 @@
                                                     @endfor
                                                 </div>
                                             </form>
+                                            
+                                            @endif
                                         @else
                                             <p>Anda sudah memberikan rating {{ $orderDetail->rating }} untuk pembelian ini.</p>
                                         @endif
