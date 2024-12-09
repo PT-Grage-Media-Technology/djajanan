@@ -299,9 +299,6 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
-
-    // public function rateProduct(Request $request, $id)
-    // {
     //     $user = Auth::user();
     //     $product = Product::findOrFail($id);
 
@@ -337,7 +334,7 @@ class ProductController extends Controller
     //     ]);
 
     //     return redirect()->back()->with('success', 'Terima kasih sudah memberikan rating!');
-    // }
+
 
     public function rateProduct(Request $request, $id)
 {
