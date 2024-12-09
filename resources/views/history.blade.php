@@ -157,12 +157,13 @@
                                                 penjual.</p>
                                         @endif
 
-
-                                        <!-- Display average rating -->
-                                        <span class="text-slate-400 font-medium">
-                                            {{ isset($orderDetail->products) ? number_format($orderDetail->products->rating / max(count(json_decode($orderDetail->products->rated_by ?? '[]')), 1), 1) : 'N/A' }}
-                                            dari 5 bintang
-                                        </span>
+                                        @if ($orderDetail->products && !$orderDetail->products->trashed())
+                                            <!-- Display average rating -->
+                                            <span class="text-slate-400 font-medium">
+                                                {{ isset($orderDetail->products) ? number_format($orderDetail->products->rating / max(count(json_decode($orderDetail->products->rated_by ?? '[]')), 1), 1) : 'N/A' }}
+                                                dari 5 bintang
+                                            </span>
+                                        @endif
                                     </div>
                                 </div>
                                 <svg class="mt-9 w-full" xmlns="http://www.w3.org/2000/svg" width="1216" height="2"
