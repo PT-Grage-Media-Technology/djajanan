@@ -18,7 +18,7 @@ class SocialiteController extends Controller
     public function handleGoogleCallback()
     {
         try {
-            
+
             $user = Socialite::driver('google')->user();
             // Mencari pengguna berdasarkan google_id
             $existingUser = User::where('google_id', $user->id)->first();
@@ -29,7 +29,6 @@ class SocialiteController extends Controller
                  $existingUser->update(['is_online' => true]);
 
                 return redirect()->intended('/home');
-                dd('masuk');
 
             } else {
 
