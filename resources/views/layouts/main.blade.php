@@ -3,8 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description"
-        content="Djajanan - E-commerce untuk mempermudah jual beli! Temukan berbagai produk berkualitas dengan harga terjangkau, penawaran spesial, dan layanan pengiriman cepat. Shop now!">
+    @if (request()->is('detailed-store'))
+        <title>{{ $storeDetails->name }}</title>
+        <meta name="description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}">
+        <meta property="og:title" content="{{ $storeDetails->nama_toko }}" />
+        <meta property="og:description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}" />
+        <meta property="og:image" content="{{ $storeDetails->foto_profile_toko ? 'https://djajanan.com/store_image/' . $storeDetails->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}" />
+        <meta property="og:url" content="{{ url()->full() }}" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ $storeDetails->nama_toko }}">
+        <meta name="twitter:description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}">
+        <meta name="twitter:image" content="{{ $storeDetails->foto_profile_toko ? 'https://djajanan.com/store_image/' . $storeDetails->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}">
+    @else
+        @foreach ($cms as $company)
+            <title>{{ $company->company_name }} || {{ Route::currentRouteName() }} </title>
+        @endforeach
+        <meta name="description"
+            content="Djajanan - E-commerce untuk mempermudah jual beli! Temukan berbagai produk berkualitas dengan harga terjangkau, penawaran spesial, dan layanan pengiriman cepat. Shop now!">
+    @endif
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -19,23 +36,30 @@
 
     @yield('link')
 
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/clock.css">
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/profile.css">
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/home.css">
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/style.css">
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/load.css">
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/app.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/clock.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/profile.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/home.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/style.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/load.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/app.css">
 
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/home-container.css">
-    <link rel="stylesheet" href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/cart.css">
+    <link rel="stylesheet"
+        href="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/css/cart.css">
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/gragemediatechnology/keyFood/898403e73ffec5a26139d452a6d2ffa66d178334/public/css/nav.css">
-        @foreach ($cms as $company)
-    <link rel="icon" type="image/x-icon" href="../img/djajananlogo.svg" loading="lazy">
-    <title>{{$company->company_name}} || {{ Route::currentRouteName() }} </title>
-    {{-- ini diatas, disebelah dikasih title statis --}}
+
+    @foreach ($cms as $company)
+        <link rel="icon" type="image/x-icon" href="../img/{{ $company->logo }}" loading="lazy">
     @endforeach
+    {{-- ini diatas, disebelah dikasih title statis --}}
 
     <!-- SweetAlert CSS -->
 
@@ -96,12 +120,24 @@
 
     @yield('script')
 
-    <script defer src="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/js/clock.js"></script>
-    <script defer src="https://rawcdn.githack.com/PT-Grage-Media-Technology/djajanan/9d3733e7c2f0a83eaf0e90577c8edb80c13f7e41/public/js/cart.js"></script>
-    <script defer src="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/js/home.js"></script>
-    <script defer src="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/js/load.js"></script>
-    <script defer src="https://rawcdn.githack.com/gragemediatechnology/keyFood/46ef1975afc1dce417ab00c89c9161e4f81c52e0/public_html/js/home-container.js"></script>
-    <script defer src="https://rawcdn.githack.com/gragemediatechnology/keyFood/46ef1975afc1dce417ab00c89c9161e4f81c52e0/public_html/js/nav.js"></script>
+    <script defer
+        src="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/js/clock.js">
+    </script>
+    <script defer
+        src="https://rawcdn.githack.com/PT-Grage-Media-Technology/djajanan/9d3733e7c2f0a83eaf0e90577c8edb80c13f7e41/public/js/cart.js">
+    </script>
+    <script defer
+        src="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/js/home.js">
+    </script>
+    <script defer
+        src="https://rawcdn.githack.com/gragemediatechnology/keyFood/ea622abc460ff8dd056dcec020989ee66a3f878e/public_html/js/load.js">
+    </script>
+    <script defer
+        src="https://rawcdn.githack.com/gragemediatechnology/keyFood/46ef1975afc1dce417ab00c89c9161e4f81c52e0/public_html/js/home-container.js">
+    </script>
+    <script defer
+        src="https://rawcdn.githack.com/gragemediatechnology/keyFood/46ef1975afc1dce417ab00c89c9161e4f81c52e0/public_html/js/nav.js">
+    </script>
 
 
     @if (Auth::check())
