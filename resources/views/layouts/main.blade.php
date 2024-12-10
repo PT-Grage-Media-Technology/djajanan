@@ -11,7 +11,7 @@
         @foreach ($storeDetails as $detail)
             {{ $detail->nama_toko }}</title>
             <meta name="description" content="{{ $detail->alamat_toko }} - {{ $detail->deskripsi_toko }}">
-            <meta property="og:title" content="{{ $detail->nama_toko }}" />
+            <meta property="og:title" content="Djajanan || {{ $detail->nama_toko }}" />
             <meta property="og:description" content="{{ $detail->alamat_toko }} - {{ $detail->deskripsi_toko }}" />
             <meta property="og:image"
                 content="{{ $detail->foto_profile_toko ? 'https://djajanan.com/store_image/' . $detail->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}" />
