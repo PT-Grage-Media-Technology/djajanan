@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     @if (request()->is('detailed-store'))
-        <title>{{ $storeDetails->name }}</title>
+        <title>{{ $company->company_name }} || {{ $storeDetails->nama_toko }}</title>
         <meta name="description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}">
         <meta property="og:title" content="{{ $storeDetails->nama_toko }}" />
         <meta property="og:description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}" />
@@ -57,7 +57,7 @@
         href="https://rawcdn.githack.com/gragemediatechnology/keyFood/898403e73ffec5a26139d452a6d2ffa66d178334/public/css/nav.css">
 
     @foreach ($cms as $company)
-        <link rel="icon" type="image/x-icon" href="../img/{{ $company->logo }}" loading="lazy">
+        <link rel="icon" type="image/x-icon" href="../{{ $company->logo }}" loading="lazy">
     @endforeach
     {{-- ini diatas, disebelah dikasih title statis --}}
 
