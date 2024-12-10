@@ -25,11 +25,17 @@ class SocialiteController extends Controller
 
             if ($existingUser) {
                 // Jika pengguna ada, login
-                Auth::login($existingUser);
-                 $existingUser->update(['is_online' => true]);
+                if ($existingUser->hasRole('admin')) {
+                    Auth::login($existingUser);
+                    $existingUser->update(['is_online' => true]);
 
-                return redirect()->intended('/home');
+                    return redirect()->intended('/admin/main-admin');
+                } else {
+                    Auth::login($existingUser);
+                    $existingUser->update(['is_online' => true]);
 
+                    return redirect()->intended('/home');
+                }
             } else {
 
                 // Jika pengguna tidak ada, buat pengguna baru
