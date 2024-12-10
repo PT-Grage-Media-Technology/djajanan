@@ -45,7 +45,7 @@
                     <section class="section__container header__container" id="home">
                         <div class="header__image">
                             <img src="{{ $company->gambar_home_1 }}" alt="header " class="header-img rounded-xl"
-                                width="200px" height="200px" loading="lazy"/>
+                                width="200px" height="200px" loading="lazy" />
                         </div>
                         <div class="header__content">
                             <h1>Beli, Makan & Nikmati <span>Makanan Terbaik</span>.</h1>
@@ -99,7 +99,8 @@
                                 <div
                                     class="special__card flex flex-col items-center justify-center text-center p-4 bg-transparent shadow-lg rounded-lg">
                                     <img src="{{ $product->photo }}" alt="special"
-                                        class="header-img w-full h-full max-w-[300px] max-h-[300px] rounded-xl object-cover aspect-square" loading="lazy"/>
+                                        class="header-img w-full h-full max-w-[300px] max-h-[300px] rounded-xl object-cover aspect-square"
+                                        loading="lazy" />
 
                                     <h4>{{ $product->name }}</h4>
                                     <p>
@@ -147,7 +148,8 @@
 
 
                                     <div class="special__footer flex flex-col justify-center items-center">
-                                        <span class="price text-orange-500">Rp {{ number_format($product->price, 0, ',', '.') }}</span><br>
+                                        <span class="price text-orange-500">Rp
+                                            {{ number_format($product->price, 0, ',', '.') }}</span><br>
                                         @if (auth()->check())
                                             <!-- Jika user sudah login, kirim form ke detailed-store -->
                                             <form action="/detailed-store" method="GET">
@@ -189,20 +191,18 @@
                     <section class="section__container banner__container">
                         <div class="banner__card">
                             <span class="banner__icon"><i class="ri-bowl-fill"></i></span>
-                            <h4>Pesan Kilat, Makan Nikmat!</h4>
+                            <h4>Pesan Kilat, Pilihan Tepat!"</h4>
                             <p>
-                                Pesan makanan jadi lebih mudah! Cukup beberapa klik, santapan favoritmu siap diantar.
-                                Nikmati
-                                praktisnya pilih menu beragam dari kami, semuanya lezat!
+                                Segala kebutuhan jadi lebih mudah! Dengan beberapa klik, temukan produk favoritmu dan
+                                nikmati kenyamanan berbelanja dari kami. Beragam pilihan, semuanya praktis dan memuaskan!
                             </p>
                         </div>
                         <div class="banner__card">
                             <span class="banner__icon"><i class="ri-truck-fill"></i></span>
-                            <h4>Jelajah Rasa, Puaskan Selera!</h4>
+                            <h4>Jelajah Pilihan, Puaskan Keinginan!</h4>
                             <p>
-                                Mau hidangan yang gurih, manis, atau yang lain? Semuanya ada di sini! Kamu bebas pilih
-                                sesuai
-                                seleramu! Kami punya banyak pilihan
+                                Butuh sesuatu yang spesial? Dari makanan, minuman, hingga kebutuhan lainnya, semuanya ada di
+                                sini! Pilih sesuai keinginanmu, kami siap memuaskan harimu. Kami punya banyak pilihan
                                 yang pasti bikin kamu puas.
                             </p>
                         </div>
@@ -210,8 +210,9 @@
                             <span class="banner__icon"><i class="ri-star-smile-fill"></i></span>
                             <h4>Santai Saja, Biar Kami yang Urus!</h4>
                             <p>
-                                Setelah pesan, tinggal duduk manis, deh! Biarkan kami siapkan pesananmu dengan sepenuh hati.
-                                Cicipi setiap suapan kelezatannya, karena kepuasanmu adalah prioritas kami.
+                                Setelah pesan, kamu tinggal bersantai! Kami akan menyiapkan kebutuhanmu dengan penuh
+                                perhatian. Nikmati kemudahan dan kualitas terbaik, karena kepuasanmu adalah tujuan utama
+                                kami.
                             </p>
                         </div>
                     </section>
@@ -220,7 +221,8 @@
                         <img src="../img/topping.png" alt="topping" class="chef__bg" />
                         <div class="section__container chef__container">
                             <div class="chef__image">
-                                <img src="{{ $company->gambar_home_3 }}" alt="chef" class="header-img" loading="lazy"/>
+                                <img src="{{ $company->gambar_home_3 }}" alt="chef" class="header-img"
+                                    loading="lazy" />
                             </div>
                             <div class="chef__content">
                                 <h2 class="section__header">Siap Diantar Di Mana Saja & Kapan Saja!</h2>
@@ -269,7 +271,8 @@
                                                 Proses pemesanan mudah, pengiriman cepat, dan produk sesuai deskripsi.
                                                 Pasti akan belanja lagi di sini!
                                             </p>
-                                            <img src="../img/pelanggan.jpeg" alt="client" class="header-img" loading="lazy"/>
+                                            <img src="../img/pelanggan.jpeg" alt="client" class="header-img"
+                                                loading="lazy" />
                                             <h4>Andini</h4>
                                             <h5>Pelanggan</h5>
                                         </div>
@@ -280,7 +283,7 @@
                                                 I always turn to FoodMan for a quick and delicious meal. Their
                                                 efficient service and mouthwatering options never disappoint!
                                             </p>
-                                            <img src="../img/client-2.jpg" alt="client" loading="lazy"/>
+                                            <img src="../img/client-2.jpg" alt="client" loading="lazy" />
                                             <h4>Emily Johnson</h4>
                                             <h5>Food Blogger</h5>
                                         </div>
@@ -292,7 +295,7 @@
                                                 attention to detail and exceptional customer service make
                                                 every event a success.
                                             </p>
-                                            <img src="../img/client-3.jpg" alt="client" loading="lazy"/>
+                                            <img src="../img/client-3.jpg" alt="client" loading="lazy" />
                                             <h4>Michael Thompson</h4>
                                             <h5>Event Planner</h5>
                                         </div>
