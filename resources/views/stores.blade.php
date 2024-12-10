@@ -31,7 +31,7 @@
 
         <!-- content asli -->
         <div id="store-list">
-            @foreach ($stores as $store)
+            {{-- @foreach ($stores as $store)
                 <form action="/detailed-store/" method="GET">
                     <input type="hidden" value="{{ $store->id_toko }}" name="id">
                     <button type="submit">
@@ -53,7 +53,7 @@
                         </div>
                     </button>
                 </form>
-            @endforeach
+            @endforeach --}}
         </div>
 
         <!-- hasil pencarian -->
