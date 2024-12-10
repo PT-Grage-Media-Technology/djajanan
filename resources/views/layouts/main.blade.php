@@ -7,21 +7,22 @@
         @foreach ($cms as $company)
             <title>{{ $company->company_name }} ||
         @endforeach
-        {{ $storeDetails->nama_toko }}</title>
-        <meta name="description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}">
-        <meta property="og:title" content="{{ $storeDetails->nama_toko }}" />
-        <meta property="og:description"
-            content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}" />
-        <meta property="og:image"
-            content="{{ $storeDetails->foto_profile_toko ? 'https://djajanan.com/store_image/' . $storeDetails->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}" />
-        <meta property="og:url" content="{{ url()->full() }}" />
-        <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{{ $storeDetails->nama_toko }}">
-        <meta name="twitter:description"
-            content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}">
-        <meta name="twitter:image"
-            content="{{ $storeDetails->foto_profile_toko ? 'https://djajanan.com/store_image/' . $storeDetails->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}">
+
+        @foreach ($storeDetails as $detail)
+            {{ $detail->nama_toko }}</title>
+            <meta name="description" content="{{ $detail->alamat_toko }} - {{ $detail->deskripsi_toko }}">
+            <meta property="og:title" content="{{ $detail->nama_toko }}" />
+            <meta property="og:description" content="{{ $detail->alamat_toko }} - {{ $detail->deskripsi_toko }}" />
+            <meta property="og:image"
+                content="{{ $detail->foto_profile_toko ? 'https://djajanan.com/store_image/' . $detail->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}" />
+            <meta property="og:url" content="{{ url()->full() }}" />
+            <meta property="og:type" content="website" />
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" content="{{ $detail->nama_toko }}">
+            <meta name="twitter:description" content="{{ $detail->alamat_toko }} - {{ $detail->deskripsi_toko }}">
+            <meta name="twitter:image"
+                content="{{ $detail->foto_profile_toko ? 'https://djajanan.com/store_image/' . $detail->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}">
+        @endforeach
     @else
         @foreach ($cms as $company)
             <title>{{ $company->company_name }} || {{ Route::currentRouteName() }} </title>
