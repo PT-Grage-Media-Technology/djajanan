@@ -166,7 +166,7 @@ class TokoController extends Controller
 
     public function showStores(Request $request)
 {
-    $itemsPerPage = $request->input('itemsPerPage', 6); // Default 6 item per halaman
+    $itemsPerPage = $request->input('itemsPerPage', 3); // Default 6 item per halaman
     $page = $request->input('page', 1);
 
     // Jika ini permintaan AJAX
