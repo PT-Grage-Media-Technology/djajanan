@@ -204,24 +204,13 @@
     </section>
 
     <script>
-        function submitRating(rating, productName) {
-            // Cek apakah produk sudah dihapus
-            if (!productName || productName === 'Produk Telah Dihapus Oleh Penjual') {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Gagal Memberikan Rating',
-                    text: 'Tidak bisa memberikan rating, produk telah dihapus oleh penjual.',
-                    confirmButtonColor: '#d33',
-                    confirmButtonText: 'OK'
-                });
-                return; // Hentikan proses rating
-            }
-
+        function submitRating(rating) {
             // Set the rating value to the hidden input field
             document.getElementById('ratingInput').value = rating;
             // Submit the form
             document.getElementById('ratingForm').submit();
         }
+
 
         function showDeleteConfirmation(event) {
             event.preventDefault(); // Mencegah form langsung submit
