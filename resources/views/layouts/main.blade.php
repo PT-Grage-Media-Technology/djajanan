@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     @if (request()->is('detailed-store'))
         @foreach ($cms as $company)
-            <title>{{ $company->company_name }} || {{ $storeDetails->nama_toko }}</title>
+            <title>{{ $company->company_name }} ||
         @endforeach
+        {{ $storeDetails->nama_toko }}</title>
         <meta name="description" content="{{ $storeDetails->alamat_toko }} - {{ $storeDetails->deskripsi_toko }}">
         <meta property="og:title" content="{{ $storeDetails->nama_toko }}" />
         <meta property="og:description"
