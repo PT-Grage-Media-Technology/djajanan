@@ -18,7 +18,7 @@
             <meta property="og:url" content="{{ url()->full() }}" />
             <meta property="og:type" content="website" />
             <meta name="twitter:card" content="summary_large_image">
-            <meta name="twitter:title" content="{{ $detail->nama_toko }}">
+            <meta name="twitter:title" content="Djajanan || {{ $detail->nama_toko }}">
             <meta name="twitter:description" content="{{ $detail->alamat_toko }} - {{ $detail->deskripsi_toko }}">
             <meta name="twitter:image"
                 content="{{ $detail->foto_profile_toko ? 'https://djajanan.com/store_image/' . $detail->foto_profile_toko : 'https://djajanan.com/img/markets.webp' }}">
@@ -30,6 +30,7 @@
         <meta name="description"
             content="Djajanan - E-commerce untuk mempermudah jual beli! Temukan berbagai produk berkualitas dengan harga terjangkau, penawaran spesial, dan layanan pengiriman cepat. Shop now!">
     @endif
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
