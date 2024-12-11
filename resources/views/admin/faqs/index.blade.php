@@ -42,7 +42,7 @@
                                             class="bg-yellow-500 hover:bg-yellow-700 text-gray-900 font-bold py-1 px-3 rounded dark:bg-yellow-600 dark:hover:bg-yellow-400 dark:text-gray-100">
                                             Edit
                                         </a>
-                                        <form action="/admin/faqs/destroy/{{ $faq->id }}" method="POST"
+                                        <form action="/admin/faqs/destroy/{{ $faq->id }}" method="DELETE"
                                             class="inline-block">
                                             @csrf
                                             @method('DELETE')
