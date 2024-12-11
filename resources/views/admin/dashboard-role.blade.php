@@ -84,16 +84,17 @@
                                         <!-- Action -->
                                         <td class="px-4 py-3">
                                             <div class="flex items-center text-sm">
-                                                <h5 class="approved {{ $request->status !== 'approved' ? 'hidden' : '' }} items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium border border-green-600 text-green-600 dark:text-white">
+                                                <h5
+                                                    class="approved {{ $request->status !== 'approved' ? 'hidden' : '' }} items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium border border-green-600 text-green-600 dark:text-white">
                                                     Approved
                                                 </h5>
-                                                <h5 class="rejected {{ $request->status !== 'rejected' ? 'hidden' : '' }} items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium border border-red-600 text-red-600 dark:text-white">
+                                                <h5
+                                                    class="rejected {{ $request->status !== 'rejected' ? 'hidden' : '' }} items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium border border-red-600 text-red-600 dark:text-white">
                                                     Canceled
                                                 </h5>
 
                                                 <form action="{{ route('role-request.approve', $request->user->id) }}"
-                                                {{-- <form action="/role-request/approve/{{ $request->user->id }}" --}}
-                                                    method="POST" style="display: inline;">
+                                                    {{-- <form action="/role-request/approve/{{ $request->user->id }}" --}} method="POST" style="display: inline;">
                                                     @csrf
                                                     <button
                                                         class="check flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
@@ -109,8 +110,7 @@
                                                 </form>
 
                                                 <form action="{{ route('role-request.cancel', $request->user->id) }}"
-                                                {{-- <form action="/role-request/cancel/{{ $request->user->id }}" --}}
-                                                    method="POST" style="display: inline;">
+                                                    {{-- <form action="/role-request/cancel/{{ $request->user->id }}" --}} method="POST" style="display: inline;">
                                                     @csrf
                                                     <button
                                                         class="cancel flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
