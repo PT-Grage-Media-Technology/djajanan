@@ -23,7 +23,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                                @foreach ($roleRequests as $request)
+                                @foreach ($roleRequests->sortByDesc('id') as $request)
                                     <tr class="text-gray-700 dark:text-gray-400">
                                         <!-- ID User -->
                                         <td class="px-4 py-3">
