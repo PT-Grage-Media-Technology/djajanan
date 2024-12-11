@@ -22,7 +22,7 @@
                         </li> --}}
                         <li class="mb-4">
                             <a class="hover:underline"
-                                href="https://wa.me/6285182629897?text=Saya%20ingin%20bertanya%20tentang%20produk%20di%20website%20Djajanan">Chat
+                                href="https://wa.me/6282118515748?text=Saya%20ingin%20bertanya%20tentang%20produk%20di%20website%20Djajanan">Chat
                                 Admin</a>
                         </li>
 
