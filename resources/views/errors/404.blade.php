@@ -656,7 +656,7 @@
 
     <nav>
       <div class="menu">
-        <p class="website_name">Teras KBK</p>
+        <p class="website_name">Djajanan</p>
         <div class="menu_links">
           <a href="/home" class="link">Home</a>
           <a href="/faq" class="link">FAQ</a>
