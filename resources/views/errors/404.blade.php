@@ -658,9 +658,9 @@
       <div class="menu">
         <p class="website_name">Teras KBK</p>
         <div class="menu_links">
-          <a href="https://teraskabeka.com/home" class="link">Home</a>
-          <a href="https://teraskabeka.com/faq" class="link">FAQ</a>
-          <a href="https://teraskabeka.com/term-condition" class="link">Persetujuan</a>
+          <a href="/home" class="link">Home</a>
+          <a href="/faq" class="link">FAQ</a>
+          <a href="/term-condition" class="link">Persetujuan</a>
         </div>
         <!-- <div class="menu_icon">
           <span class="icon"></span>
@@ -708,7 +708,7 @@
               Ke Home!
             </p>
 
-            <a href="https://teraskabeka.com/home"><button>Ayo!</button></a>
+            <a href="/home"><button>Ayo!</button></a>
           </article>
         </div>
       </div>
