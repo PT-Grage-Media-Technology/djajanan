@@ -28,6 +28,11 @@ use App\Http\Controllers\CmsController;
 use App\Http\Controllers\TipePengiriman;
 use App\Http\Controllers\TipePengirimanController;
 
+Route::fallback(function () {
+    return response()->view('errors.404', [], 404);
+});
+
+
 Route::post('/clear-chats', [ChatController::class, 'clearChats'])->name('clear.chats');
 
 
