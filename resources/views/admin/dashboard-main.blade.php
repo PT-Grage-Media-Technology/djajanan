@@ -196,7 +196,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            const categories = @json($categories);
+            const categories =
+            @json($categories); // Data dari controller: [{name: '...', slug: '...', icon: '...'}, ...]
 
             // Fungsi untuk menghasilkan warna unik secara otomatis
             function generateColors(count) {
@@ -210,45 +211,52 @@
                 return colors;
             }
 
+            // Generate warna untuk chart
             const colors = generateColors(categories.length);
 
             // Generate legend
             const legendContainer = document.getElementById('chart-legend');
             categories.forEach((category, index) => {
                 const legendItem = document.createElement('div');
-                legendItem.className = 'flex items-center';
+                legendItem.className = 'flex items-center space-x-2';
 
+                // Warna bulat
                 const colorBox = document.createElement('span');
-                colorBox.className = 'inline-block w-3 h-3 mr-1 rounded-full';
-                colorBox.style.backgroundColor = colors[index]; // Gunakan warna yang sesuai
+                colorBox.className = 'inline-block w-3 h-3 rounded-full';
+                colorBox.style.backgroundColor = colors[index]; // Warna sesuai dengan data chart
 
+                // Label kategori
                 const label = document.createElement('span');
                 label.textContent = category.name;
 
+                // Tambahkan elemen ke legend
                 legendItem.appendChild(colorBox);
                 legendItem.appendChild(label);
                 legendContainer.appendChild(legendItem);
             });
 
+            // Konfigurasi chart
             const pieConfig = {
                 type: 'doughnut',
                 data: {
                     datasets: [{
-                        data: categories.map(category => category.products_count),
+                        data: categories.map(category => category
+                        .products_count), // Asumsikan data ini dihitung di controller
                         backgroundColor: colors, // Gunakan warna yang dihasilkan
                         label: 'Dataset 1',
                     }],
-                    labels: categories.map(category => category.name),
+                    labels: categories.map(category => category.name), // Label dari kolom `name`
                 },
                 options: {
                     responsive: true,
                     cutoutPercentage: 80,
                     legend: {
-                        display: false, // Nonaktifkan default legend dari Chart.js
+                        display: false, // Nonaktifkan default legend Chart.js
                     },
                 },
             }
 
+            // Inisialisasi chart
             const pieCtx = document.getElementById('pie');
             window.myPie = new Chart(pieCtx, pieConfig);
 
