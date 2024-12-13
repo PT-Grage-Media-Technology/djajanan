@@ -41,7 +41,7 @@ class PaymentController extends Controller
             // Data dasar
             $orders = Orders::orderBy('id', 'desc')->paginate(20);
             $totalUser = User::count();
-            $dd($totalUser);
+            dd($totalUser);
             $stores = Toko::count();
             $totalOrders = Orders::count();
             $paymentTotal = Orders::sum('harga');
