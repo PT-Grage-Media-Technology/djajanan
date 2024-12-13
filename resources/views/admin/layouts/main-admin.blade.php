@@ -79,7 +79,7 @@
         src="https://rawcdn.githack.com/gragemediatechnology/keyFood/e1b4f808733bdee8140603f23dc03bb63a0901dd/public/assets/js/init-alpine.js">
     </script>
     <script defer
-        src="https://rawcdn.githack.com/gragemediatechnology/keyFood/e1b4f808733bdee8140603f23dc03bb63a0901dd/public/assets/js/charts-pie.js">
+        {{-- src="https://rawcdn.githack.com/gragemediatechnology/keyFood/e1b4f808733bdee8140603f23dc03bb63a0901dd/public/assets/js/charts-pie.js"> --}}
     </script>
 
     <script defer
