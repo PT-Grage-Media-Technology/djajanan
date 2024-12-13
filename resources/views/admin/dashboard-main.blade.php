@@ -199,66 +199,72 @@
 
             const categories = @json($categories); // Mengambil data kategori dari controller
 
-    // Fungsi untuk menghasilkan warna unik secara otomatis
-    function generateColors(count) {
-        const colors = [];
-        for (let i = 0; i < count; i++) {
-            const red = Math.floor(Math.random() * 256);
-            const green = Math.floor(Math.random() * 256);
-            const blue = Math.floor(Math.random() * 256);
-            colors.push(`rgb(${red}, ${green}, ${blue})`);
-        }
-        return colors;
-    }
+            // Fungsi untuk menghasilkan warna unik secara otomatis
+            function generateColors(count) {
+                const colors = [];
+                for (let i = 0; i < count; i++) {
+                    const red = Math.floor(Math.random() * 256);
+                    const green = Math.floor(Math.random() * 256);
+                    const blue = Math.floor(Math.random() * 256);
+                    colors.push(`rgb(${red}, ${green}, ${blue})`);
+                }
+                return colors;
+            }
 
-    // Generate warna untuk chart
-    const colors = generateColors(categories.length);
+            console.log(categories); // Pastikan jumlah kategori sesuai dengan yang diharapkan
+            // Menampilkan jumlah kategori dan jumlah warna untuk memastikan kecocokan
+            console.log(categories.map(category => category.count)); // Cek jumlah count
+            console.log(colors); // Cek warna
 
-    // Generate legend
-    const legendContainer = document.getElementById('chart-legend');
-    categories.forEach((category, index) => {
-        const legendItem = document.createElement('div');
-        legendItem.className = 'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
+            // Generate warna untuk chart
+            const colors = generateColors(categories.length);
 
-        // Warna bulat
-        const colorBox = document.createElement('span');
-        colorBox.className = 'inline-block w-3 h-3 rounded-full';
-        colorBox.style.backgroundColor = colors[index]; // Warna sesuai dengan data chart
+            // Generate legend
+            const legendContainer = document.getElementById('chart-legend');
+            categories.forEach((category, index) => {
+                const legendItem = document.createElement('div');
+                legendItem.className =
+                    'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
 
-        // Label kategori
-        const label = document.createElement('span');
-        label.textContent = category.name;
-        label.className = 'text-xs break-words'; // Membuat teks wrap jika terlalu panjang
+                // Warna bulat
+                const colorBox = document.createElement('span');
+                colorBox.className = 'inline-block w-3 h-3 rounded-full';
+                colorBox.style.backgroundColor = colors[index]; // Warna sesuai dengan data chart
 
-        // Tambahkan elemen ke legend
-        legendItem.appendChild(colorBox);
-        legendItem.appendChild(label);
-        legendContainer.appendChild(legendItem);
-    });
+                // Label kategori
+                const label = document.createElement('span');
+                label.textContent = category.name;
+                label.className = 'text-xs break-words'; // Membuat teks wrap jika terlalu panjang
 
-    // Konfigurasi chart
-    const pieConfig = {
-        type: 'doughnut',
-        data: {
-            datasets: [{
-                data: categories.map(category => category.count), // Ganti ke category.count
-                backgroundColor: colors, // Gunakan warna yang dihasilkan
-                label: 'Dataset 1',
-            }],
-            labels: categories.map(category => category.name), // Label dari kolom `name`
-        },
-        options: {
-            responsive: true,
-            cutoutPercentage: 80,
-            legend: {
-                display: false, // Nonaktifkan default legend Chart.js
-            },
-        },
-    }
+                // Tambahkan elemen ke legend
+                legendItem.appendChild(colorBox);
+                legendItem.appendChild(label);
+                legendContainer.appendChild(legendItem);
+            });
 
-    // Inisialisasi chart
-    const pieCtx = document.getElementById('pie');
-    window.myPie = new Chart(pieCtx, pieConfig);
+            // Konfigurasi chart
+            const pieConfig = {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: categories.map(category => category.count), // Ganti ke category.count
+                        backgroundColor: colors, // Gunakan warna yang dihasilkan
+                        label: 'Dataset 1',
+                    }],
+                    labels: categories.map(category => category.name), // Label dari kolom `name`
+                },
+                options: {
+                    responsive: true,
+                    cutoutPercentage: 80,
+                    legend: {
+                        display: false, // Nonaktifkan default legend Chart.js
+                    },
+                },
+            }
+
+            // Inisialisasi chart
+            const pieCtx = document.getElementById('pie');
+            window.myPie = new Chart(pieCtx, pieConfig);
 
 
 
