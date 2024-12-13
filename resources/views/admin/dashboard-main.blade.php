@@ -40,7 +40,7 @@
                             Total Payment
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            Rp {{ $paymentTotal }}
+                            Rp {{ number_format($paymentTotal ?? 0, 0, ',', '.') }}
                         </p>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                                         d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3">
                                     </path>
                                 </svg>
-                                
+
                             </div>
                              <div>
                                 <h6
@@ -187,11 +187,11 @@
                                     class="block max-w-sm font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
                                     Ini Adalah Visualisasi Data  Untuk Melihat Data Pengunjung Website
                                 </p>
-                                
+
                             </div>
                              <div class="pt-6 px-2 pb-0">
                                 <div id="grafik-batang"></div>
-                                
+
                             </div>
                              </div>
                         </div>
@@ -204,7 +204,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const visitData = @json($visitData);
-            
+
             const configGrafik = {
                 series: [{
                     name: "Kunjungan",
@@ -289,12 +289,12 @@
                     }
                 }
             };
-        
+
             const chart = new ApexCharts(document.querySelector("#grafik-batang"), configGrafik);
             chart.render();
         });
         </script>
-        
+
     <script>
         const visitData = @json($visitData);
         // Kemudian masukkan konfigurasi grafik yang baru
