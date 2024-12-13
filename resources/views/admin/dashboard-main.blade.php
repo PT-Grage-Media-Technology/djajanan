@@ -204,17 +204,12 @@
                 const colors = [];
                 for (let i = 0; i < count; i++) {
                     const red = Math.floor(Math.random() * 256);
-                    // const green = Math.floor(Math.random() * 256);
+                    const green = Math.floor(Math.random() * 256);
                     const blue = Math.floor(Math.random() * 256);
                     colors.push(`rgb(${red}, ${green}, ${blue})`);
                 }
                 return colors;
             }
-
-            // console.log(categories); // Pastikan jumlah kategori sesuai dengan yang diharapkan
-            // // Menampilkan jumlah kategori dan jumlah warna untuk memastikan kecocokan
-            // console.log(categories.map(category => category.count)); // Cek jumlah count
-            // console.log(colors); // Cek warna
 
             // Generate warna untuk chart
             const colors = generateColors(categories.length);
@@ -224,7 +219,7 @@
             categories.forEach((category, index) => {
                 const legendItem = document.createElement('div');
                 legendItem.className =
-                    'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
+                'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
 
                 // Warna bulat
                 const colorBox = document.createElement('span');
@@ -248,7 +243,7 @@
                 data: {
                     datasets: [{
                         data: categories.map(category => category.count), // Ganti ke category.count
-                        backgroundColor: categories.map(category => category.count > 0 ? generateColors(1)[0] : 'rgba(0, 0, 0, 0.1)'), // Warna transparan untuk count 0 // Gunakan warna yang dihasilkan
+                        backgroundColor: colors, // Gunakan warna yang dihasilkan
                         label: 'Dataset 1',
                     }],
                     labels: categories.map(category => category.name), // Label dari kolom `name`
