@@ -211,10 +211,10 @@
                 return colors;
             }
 
-            console.log(categories); // Pastikan jumlah kategori sesuai dengan yang diharapkan
-            // Menampilkan jumlah kategori dan jumlah warna untuk memastikan kecocokan
-            console.log(categories.map(category => category.count)); // Cek jumlah count
-            console.log(colors); // Cek warna
+            // console.log(categories); // Pastikan jumlah kategori sesuai dengan yang diharapkan
+            // // Menampilkan jumlah kategori dan jumlah warna untuk memastikan kecocokan
+            // console.log(categories.map(category => category.count)); // Cek jumlah count
+            // console.log(colors); // Cek warna
 
             // Generate warna untuk chart
             const colors = generateColors(categories.length);
@@ -248,7 +248,7 @@
                 data: {
                     datasets: [{
                         data: categories.map(category => category.count), // Ganti ke category.count
-                        backgroundColor: colors, // Gunakan warna yang dihasilkan
+                        backgroundColor: categories.map(category => category.count > 0 ? generateColors(1)[0] : 'rgba(0, 0, 0, 0.1)'), // Warna transparan untuk count 0 // Gunakan warna yang dihasilkan
                         label: 'Dataset 1',
                     }],
                     labels: categories.map(category => category.name), // Label dari kolom `name`
