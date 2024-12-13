@@ -196,8 +196,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            const categories =
-            @json($categories); // Data dari controller: [{name: '...', slug: '...', icon: '...'}, ...]
+            const categories = @json($categories); // Mengambil data kategori dari controller
 
             // Fungsi untuk menghasilkan warna unik secara otomatis
             function generateColors(count) {
@@ -240,8 +239,7 @@
                 type: 'doughnut',
                 data: {
                     datasets: [{
-                        data: categories.map(category => category
-                        .products_count), // Asumsikan data ini dihitung di controller
+                        data: categories.map(category => category.count), // Ganti ke category.count
                         backgroundColor: colors, // Gunakan warna yang dihasilkan
                         label: 'Dataset 1',
                     }],

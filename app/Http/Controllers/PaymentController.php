@@ -41,11 +41,11 @@ class PaymentController extends Controller
             // Data dasar
             $orders = Orders::orderBy('id', 'desc')->paginate(20);
             $totalUser = User::count();
-            dd($totalUser);
             $stores = Toko::count();
             $totalOrders = Orders::count();
             $paymentTotal = Orders::sum('harga');
 
+            // dd($totalUser);
             // Menentukan rentang tanggal
             $endDate = Carbon::now()->endOfDay();
             $startDate = Carbon::now()->startOfWeek()->startOfDay();
@@ -60,7 +60,15 @@ class PaymentController extends Controller
                 ->orderBy('date', 'ASC')
                 ->get();
 
-            $categories = Category::withCount('products')->get();
+            $categories = Category::all()->map(function ($category) {
+                $count = Product::where('category_id', $category->id)->count(); // Sesuaikan dengan nama tabel dan kolom relasi
+                return [
+                    'name' => $category->name,
+                    'slug' => $category->slug,
+                    'icon' => $category->icon, // Menambahkan kolom 'icon' jika diperlukan
+                    'count' => $count, // Menambahkan hasil count produk
+                ];
+            });
 
             // Menyiapkan data hari dalam bahasa Indonesia
             $daysIndonesia = [
