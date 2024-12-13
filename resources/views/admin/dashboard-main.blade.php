@@ -200,9 +200,9 @@
             const categories = @json($categories); // Mengambil data kategori dari controller
 
             // Fungsi untuk menghasilkan warna unik secara otomatis
-            function generateColors(numCategories) {
+            function generateColors(count) {
                 const colors = [];
-                for (let i = 0; i < numCategories; i++) {
+                for (let i = 0; i < count; i++) {
                     const red = Math.floor(Math.random() * 256);
                     const green = Math.floor(Math.random() * 256);
                     const blue = Math.floor(Math.random() * 256);
@@ -210,11 +210,6 @@
                 }
                 return colors;
             }
-
-            // console.log(categories); // Pastikan jumlah kategori sesuai dengan yang diharapkan
-            // // Menampilkan jumlah kategori dan jumlah warna untuk memastikan kecocokan
-            // console.log(categories.map(category => category.count)); // Cek jumlah count
-            // console.log(colors); // Cek warna
 
             // Generate warna untuk chart
             const colors = generateColors(categories.length);
@@ -224,7 +219,7 @@
             categories.forEach((category, index) => {
                 const legendItem = document.createElement('div');
                 legendItem.className =
-                    'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
+                'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
 
                 // Warna bulat
                 const colorBox = document.createElement('span');
@@ -247,30 +242,22 @@
                 type: 'doughnut',
                 data: {
                     datasets: [{
-                        data: categories.map(category => category
-                        .count), // Data berdasarkan count kategori
+                        data: categories.map(category => category.count), // Ganti ke category.count
                         backgroundColor: colors, // Gunakan warna yang dihasilkan
                         label: 'Dataset 1',
                     }],
-                    labels: categories.map(category => category.name), // Label kategori
+                    labels: categories.map(category => category.name), // Label dari kolom `name`
                 },
                 options: {
                     responsive: true,
                     cutoutPercentage: 80,
                     legend: {
-                        display: true,
-                        position: 'bottom', // Posisi legend
-                        labels: {
-                            boxWidth: 20, // Lebar box untuk legend
-                            padding: 15, // Jarak antar label
-                            fontSize: 12, // Ukuran font legend
-                            usePointStyle: true, // Gunakan titik untuk legend
-                        },
+                        display: false, // Nonaktifkan default legend Chart.js
                     },
                 },
-            };
+            }
 
-            // Membuat chart
+            // Inisialisasi chart
             const pieCtx = document.getElementById('pie');
             window.myPie = new Chart(pieCtx, pieConfig);
 
