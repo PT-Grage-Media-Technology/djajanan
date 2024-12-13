@@ -151,9 +151,10 @@
                         </h4>
                         <canvas id="pie"></canvas>
                         <div id="chart-legend"
-                            class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
+                            class="flex flex-wrap justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
                             <!-- Legend akan di-generate di sini -->
                         </div>
+
 
                     </div>
 
@@ -217,7 +218,8 @@
             const legendContainer = document.getElementById('chart-legend');
             categories.forEach((category, index) => {
                 const legendItem = document.createElement('div');
-                legendItem.className = 'flex items-center space-x-2';
+                legendItem.className =
+                'flex items-center space-x-2 mb-2'; // Menambahkan margin bawah agar tidak terlalu rapat
 
                 // Warna bulat
                 const colorBox = document.createElement('span');
@@ -227,6 +229,7 @@
                 // Label kategori
                 const label = document.createElement('span');
                 label.textContent = category.name;
+                label.className = 'text-xs break-words'; // Membuat teks wrap jika terlalu panjang
 
                 // Tambahkan elemen ke legend
                 legendItem.appendChild(colorBox);
