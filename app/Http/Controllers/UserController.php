@@ -25,14 +25,10 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::all(); // Mengambil semua user tanpa soft delete
+        // Mengambil data users dengan roles dan pagination 10 item per halaman
+        $users = User::with('roles')->paginate(10);
 
-        $users = User::with('roles')->get();
-
-        // Return view with users data
-        return view('admin.users.index', compact('users'));
-
-        $users = User::all();
+        // Return view dengan data users
         return view('admin.users.index', compact('users'));
     }
 
@@ -91,7 +87,7 @@ class UserController extends Controller
             'img' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        $data = $request->only(['name',  'phone']);
+        $data = $request->only(['name', 'phone']);
 
         if (!preg_match('/^[0-9]{10,15}$/', $request->phone)) {
             return back()->withErrors(['phone' => 'Nomor telepon harus 10-15 digit.']);
