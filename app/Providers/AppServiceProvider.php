@@ -24,6 +24,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        Paginator::currentPathResolver(function () {
+            return request()->url();
+        });
+
+        Paginator::currentPageResolver(function ($pageName = 'page') {
+            return request()->input($pageName, 1);
+        });
+        
         //
         Model::unguard();
 
@@ -31,7 +40,7 @@ class AppServiceProvider extends ServiceProvider
         // Pastikan parameter closure adalah instance dari Illuminate\View\View
         View::composer(['layouts.main', 'admin.layouts.main-admin', 'home', 'layouts.navigation', 'contact-us'], function (ViewInstance $view) {
             $cms = Cms::all();
-            $products = Product::where('is_vip', true)->with('toko','category')->get();
+            $products = Product::where('is_vip', true)->with('toko', 'category')->get();
             $view->with(['cms' => $cms, 'products' => $products]);
         });
     }
