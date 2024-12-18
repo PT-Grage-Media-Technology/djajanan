@@ -9,6 +9,7 @@ use App\Models\RoleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class RoleRequestController extends Controller
 {
@@ -122,42 +123,21 @@ class RoleRequestController extends Controller
 
     public function store(Request $request)
     {
-        $user = Auth::user();
-    
-        // Periksa data pengguna
-        if ($user->email === 'default@example.com' || $user->phone === '0000000000' || $user->location === 'Perumahan Keandra, Kec. Sumber, Kab. Cirebon, Jawa Barat, Indonesia') {
-            $missingFields = [];
-            
-            if ($user->email === 'default@example.com') {
-                $missingFields[] = 'email';
-            }
-            if ($user->phone === '0000000000') {
-                $missingFields[] = 'No HP anda masih bawaan, silahkan ganti No HP anda!';
-            }
-            if ($user->location === 'Perumahan Keandra, Kec. Sumber, Kab. Cirebon, Jawa Barat, Indonesia') {
-                $missingFields[] = 'Alamat anda masih alamat bawaan, silahkan ganti alamat anda!';
-            }
-            
-    
-            $missingFieldsText = implode(', ', $missingFields);
-            return redirect()->back()->with('error', "Sebelum mengajukan menjadi penjual, lengkapi dulu data anda yang belum lengkap: $missingFieldsText.");
-        }
-    
-        // Validasi input
+        // Validasi input jika diperlukan
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'requested_role' => 'required',
         ]);
-    
+
         // Cek apakah user_id sudah ada di tabel role_change_requests
         $existingRequest = DB::table('role_change_requests')
             ->where('user_id', $request->user_id)
             ->first();
-    
+
         if ($existingRequest) {
-            return redirect()->back()->with('error', 'Anda telah mengajukan permintaan sebagai penjual.');
+            return redirect()->back()->with('error', 'Anda telah menggajukan permintaan sebagai penjual.');
         }
-    
+
         // Simpan data ke database
         DB::table('role_change_requests')->insert([
             'user_id' => $request->user_id,
@@ -165,7 +145,7 @@ class RoleRequestController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-    
-        return redirect()->back()->with('success', 'Permintaan pengajuan menjadi penjual telah dikirim.');
+
+        return redirect()->back()->with('success', 'Permintaan pengajuan menjadi penjual telah di kirim.');
     }
 }
