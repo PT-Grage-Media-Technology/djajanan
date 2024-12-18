@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Cms;
 use App\Models\Product;
 use Illuminate\Support\Facades\View;
+use App\Providers\Paginator;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View as ViewInstance; // Tambahkan alias View yang benar
