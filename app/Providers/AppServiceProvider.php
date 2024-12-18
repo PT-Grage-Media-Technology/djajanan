@@ -6,6 +6,7 @@ use App\Models\Cms;
 use App\Models\Product;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\View as ViewInstance; // Tambahkan alias View yang benar
@@ -25,6 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+
+        if (request()->isSecure()) {
+            URL::forceScheme('https');
+        }
 
         Paginator::currentPathResolver(function () {
             return request()->url();
