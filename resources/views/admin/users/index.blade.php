@@ -257,7 +257,7 @@
 
                 <div class="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
                     <div class="lg:w-3/5 w-full">
-                        {{ $data->links('pagination::tailwind') }}
+                        {{ $users->links('pagination::tailwind') }}
                     </div>
                 </div>
 
