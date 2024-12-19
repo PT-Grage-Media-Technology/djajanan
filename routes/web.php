@@ -2,6 +2,7 @@
 
 use App\Livewire\LiveChat;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\TokoController;
