@@ -9,7 +9,7 @@ class AdminHistoryController extends Controller
 {
     public function index()
     {
-        $perPage = 10;
+        $perPage = 50;
         $currentPage = request()->get('page', 1);  // Ambil halaman saat ini, default 1
 
         // Eager loading 'admin' dengan 'with' dan menerapkan pagination
