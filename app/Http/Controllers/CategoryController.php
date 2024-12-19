@@ -11,9 +11,17 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $perPage = 10;
+        $currentPage = request()->get('page', 1);  // Ambil halaman saat ini, default 1
+
+        $categories = Category::skip(($currentPage - 1) * $perPage)->take($perPage)->get();
+        $total = Category::count();  // Total users
+
+        $lastPage = ceil($total / $perPage);  // Hitung jumlah halaman
+
+        // $categories = Category::all();
         if (auth()->user()->can('categories')) {
-            return view('admin.categories.index', compact('categories'));
+            return view('admin.categories.index', compact('categories', 'currentPage', 'lastPage', 'perPage'));
         }
 
         return abort(403);
