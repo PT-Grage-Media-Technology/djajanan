@@ -47,6 +47,12 @@ class AppServiceProvider extends ServiceProvider
             return Redirect::to('https://djajanan.com' . Request::getRequestUri(), 301);
         }
 
+        /**
+     * Register any application services.
+     *
+     * @return void
+     */
+
         //
         Model::unguard();
 
