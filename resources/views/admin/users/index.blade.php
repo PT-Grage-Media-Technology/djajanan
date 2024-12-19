@@ -251,11 +251,11 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <div class="flex items-center justify-center my-4 px-4 mb-10">
-                                <nav class="flex items-center gap-x-1" aria-label="Pagination">
+                            <div class="flex items-center justify-center px-4 mb-10">
+                                <nav class="flex items-center gap-x-2" aria-label="Pagination">
                                     <!-- Previous Page -->
                                     @if ($currentPage > 1)
-                                        <a href="?page={{ $currentPage - 1 }}" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
+                                        <a href="?page={{ $currentPage - 1 }}" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Previous">
                                             <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m15 18-6-6 6-6"></path>
                                             </svg>
@@ -271,9 +271,11 @@
                                     @endif
 
                                     <!-- Page Buttons -->
-                                    <div class="flex items-center gap-x-1">
+                                    <div class="flex items-center gap-x-2">
                                         @for ($i = 1; $i <= $lastPage; $i++)
-                                            <a href="?page={{ $i }}" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-50 @if ($i == $currentPage) bg-teal-800 text-blue-600 @else hover:bg-gray-100 dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 @endif">
+                                            <a href="?page={{ $i }}"
+                                               class="min-h-[38px] min-w-[38px] flex justify-center items-center border text-sm py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500
+                                               @if ($i == $currentPage) bg-teal-600 text-white border-teal-600 @else border-gray-300 text-gray-800 hover:bg-gray-100 dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 @endif">
                                                 {{ $i }}
                                             </a>
                                         @endfor
@@ -281,7 +283,7 @@
 
                                     <!-- Next Page -->
                                     @if ($currentPage < $lastPage)
-                                        <a href="?page={{ $currentPage + 1 }}" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Next">
+                                        <a href="?page={{ $currentPage + 1 }}" class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10" aria-label="Next">
                                             <span class="sr-only">Next</span>
                                             <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <path d="m9 18 6-6-6-6"></path>
@@ -297,6 +299,7 @@
                                     @endif
                                 </nav>
                             </div>
+
                         </div>
                     </div>
                 </div>
