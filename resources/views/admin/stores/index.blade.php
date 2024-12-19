@@ -308,6 +308,7 @@
                                 </nav>
                             </div>
                         </tbody>
+                    </table>
                 </div>
                 <script>
                     function confirmDelete() {
