@@ -24,13 +24,6 @@ class UserController extends Controller
 
     public function index()
     {
-
-        // Mengambil data users dengan roles dan pagination 10 item per halaman
-        // $users = User::with('roles')->paginate(10);
-
-        // // Return view dengan data users
-        // return view('admin.users.index', compact('users'));
-
         $perPage = 10;
         $currentPage = request()->get('page', 1);  // Ambil halaman saat ini, default 1
 

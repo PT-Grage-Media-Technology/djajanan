@@ -13,7 +13,8 @@
                         <p><strong>ID:</strong> {{ $store->id_toko }}</p>
                         <form action="/detailed-store" method="GET">
                             <input type="hidden" value="{{ $store->id_toko }}" name="id">
-                            <img src="https://djajanan.com/store_image/{{ $store->foto_profile_toko ? $store->foto_profile_toko : 'markets.png' }}" alt="Profile Picture" loading="lazy">
+                            <img src="https://djajanan.com/store_image/{{ $store->foto_profile_toko ? $store->foto_profile_toko : 'markets.png' }}"
+                                alt="Profile Picture" loading="lazy">
                             {{-- <h2>{{ $store->nama_toko }}</h2> --}}
                             <div class="flex items-center text-sm">
                                 <!-- Avatar with inset shadow -->
@@ -56,17 +57,17 @@
                                     onsubmit="return confirmDelete()">
                                     @csrf
                                     @method('DELETE')
-                                        <button type="submit"
-                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
-                                            aria-label="Delete">
-                                            <span class="text-red-600 font-bold">Delete</span>
-                                            <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-                                    </form>
+                                    <button type="submit"
+                                        class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-red-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
+                                        aria-label="Delete">
+                                        <span class="text-red-600 font-bold">Delete</span>
+                                        <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -74,6 +75,68 @@
         @empty
             <p>No stores found.</p>
             @endforelse
+            <div class="flex items-center justify-center px-4 mb-10">
+                <nav class="flex items-center gap-x-2" aria-label="Pagination">
+                    <!-- Previous Page -->
+                    @if ($currentPage > 1)
+                        <a href="?page={{ $currentPage - 1 }}"
+                            class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                            aria-label="Previous">
+                            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m15 18-6-6 6-6"></path>
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    @else
+                        <span
+                            class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-400 cursor-not-allowed">
+                            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m15 18-6-6 6-6"></path>
+                            </svg>
+                            <span class="sr-only">Previous</span>
+                        </span>
+                    @endif
+
+                    <!-- Page Buttons -->
+                    <div class="flex items-center gap-x-2">
+                        @for ($i = 1; $i <= $lastPage; $i++)
+                            <a href="?page={{ $i }}"
+                                class="min-h-[38px] min-w-[38px] flex justify-center items-center border text-sm py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500
+                               @if ($i == $currentPage) bg-teal-600 text-white border-teal-600 @else border-gray-300 text-gray-800 hover:bg-gray-100 dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 @endif">
+                                {{ $i }}
+                            </a>
+                        @endfor
+                    </div>
+
+                    <!-- Next Page -->
+                    @if ($currentPage < $lastPage)
+                        <a href="?page={{ $currentPage + 1 }}"
+                            class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                            aria-label="Next">
+                            <span class="sr-only">Next</span>
+                            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    @else
+                        <span
+                            class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-400 cursor-not-allowed">
+                            <span class="sr-only">Next</span>
+                            <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </span>
+                    @endif
+                </nav>
+            </div>
 
         </div>
 
@@ -179,6 +242,68 @@
                                 </tr>
                             @endforeach
                         </tbody>
+                        <div class="flex items-center justify-center px-4 mb-10">
+                            <nav class="flex items-center gap-x-2" aria-label="Pagination">
+                                <!-- Previous Page -->
+                                @if ($currentPage > 1)
+                                    <a href="?page={{ $currentPage - 1 }}"
+                                        class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                                        aria-label="Previous">
+                                        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m15 18-6-6 6-6"></path>
+                                        </svg>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                @else
+                                    <span
+                                        class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-400 cursor-not-allowed">
+                                        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m15 18-6-6 6-6"></path>
+                                        </svg>
+                                        <span class="sr-only">Previous</span>
+                                    </span>
+                                @endif
+
+                                <!-- Page Buttons -->
+                                <div class="flex items-center gap-x-2">
+                                    @for ($i = 1; $i <= $lastPage; $i++)
+                                        <a href="?page={{ $i }}"
+                                            class="min-h-[38px] min-w-[38px] flex justify-center items-center border text-sm py-2 px-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500
+                                           @if ($i == $currentPage) bg-teal-600 text-white border-teal-600 @else border-gray-300 text-gray-800 hover:bg-gray-100 dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 @endif">
+                                            {{ $i }}
+                                        </a>
+                                    @endfor
+                                </div>
+
+                                <!-- Next Page -->
+                                @if ($currentPage < $lastPage)
+                                    <a href="?page={{ $currentPage + 1 }}"
+                                        class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-gray-300 text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:border-transparent dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+                                        aria-label="Next">
+                                        <span class="sr-only">Next</span>
+                                        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m9 18 6-6-6-6"></path>
+                                        </svg>
+                                    </a>
+                                @else
+                                    <span
+                                        class="flex items-center justify-center min-h-[38px] min-w-[38px] py-2 px-3 inline-flex justify-center items-center gap-x-2 text-sm rounded-lg border border-transparent text-gray-400 cursor-not-allowed">
+                                        <span class="sr-only">Next</span>
+                                        <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
+                                            height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m9 18 6-6-6-6"></path>
+                                        </svg>
+                                    </span>
+                                @endif
+                            </nav>
+                        </div>
                 </div>
                 <script>
                     function confirmDelete() {

@@ -15,15 +15,59 @@ class RoleRequestController extends Controller
 {
     public function index()
     {
+        $perPage = 10;
+        $currentPage = request()->get('page', 1);  // Ambil halaman saat ini, default 1
+
+        // Menggunakan query builder untuk menggabungkan role_change_requests dan users
         $roleRequests = DB::table('role_change_requests')
             ->join('users', 'role_change_requests.user_id', '=', 'users.id')
             ->select('role_change_requests.*', 'users.*')
+            ->skip(($currentPage - 1) * $perPage)  // Menentukan halaman
+            ->take($perPage)  // Menentukan jumlah data per halaman
             ->get();
 
-        return view('admin.role-requests.index', compact('roleRequests'));
+        $total = DB::table('role_change_requests')->count();  // Total data di role_change_requests
+
+        $lastPage = ceil($total / $perPage);  // Hitung jumlah halaman
+
+        return view('admin.role-requests.index', compact('roleRequests', 'currentPage', 'lastPage', 'perPage'));
     }
 
-     /* public function approve($id)
+    /* public function approve($id)
+   {
+       // Temukan request berdasarkan ID
+       $roleRequest = DB::table('role_change_requests')->where('user_id', $id)->first();
+
+       if ($roleRequest) {
+           // Hapus request yang ada
+           DB::table('role_change_requests')->where('user_id', $id)->delete();
+
+           // Temukan pengguna berdasarkan ID
+           $user = User::find($id);
+
+           if ($user) {
+               // Tambahkan role seller ke pengguna
+               $user->assignRole('seller');
+
+               // Buat akun toko untuk pengguna
+               $store = new Toko();
+               $store->id_seller = $user->id;
+               $store->nama_toko = 'Nama Toko Baru'; // Ganti sesuai kebutuhan
+               $store->alamat_toko = 'Alamat Toko'; // Ganti sesuai kebutuhan
+               $store->foto_profile_toko = 'default.png'; // Ganti sesuai kebutuhan
+               $store->save();
+
+               // Redirect dengan pesan sukses
+               return redirect()->back()->with('success', 'Role seller telah diterima dan akun toko telah dibuat.');
+           } else {
+               return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
+           }
+       }
+
+       return redirect()->back()->with('error', 'Permintaan tidak ditemukan.');
+   } */
+
+    public function approve($id)
     {
         // Temukan request berdasarkan ID
         $roleRequest = DB::table('role_change_requests')->where('user_id', $id)->first();
@@ -39,13 +83,33 @@ class RoleRequestController extends Controller
                 // Tambahkan role seller ke pengguna
                 $user->assignRole('seller');
 
-                // Buat akun toko untuk pengguna
-                $store = new Toko();
-                $store->id_seller = $user->id;
-                $store->nama_toko = 'Nama Toko Baru'; // Ganti sesuai kebutuhan
-                $store->alamat_toko = 'Alamat Toko'; // Ganti sesuai kebutuhan
-                $store->foto_profile_toko = 'default.png'; // Ganti sesuai kebutuhan
-                $store->save();
+                // Cek apakah toko sudah ada, jika belum buat toko baru
+                $store = Toko::where('id_seller', $user->id)->first();
+
+
+
+                if (!$store) {
+                    // Buat toko baru
+                    $store = new Toko();
+                    $store->id_seller = $user->id;
+                    $store->nama_toko = 'Nama Toko Baru'; // Ganti sesuai kebutuhan
+                    $store->alamat_toko = 'Alamat Toko'; // Ganti sesuai kebutuhan
+
+                    // Path file default dan path tujuan di dalam public_html/store_image
+                    $defaultImagePath = base_path('public/store_image/markets.png');
+                    $uniqueFilename = time() . '_' . 'markets.png';
+                    $newImagePath = base_path('public/store_image/' . $uniqueFilename);
+
+                    // Copy file default ke lokasi baru dengan nama unik
+                    File::copy($defaultImagePath, $newImagePath);
+
+                    // Set path foto_profile_toko ke nama baru untuk disimpan di database
+                    $store->foto_profile_toko = $uniqueFilename;
+                    $store->is_online = 0; // Set default offline
+                    $store->save();
+                }
+
+
 
                 // Redirect dengan pesan sukses
                 return redirect()->back()->with('success', 'Role seller telah diterima dan akun toko telah dibuat.');
@@ -55,61 +119,7 @@ class RoleRequestController extends Controller
         }
 
         return redirect()->back()->with('error', 'Permintaan tidak ditemukan.');
-    } */
-
-    public function approve($id)
-{
-    // Temukan request berdasarkan ID
-    $roleRequest = DB::table('role_change_requests')->where('user_id', $id)->first();
-
-    if ($roleRequest) {
-        // Hapus request yang ada
-        DB::table('role_change_requests')->where('user_id', $id)->delete();
-
-        // Temukan pengguna berdasarkan ID
-        $user = User::find($id);
-
-        if ($user) {
-            // Tambahkan role seller ke pengguna
-            $user->assignRole('seller');
-
-            // Cek apakah toko sudah ada, jika belum buat toko baru
-            $store = Toko::where('id_seller', $user->id)->first();
-            
-           
-                
-            if (!$store) {
-                // Buat toko baru
-                $store = new Toko();
-                $store->id_seller = $user->id;
-                $store->nama_toko = 'Nama Toko Baru'; // Ganti sesuai kebutuhan
-                $store->alamat_toko = 'Alamat Toko'; // Ganti sesuai kebutuhan
-            
-                // Path file default dan path tujuan di dalam public_html/store_image
-                $defaultImagePath = base_path('public/store_image/markets.png');
-                $uniqueFilename = time() . '_' . 'markets.png';
-                $newImagePath = base_path('public/store_image/' . $uniqueFilename);
-            
-                // Copy file default ke lokasi baru dengan nama unik
-                File::copy($defaultImagePath, $newImagePath);
-            
-                // Set path foto_profile_toko ke nama baru untuk disimpan di database
-                $store->foto_profile_toko = $uniqueFilename;
-                $store->is_online = 0; // Set default offline
-                $store->save();
-            }
-
-           
-
-            // Redirect dengan pesan sukses
-            return redirect()->back()->with('success', 'Role seller telah diterima dan akun toko telah dibuat.');
-        } else {
-            return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
-        }
     }
-
-    return redirect()->back()->with('error', 'Permintaan tidak ditemukan.');
-}
 
 
     public function cancel($id)
@@ -124,11 +134,11 @@ class RoleRequestController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-    
+
         // Periksa data pengguna
         if ($user->email === 'default@example.com' || $user->phone === '0000000000' || $user->location === 'Perumahan Keandra, Kec. Sumber, Kab. Cirebon, Jawa Barat, Indonesia') {
             $missingFields = [];
-            
+
             if ($user->email === 'default@example.com') {
                 $missingFields[] = 'email';
             }
@@ -138,27 +148,27 @@ class RoleRequestController extends Controller
             if ($user->location === 'Perumahan Keandra, Kec. Sumber, Kab. Cirebon, Jawa Barat, Indonesia') {
                 $missingFields[] = 'Alamat anda masih alamat bawaan, silahkan ganti alamat anda!';
             }
-            
-    
+
+
             $missingFieldsText = implode(', ', $missingFields);
             return redirect()->back()->with('error', "Sebelum mengajukan menjadi penjual, lengkapi dulu data anda yang belum lengkap: $missingFieldsText.");
         }
-    
+
         // Validasi input
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'requested_role' => 'required',
         ]);
-    
+
         // Cek apakah user_id sudah ada di tabel role_change_requests
         $existingRequest = DB::table('role_change_requests')
             ->where('user_id', $request->user_id)
             ->first();
-    
+
         if ($existingRequest) {
             return redirect()->back()->with('error', 'Anda telah mengajukan permintaan sebagai penjual.');
         }
-    
+
         // Simpan data ke database
         DB::table('role_change_requests')->insert([
             'user_id' => $request->user_id,
@@ -166,7 +176,7 @@ class RoleRequestController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
-    
+
         return redirect()->back()->with('success', 'Permintaan pengajuan menjadi penjual telah dikirim.');
     }
 }

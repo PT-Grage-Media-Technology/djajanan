@@ -12,8 +12,13 @@ class TokoController extends Controller
 {
     public function index()
     {
-        $stores = Toko::all();
-        return view('admin.stores.index', compact('stores'));
+        $perPage = 10;
+        $currentPage = request()->get('page', 1);  // Ambil halaman saat ini, default 1
+        $stores = Toko::skip(($currentPage - 1) * $perPage)->take($perPage)->get();
+        $total = Toko::count();  // Total users
+
+        $lastPage = ceil($total / $perPage);  // Hitung jumlah halaman
+        return view('admin.stores.index', compact('stores', 'currentPage', 'lastPage', 'perPage'));
     }
 
     public function create()
@@ -94,10 +99,10 @@ class TokoController extends Controller
         ], [
             'waktu_buka.date_format' => 'Mohon isi waktu buka dengan format jam:menit (contoh: 08:00).',
             'waktu_tutup.date_format' => 'Mohon isi waktu tutup dengan format jam:menit (contoh: 18:00).',
-        
+
             'foto_profile_toko' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
+
 
         // Update informasi toko
         $toko->nama_toko = $request->input('nama_toko');
@@ -116,14 +121,14 @@ class TokoController extends Controller
                     unlink($oldImagePath); // Hapus file jika ada
                 }
             }
-        
+
             // Simpan gambar baru di public/store_image
             $image = $request->file('foto_profile_toko');
             $imageName = time() . '_' . $image->getClientOriginalName(); // Buat nama file unik
             $image->move(public_path('store_image'), $imageName);
             $toko->foto_profile_toko = $imageName;
         }
-        
+
 
         // Simpan perubahan
         $toko->save();
