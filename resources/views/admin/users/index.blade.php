@@ -254,7 +254,7 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
-                        <div class="flex justify-between items-center mt-4">
+                        <div class="flex justify-between items-center">
                             <!-- Previous Page -->
                             @if ($currentPage > 1)
                                 <a href="?page={{ $currentPage - 1 }}" class="text-blue-500 hover:text-blue-700">Previous</a>
