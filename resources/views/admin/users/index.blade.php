@@ -254,8 +254,21 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
+                        @php
+                            // Mendapatkan protokol (http/https)
+                            $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+
+                            // Mendapatkan domain
+                            $host = $_SERVER['HTTP_HOST'];
+
+                            // Mendapatkan path
+                            $path = $_SERVER['REQUEST_URI'];
+
+                            // URL lengkap
+                            $url = $protocol . $host . $path;
+                        @endphp
                         <div class="lg:w-3/5 w-full">
-                            <a href="{{ request()->fullUrl() }}?page=2">Next »</a>
+                            <a href="{{ $url }}?page=2">Next »</a>
                         </div>
                     </div>
                 </div>
