@@ -75,7 +75,7 @@
         @empty
             <p>No stores found.</p>
             @endforelse
-            <div class="flex items-center justify-center px-4 mb-10">
+            <div class="flex items-center md:hidden justify-center px-4 mb-10">
                 <nav class="flex items-center gap-x-2" aria-label="Pagination">
                     <!-- Previous Page -->
                     @if ($currentPage > 1)
