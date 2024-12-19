@@ -254,9 +254,27 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
-                        <div class="lg:w-3/5 w-full">
-                            {{ $users->links('pagination::tailwind') }}
-                        </div>
+                         <!-- Manual Paginasi -->
+                            <div class="flex justify-between items-center mt-4">
+                                <!-- Sebelumnya -->
+                                @if ($users->onFirstPage())
+                                    <span class="text-gray-400">Previous</span>
+                                @else
+                                    <a href="{{ $users->previousPageUrl() }}" class="text-blue-500 hover:text-blue-700">Previous</a>
+                                @endif
+
+                                <!-- Nomor Halaman -->
+                                <span class="text-sm text-gray-600">
+                                    Page {{ $users->currentPage() }} of {{ $users->lastPage() }}
+                                </span>
+
+                                <!-- Berikutnya -->
+                                @if ($users->hasMorePages())
+                                    <a href="{{ $users->nextPageUrl() }}" class="text-blue-500 hover:text-blue-700">Next</a>
+                                @else
+                                    <span class="text-gray-400">Next</span>
+                                @endif
+                            </div>
                     </div>
                 </div>
 

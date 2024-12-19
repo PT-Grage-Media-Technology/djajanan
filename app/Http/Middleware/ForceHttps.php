@@ -8,13 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ForceHttps
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
+        // Cek jika domain adalah localhost
+        if (in_array($request->getHost(), ['localhost', '127.0.0.1'])) {
+            return redirect()->to('https://djajanan.com' . $request->getRequestUri(), 301);
+        }
+
         return $next($request);
     }
 }
