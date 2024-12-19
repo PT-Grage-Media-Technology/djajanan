@@ -26,8 +26,7 @@ class UserController extends Controller
     {
 
         // Mengambil data users dengan roles dan pagination 10 item per halaman
-        // $users = User::with('roles')->paginate(10);
-        $users = User::paginate(10)->appends(['halaman' => request('halaman')]);
+        $users = User::with('roles')->paginate(10);
 
         // Return view dengan data users
         return view('admin.users.index', compact('users'));
