@@ -41,18 +41,6 @@ class AppServiceProvider extends ServiceProvider
             return request()->input($pageName, 1);
         });
 
-          // Cek apakah aplikasi sedang dijalankan di localhost:8091 atau localhost:8080
-          if (in_array(Request::getHost(), ['localhost:8091', 'localhost:8080'])) {
-            // Redirect ke https://djajanan.com dengan mempertahankan URI
-            return Redirect::to('https://djajanan.com' . Request::getRequestUri(), 301);
-        }
-
-        /**
-     * Register any application services.
-     *
-     * @return void
-     */
-
         //
         Model::unguard();
 
