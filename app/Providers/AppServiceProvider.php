@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Cms;
 use App\Models\Product;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\URL;
@@ -38,6 +40,12 @@ class AppServiceProvider extends ServiceProvider
         Paginator::currentPageResolver(function ($pageName = 'page') {
             return request()->input($pageName, 1);
         });
+
+          // Cek apakah aplikasi sedang dijalankan di localhost:8091 atau localhost:8080
+          if (in_array(Request::getHost(), ['localhost:8091', 'localhost:8080'])) {
+            // Redirect ke https://djajanan.com dengan mempertahankan URI
+            return Redirect::to('https://djajanan.com' . Request::getRequestUri(), 301);
+        }
 
         //
         Model::unguard();

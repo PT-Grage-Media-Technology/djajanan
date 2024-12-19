@@ -33,9 +33,9 @@ Route::fallback(function () {
     return response()->view('errors.404', [], 404);
 });
 
-if (in_array(request()->getHost(), ['localhost:8091', 'localhost:8080'])) {
-    return Redirect::to('https://djajanan.com' . request()->getRequestUri(), 301);
-}
+// if (in_array(request()->getHost(), ['localhost:8091', 'localhost:8080'])) {
+//     return Redirect::to('https://djajanan.com' . request()->getRequestUri(), 301);
+// }
 
 
 
