@@ -254,27 +254,27 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
-                         <!-- Manual Paginasi -->
-                            <div class="flex justify-between items-center mt-4">
-                                <!-- Sebelumnya -->
-                                @if ($users->onFirstPage())
-                                    <span class="text-gray-400">Previous</span>
-                                @else
-                                    <a href="{{ $users->previousPageUrl() }}" class="text-blue-500 hover:text-blue-700">Previous</a>
-                                @endif
+                        <div class="flex justify-between items-center mt-4">
+                            <!-- Previous Page -->
+                            @if ($currentPage > 1)
+                                <a href="?page={{ $currentPage - 1 }}" class="text-blue-500 hover:text-blue-700">Previous</a>
+                            @else
+                                <span class="text-gray-400">Previous</span>
+                            @endif
 
-                                <!-- Nomor Halaman -->
-                                <span class="text-sm text-gray-600">
-                                    Page {{ $users->currentPage() }} of {{ $users->lastPage() }}
-                                </span>
+                            <!-- Page Info -->
+                            <span class="text-sm text-gray-600">
+                                Page {{ $currentPage }} of {{ $lastPage }}
+                            </span>
 
-                                <!-- Berikutnya -->
-                                @if ($users->hasMorePages())
-                                    <a href="{{ $users->nextPageUrl() }}" class="text-blue-500 hover:text-blue-700">Next</a>
-                                @else
-                                    <span class="text-gray-400">Next</span>
-                                @endif
-                            </div>
+                            <!-- Next Page -->
+                            @if ($currentPage < $lastPage)
+                                <a href="?page={{ $currentPage + 1 }}" class="text-blue-500 hover:text-blue-700">Next</a>
+                            @else
+                                <span class="text-gray-400">Next</span>
+                            @endif
+                        </div>
+
                     </div>
                 </div>
 

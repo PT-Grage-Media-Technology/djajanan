@@ -26,10 +26,20 @@ class UserController extends Controller
     {
 
         // Mengambil data users dengan roles dan pagination 10 item per halaman
-        $users = User::with('roles')->paginate(10);
+        // $users = User::with('roles')->paginate(10);
 
-        // Return view dengan data users
-        return view('admin.users.index', compact('users'));
+        // // Return view dengan data users
+        // return view('admin.users.index', compact('users'));
+
+        $perPage = 10;
+        $currentPage = request()->get('page', 1);  // Ambil halaman saat ini, default 1
+
+        $users = User::skip(($currentPage - 1) * $perPage)->take($perPage)->get();
+        $total = User::count();  // Total users
+
+        $lastPage = ceil($total / $perPage);  // Hitung jumlah halaman
+
+        return view('admin.users.index', compact('users', 'currentPage', 'lastPage', 'perPage'));
     }
 
     public function create()
