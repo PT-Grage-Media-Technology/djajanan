@@ -273,7 +273,7 @@
                                     <!-- Page Buttons -->
                                     <div class="flex items-center gap-x-1">
                                         @for ($i = 1; $i <= $lastPage; $i++)
-                                            <a href="?page={{ $i }}" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-50 @if ($i == $currentPage) bg-indigo-600 text-blue-600 @else hover:bg-gray-100 dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 @endif">
+                                            <a href="?page={{ $i }}" class="min-h-[38px] min-w-[38px] flex justify-center items-center border border-gray-200 text-gray-800 py-2 px-3 text-sm rounded-lg focus:outline-none focus:bg-gray-50 @if ($i == $currentPage) bg-teal-800 text-blue-600 @else hover:bg-gray-100 dark:border-neutral-700 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10 @endif">
                                                 {{ $i }}
                                             </a>
                                         @endfor
