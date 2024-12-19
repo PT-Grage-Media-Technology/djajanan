@@ -255,7 +255,7 @@
                     </div>
                     <div class="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
                         <div class="lg:w-3/5 w-full">
-                            {{ $users->links('pagination::tailwind') }}
+                            <a href="{{ url()->current() }}?page=2">Next »</a>
                         </div>
                     </div>
                 </div>
